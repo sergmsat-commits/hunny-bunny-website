@@ -117,6 +117,38 @@ import Layout from '../layouts/Layout.astro';
   transform: translateY(-8px);
   box-shadow: 0 10px 25px rgba(139,92,246,0.25);
 }
+.nav-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Телефон */
+@media (max-width: 768px) {
+
+  .bunny-logo {
+    display: block;
+    margin: 0 auto 15px auto !important;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px 25px;
+  }
+
+  .nav-links a {
+    font-size: 16px;
+  }
+}
 </style>
 
   <!-- Первый экран -->
@@ -141,55 +173,24 @@ import Layout from '../layouts/Layout.astro';
     box-shadow:0 2px 10px rgba(0,0,0,0.1);
   "
 >
- <img
-  src="/images/stic-hb.webp"
-  alt="Hunny Bunny"
-  class="bunny-logo"
-  style="
-    height:70px;
-    vertical-align:middle;
-    margin-right:20px;
-  "
->
- <a href="#about" style="
-  margin:0 15px;
-  color:white;
-  text-decoration:none;
-  font-weight:bold;
-  font-size:18px;
-">О нас</a>
+  <img
+    src="/images/stic-hb.webp"
+    alt="Hunny Bunny"
+    class="bunny-logo"
+    style="
+      height:70px;
+      vertical-align:middle;
+      margin-right:20px;
+    "
+  >
 
-  <a href="#gallery" style="
-  margin:0 15px;
-  color:white;
-  text-decoration:none;
-  font-weight:bold;
-  font-size:18px;
-">Галерея</a>
-
-  <a href="#reviews" style="
-  margin:0 15px;
-  color:white;
-  text-decoration:none;
-  font-weight:bold;
-  font-size:18px;
-">Отзывы</a>
-
-  <a href="#faq" style="
-  margin:0 15px;
-  color:white;
-  text-decoration:none;
-  font-weight:bold;
-  font-size:18px;
-">FAQ</a>
-
-  <a href="#signup" style="
-  margin:0 15px;
-  color:white;
-  text-decoration:none;
-  font-weight:bold;
-  font-size:18px;
-">Записаться</a>
+  <div class="nav-links">
+    <a href="#about">О нас</a>
+    <a href="#gallery">Галерея</a>
+    <a href="#reviews">Отзывы</a>
+    <a href="#faq">FAQ</a>
+    <a href="#signup">Записаться</a>
+  </div>
 </nav>
 <h1
   style="
@@ -1013,6 +1014,35 @@ document.querySelectorAll('.fade-in').forEach((el) => {
   <img
     src="/images/whatsapp.svg"
     alt="WhatsApp"
+    style="
+      width:36px;
+      height:36px;
+    "
+  >
+</a>
+<a
+  href="https://www.youtube.com/@hunnybunnyenglish"
+  target="_blank"
+  class="instagram-float tooltip"
+  data-tooltip="YouTube"
+  style="
+    position:fixed;
+    bottom:290px;
+    right:20px;
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:#FF0000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 4px 15px rgba(0,0,0,0.3);
+    z-index:9999;
+  "
+>
+  <img
+    src="/images/youtube.svg"
+    alt="YouTube"
     style="
       width:36px;
       height:36px;
