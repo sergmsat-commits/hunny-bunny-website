@@ -1,0 +1,44 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { translations } from "../../i18n/translations";
+
+const lang = "en";
+const t = translations[lang];
+---
+
+<Layout>
+  <main
+    style="
+      text-align:center;
+      padding:80px 20px;
+      max-width:800px;
+      margin:0 auto;
+    "
+  >
+    <h1>{t.thankyou.title}</h1>
+
+    <p style="font-size:20px;">
+      {t.thankyou.text1}
+    </p>
+
+    <p style="font-size:18px;">
+      {t.thankyou.text2}
+    </p>
+
+    <a
+      href="/en"
+      style="
+        display:inline-block;
+        margin-top:30px;
+        background:#f7b500;
+        color:black;
+        text-decoration:none;
+        padding:14px 28px;
+        border-radius:10px;
+        font-size:18px;
+      "
+    >
+      {t.thankyou.button}
+    </a>
+  </main>
+</Layout>

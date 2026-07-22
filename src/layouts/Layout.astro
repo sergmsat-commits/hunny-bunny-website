@@ -1,7 +1,31 @@
+---
+const {
+  title = "Hunny Bunny English",
+  description = "",
+  lang = "ru"
+} = Astro.props;
+
+const baseUrl = "https://hunny-bunny-english.sergmsat.workers.dev";
+
+const canonical =
+  lang === "ru"
+    ? `${baseUrl}/`
+    : `${baseUrl}/${lang}/`;
+
+const keywords =
+  lang === "ru"
+    ? "курсы английского языка, английский для детей, английский онлайн, школа английского языка, Hunny Bunny English"
+    : lang === "en"
+    ? "english courses, english for children, online english school, english lessons, Hunny Bunny English"
+    : "kurs angielskiego, angielski dla dzieci, szkoła języka angielskiego, lekcje angielskiego, Hunny Bunny English";
+---
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
 	<head>
 	<meta charset="UTF-8" />
+
+  <meta http-equiv="content-language" content={lang} />
+
 	<meta name="viewport" content="width=device-width" />
 
 	<link rel="icon" href="/favicon.ico" />
@@ -10,62 +34,113 @@
 
 	<meta name="google-site-verification" content="KBQM2LkBUru2yETmVTMCcrXY2AAPoZCd3it4kSc3rOU" />
 	
-	<title>
-		Курсы английского языка онлайн для детей и взрослых | Hunny Bunny
-	</title>
+	<title>{title}</title>
 
 	<meta
-		name="description"
-		content="Hunny Bunny English — онлайн и офлайн курсы английского языка для детей, подростков и взрослых. Бесплатный пробный урок. Занятия в Гомеле и онлайн по всему миру."
-	/>
+  name="description"
+  content={description}
+/>
 
 	<meta
-		name="keywords"
-		content="курсы английского языка, английский для детей, английский для взрослых, английский онлайн, английский Гомель, школа английского языка, Hunny Bunny English"
-	/>
+  name="keywords"
+  content={keywords}
+/>
 
 	<meta name="robots" content="index, follow" />
 
-	<meta
-		property="og:title"
-		content="Hunny Bunny English — курсы английского языка"
-	/>
+  <link rel="canonical" href={canonical} />
+  
+  <link
+  rel="alternate"
+  hreflang="ru"
+  href="https://hunny-bunny-english.sergmsat.workers.dev/"
+/>
 
-	<meta
-		property="og:description"
-		content="Онлайн и офлайн обучение английскому языку для детей и взрослых. Бесплатный пробный урок."
-	/>
+<link
+  rel="alternate"
+  hreflang="en"
+  href="https://hunny-bunny-english.sergmsat.workers.dev/en/"
+/>
 
-	<meta
-		property="og:image"
-		content="https://hunny-bunny-english.sergmsat.workers.dev/images/logo.PNG"
-	/>
+<link
+  rel="alternate"
+  hreflang="pl"
+  href="https://hunny-bunny-english.sergmsat.workers.dev/pl/"
+/>
 
-	<meta
-		property="og:type"
-		content="website"
-	/>
+<link
+  rel="alternate"
+  hreflang="x-default"
+  href="https://hunny-bunny-english.sergmsat.workers.dev/"
+/>
 
-	<meta
-		property="og:url"
-		content="https://hunny-bunny-english.sergmsat.workers.dev"
-	/>
+<meta property="og:title" content={title} />
+
+<meta property="og:description" content={description} />
+
+<meta
+	property="og:image"
+	content="https://hunny-bunny-english.sergmsat.workers.dev/images/logo.PNG"
+/>
+
+<meta property="og:type" content="website" />
+
+<meta
+  property="og:locale"
+  content={
+    lang === "ru"
+      ? "ru_RU"
+      : lang === "en"
+      ? "en_US"
+      : "pl_PL"
+  }
+/>
+
+<meta property="og:url" content={canonical} />
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
   "name": "Hunny Bunny English",
-  "url": "https://hunny-bunny-english.sergmsat.workers.dev",
+  "url": "https://hunny-bunny-english.sergmsat.workers.dev/",
   "logo": "https://hunny-bunny-english.sergmsat.workers.dev/images/logo.PNG",
+  "image": "https://hunny-bunny-english.sergmsat.workers.dev/images/logo.PNG",
   "description": "Онлайн и офлайн курсы английского языка для детей, подростков и взрослых.",
-  "email": "mailto:julichka1988@yandex.by",
+
   "telephone": "+48 451 090 218",
+  "email": "mailto:julichka1988@yandex.by",
+
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "ул. Крестьянская, 33",
     "addressLocality": "Гомель",
+    "addressRegion": "Гомельская область",
+    "postalCode": "246000",
     "addressCountry": "BY"
   },
+
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 52.4345,
+    "longitude": 30.9754
+  },
+
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Гомель"
+    },
+    {
+      "@type": "Country",
+      "name": "Беларусь"
+    },
+    {
+      "@type": "Place",
+      "name": "Онлайн по всему миру"
+    }
+  ],
+
   "sameAs": [
     "https://www.instagram.com/hunny_bunny_english",
     "https://www.youtube.com/@hunnybunnyenglish",
@@ -73,54 +148,7 @@
   ]
 }
 </script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Есть ли бесплатный пробный урок?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Да. Перед началом обучения мы проводим бесплатный пробный урок."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Можно ли заниматься онлайн?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Да. Мы проводим онлайн-занятия для учеников из любой страны мира."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Есть ли офлайн занятия?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Да. Офлайн занятия проходят в городе Гомеле по адресу: ул. Крестьянская, 33."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Для какого возраста подходят занятия?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Мы обучаем детей, подростков и взрослых любого уровня подготовки."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Как записаться на занятия?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Вы можете оставить заявку на сайте или связаться с нами через Instagram, Telegram или WhatsApp."
-      }
-    }
-  ]
-}
-</script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -177,49 +205,77 @@
   ]
 }
 </script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Hunny Bunny English",
-  "image": "https://hunny-bunny-english.sergmsat.workers.dev/images/logo.PNG",
-  "url": "https://hunny-bunny-english.sergmsat.workers.dev",
-  "telephone": "+48 451 090 218",
-  "email": "julichka1988@yandex.by",
 
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "ул. Крестьянская, 33",
-    "addressLocality": "Гомель",
-    "addressRegion": "Гомельская область",
-    "postalCode": "246000",
-    "addressCountry": "BY"
-  },
-
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 52.4345,
-    "longitude": 30.9754
-  },
-
-  "areaServed": {
-    "@type": "City",
-    "name": "Гомель"
-  },
-
-  "priceRange": "$$",
-
-  "sameAs": [
-    "https://www.instagram.com/hunny_bunny_english",
-    "https://www.youtube.com/@hunnybunnyenglish",
-    "https://t.me/+8e7QThwn7-1kMmFi"
-  ]
-}
-</script>
 </head>
 	<body>
-		<slot />
-	</body>
+
+<div
+  class="language-switcher"
+  style="
+    position:fixed;
+    top:20px;
+    right:20px;
+    z-index:10000;
+    display:flex;
+    gap:6px;
+    background:rgba(255,255,255,0.95);
+    padding:8px 14px;
+    border-radius:30px;
+    box-shadow:0 4px 12px rgba(0,0,0,.12);
+    font-family:Arial,sans-serif;
+    font-weight:bold;
+    backdrop-filter:blur(8px);
+  "
+>
+  <a
+  href="/"
+  style={`
+    text-decoration:none;
+    font-weight:bold;
+    padding:6px 12px;
+    border-radius:20px;
+    transition:0.3s;
+    background:${lang === 'ru' ? '#8b5cf6' : 'transparent'};
+    color:${lang === 'ru' ? 'white' : '#555'};
+  `}
+>
+  RU
+</a>
+
+<a
+  href="/en"
+  style={`
+    text-decoration:none;
+    font-weight:bold;
+    padding:6px 12px;
+    border-radius:20px;
+    transition:0.3s;
+    background:${lang === 'en' ? '#8b5cf6' : 'transparent'};
+    color:${lang === 'en' ? 'white' : '#555'};
+  `}
+>
+  EN
+</a>
+
+<a
+  href="/pl"
+  style={`
+    text-decoration:none;
+    font-weight:bold;
+    padding:6px 12px;
+    border-radius:20px;
+    transition:0.3s;
+    background:${lang === 'pl' ? '#8b5cf6' : 'transparent'};
+    color:${lang === 'pl' ? 'white' : '#555'};
+  `}
+>
+  PL
+</a>
+</div>
+
+<slot />
+
+</body>
 </html>
 
 <style>
@@ -229,4 +285,24 @@
 		width: 100%;
 		height: 100%;
 	}
+  .language-switcher{
+    transition:.3s;
+}
+
+@media (max-width:768px){
+
+.language-switcher{
+
+    top:12px;
+    right:12px;
+
+    padding:6px 10px;
+
+    gap:3px;
+
+    font-size:13px;
+
+}
+
+}
 </style>

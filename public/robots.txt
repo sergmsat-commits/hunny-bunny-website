@@ -1,0 +1,5 @@
+User-agent: *
+
+Allow: /
+
+Sitemap: https://hunny-bunny-english.sergmsat.workers.dev/sitemap-index.xml

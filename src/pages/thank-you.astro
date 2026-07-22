@@ -1,5 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import { translations } from "../i18n/translations";
+
+const lang = "ru";
+const t = translations[lang];
 ---
 
 <Layout>
@@ -11,14 +15,14 @@ import Layout from '../layouts/Layout.astro';
       margin:0 auto;
     "
   >
-    <h1>🐰 Спасибо за заявку!</h1>
+    <h1>{t.thankyou.title}</h1>
 
     <p style="font-size:20px;">
-      Мы получили вашу заявку и свяжемся с вами в ближайшее время.
+      {t.thankyou.text1}
     </p>
 
     <p style="font-size:18px;">
-      До встречи в Hunny Bunny English!
+      {t.thankyou.text2}
     </p>
 
     <a
@@ -34,7 +38,7 @@ import Layout from '../layouts/Layout.astro';
         font-size:18px;
       "
     >
-      Вернуться на главную
+      {t.thankyou.button}
     </a>
   </main>
 </Layout>
