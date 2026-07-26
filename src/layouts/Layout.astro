@@ -5,7 +5,7 @@ const {
   lang = "ru"
 } = Astro.props;
 
-const baseUrl = "https://hunny-bunny-website.pages.dev";
+const baseUrl = "https://hunnybunny.by";
 
 const canonical =
   lang === "ru"
@@ -21,7 +21,20 @@ const keywords =
 ---
 <!doctype html>
 <html lang={lang}>
-	<head>
+
+
+<head>
+
+ <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1ZBMP7LNPQ"></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1ZBMP7LNPQ');
+</script>
+
 	<meta charset="UTF-8" />
 
   <meta http-equiv="content-language" content={lang} />
@@ -53,25 +66,25 @@ const keywords =
   <link
   rel="alternate"
   hreflang="ru"
-  href="https://hunny-bunny-website.pages.dev/"
+  href="https://hunnybunny.by/"
 />
 
 <link
   rel="alternate"
   hreflang="en"
-  href="https://hunny-bunny-website.pages.dev/en/"
+  href="https://hunnybunny.by/en/"
 />
 
 <link
   rel="alternate"
   hreflang="pl"
-  href="https://hunny-bunny-website.pages.dev/pl/"
+  href="https://hunnybunny.by/pl/"
 />
 
 <link
   rel="alternate"
   hreflang="x-default"
-  href="https://hunny-bunny-website.pages.dev/"
+  href="https://hunnybunny.by/"
 />
 
 <meta property="og:title" content={title} />
@@ -80,7 +93,7 @@ const keywords =
 
 <meta
 	property="og:image"
-	content="https://hunny-bunny-website.pages.dev/images/logo.PNG"
+	content="https://hunnybunny.by/images/logo.PNG"
 />
 
 <meta property="og:type" content="website" />
@@ -103,9 +116,9 @@ const keywords =
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
   "name": "Hunny Bunny English",
-  "url": "https://hunny-bunny-website.pages.dev/",
-  "logo": "https://hunny-bunny-website.pages.dev/images/logo.PNG",
-  "image": "https://hunny-bunny-website.pages.dev/images/logo.PNG",
+  "url": "https://hunnybunny.by/",
+  "logo": "https://hunnybunny.by/images/logo.PNG",
+  "image": "https://hunnybunny.by/images/logo.PNG",
   "description": "Онлайн и офлайн курсы английского языка для детей, подростков и взрослых.",
 
   "telephone": "+48 451 090 218",
