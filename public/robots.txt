@@ -2,4 +2,4 @@ User-agent: *
 
 Allow: /
 
-Sitemap: https://hunny-bunny-website.pages.dev/sitemap-index.xml
+Sitemap: https://hunnybunny.by/sitemap-index.xml
