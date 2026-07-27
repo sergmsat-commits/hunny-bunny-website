@@ -1,6 +1,13 @@
 {
-  "name": "",
-  "short_name": "",
+  "name": "Hunny Bunny English",
+  "short_name": "Hunny Bunny",
+  "description": "English courses for children, teenagers and adults. Online worldwide and offline in Gomel.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#B8C5F4",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -12,8 +19,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  ]
 }
