@@ -9,7 +9,7 @@ const ru = {
     description:
       'Курсы английского для детей от 3 лет, подростков и взрослых: Гомель, ул. Крестьянская, 33, Варшава и онлайн. Подготовка к ЦТ и IELTS. Первое занятие бесплатно.',
   },
-  a11y: { skip: 'Перейти к содержанию', menu: 'Меню', close: 'Закрыть меню', lang: 'Язык сайта', mainNav: 'Основное меню' },
+  a11y: { skip: 'Перейти к содержанию', menu: 'Меню', close: 'Закрыть меню', lang: 'Язык сайта', mainNav: 'Основное меню', openPhoto: 'Открыть фото во весь экран', lbClose: 'Закрыть', lbPrev: 'Предыдущее фото', lbNext: 'Следующее фото', langChange: 'Сменить язык' },
   nav: { courses: 'Курсы', team: 'Преподаватели', reviews: 'Отзывы', faq: 'Вопросы', contact: 'Контакты' },
   cta: { trial: 'Записаться на пробный урок', trialShort: 'Пробный урок', trialMobile: 'Записаться на пробный' },
   hero: {
@@ -89,8 +89,15 @@ const ru = {
   },
   reviews: {
     title: 'Отзывы родителей',
-    lead: 'Публикуем с разрешения авторов.',
+    lead: "Публикуем с разрешения авторов.",
     alt: 'Отзыв родителя о занятиях в Hunny Bunny',
+    from: "Сообщение от родителя",
+    original: "Оригинал сообщения",
+    items: [
+      { file: 'otz1', paragraphs: ["Занятие очень понравилось! Я переживала, что Вера не останется одна без меня, а преподаватель её сразу к себе расположила, заинтересовала и она даже не посмотрела на меня, когда закрывалась дверь, так ей было интересно общаться ☺️ и после занятия, попросилась ещё вернуться) и сегодня опять вспоминала и спрашивала, когда ещё пойдем)", "Обязательно придем ещё 😊"] },
+      { file: 'otz6', paragraphs: ["Доброе утро!!! Большая благодарность за каждый день душевного общения, творческих занятий, интересных развлечений, отличную практику языка!!! А также огромное спасибо за Вашу внимание, заботу и любовь к детям, к своему делу!!! Это очень ценно❤️❤️❤️ Марьяша очень довольна, много приятных впечатлений, эмоций и сувениров😁"] },
+      { file: 'otz5', paragraphs: ["Добрый вечер 🤗", "Я конечно очень рада что мы к вам попали!) мне было комфортно ! Младшая дочь вообще в восторге, сказала спасибо мамочка что записала меня сюда❤️ и выписала из танцев!)"] },
+    ],
   },
   faq: {
     title: 'Частые вопросы',
@@ -168,7 +175,7 @@ const en: Dict = {
     description:
       'English courses for children from age 3, teenagers and adults: online worldwide and in person in Gomel and Warsaw. IELTS preparation. First lesson free.',
   },
-  a11y: { skip: 'Skip to content', menu: 'Menu', close: 'Close menu', lang: 'Site language', mainNav: 'Main menu' },
+  a11y: { skip: 'Skip to content', menu: 'Menu', close: 'Close menu', lang: 'Site language', mainNav: 'Main menu', openPhoto: 'Open photo full screen', lbClose: 'Close', lbPrev: 'Previous photo', lbNext: 'Next photo', langChange: 'Change language' },
   nav: { courses: 'Courses', team: 'Teachers', reviews: 'Reviews', faq: 'FAQ', contact: 'Contact' },
   cta: { trial: 'Book a free trial lesson', trialShort: 'Free trial', trialMobile: 'Book a free trial' },
   hero: {
@@ -248,8 +255,15 @@ const en: Dict = {
   },
   reviews: {
     title: 'What parents say',
-    lead: 'Published with the authors’ permission.',
+    lead: "Published with the authors’ permission. Translated from Russian.",
     alt: 'A parent’s review of lessons at Hunny Bunny',
+    from: "Message from a parent",
+    original: "See the original (in Russian)",
+    items: [
+      { file: 'otz1', paragraphs: ["I really loved the lesson!", "I was worried that Vera would stay without me, but the teacher immediately made her feel comfortable and interested. She didn't even look back when the door closed 😊", "After the lesson she asked to come again, and today she remembered everything and asked, “When are we going again?”", "We will definitely come back! 😊"] },
+      { file: 'otz6', paragraphs: ["Good morning!!!", "A huge thank you for every day filled with warm conversations, creative activities, fun games, and excellent English practice!!!", "Thank you so much for your care, attention, and love for the children. ❤️❤️", "Maryasha is so happy and came home with wonderful memories, emotions, and little souvenirs. 😊"] },
+      { file: 'otz5', paragraphs: ["Good evening 😊", "I'm so happy we found you! I felt very comfortable!", "My younger daughter absolutely loved it. She even said, “Thank you, Mommy, for signing me up here ❤️” …and asked me to quit her dance classes! 😄"] },
+    ],
   },
   faq: {
     title: 'FAQ',
@@ -325,7 +339,7 @@ const pl: Dict = {
     description:
       'Kursy angielskiego dla dzieci od 3 lat, młodzieży i dorosłych: online z całego świata oraz stacjonarnie w Warszawie i Homlu. Przygotowanie do IELTS. Pierwsza lekcja gratis.',
   },
-  a11y: { skip: 'Przejdź do treści', menu: 'Menu', close: 'Zamknij menu', lang: 'Język strony', mainNav: 'Menu główne' },
+  a11y: { skip: 'Przejdź do treści', menu: 'Menu', close: 'Zamknij menu', lang: 'Język strony', mainNav: 'Menu główne', openPhoto: 'Otwórz zdjęcie na pełnym ekranie', lbClose: 'Zamknij', lbPrev: 'Poprzednie zdjęcie', lbNext: 'Następne zdjęcie', langChange: 'Zmień język' },
   nav: { courses: 'Kursy', team: 'Lektorzy', reviews: 'Opinie', faq: 'Pytania', contact: 'Kontakt' },
   cta: { trial: 'Zapisz się na lekcję próbną', trialShort: 'Lekcja próbna', trialMobile: 'Zapisz się na lekcję' },
   hero: {
@@ -405,8 +419,15 @@ const pl: Dict = {
   },
   reviews: {
     title: 'Opinie rodziców',
-    lead: 'Publikujemy za zgodą autorów.',
+    lead: "Publikujemy za zgodą autorów. Przetłumaczone z rosyjskiego.",
     alt: 'Opinia rodzica o zajęciach w Hunny Bunny',
+    from: "Wiadomość od rodzica",
+    original: "Oryginał (po rosyjsku)",
+    items: [
+      { file: 'otz1', paragraphs: ["Zajęcia bardzo nam się podobały!", "Martwiłam się, że Vera zostanie sama beze mnie, ale nauczycielka od razu zdobyła jej sympatię i zainteresowała ją. Kiedy zamykały się drzwi, nawet się za mną nie obejrzała 😊", "Po zajęciach poprosiła, żeby jeszcze wrócić. Dziś znowu wspominała zajęcia i pytała: „Kiedy pójdziemy jeszcze raz?”", "Na pewno wrócimy! 😊"] },
+      { file: 'otz6', paragraphs: ["Dzień dobry!!!", "Ogromne podziękowania za każdy dzień pełen ciepłych rozmów, kreatywnych zajęć, ciekawych zabaw i świetnej praktyki języka angielskiego!!!", "Dziękujemy za troskę, uwagę i miłość do dzieci. ❤️❤️", "Marysia wróciła bardzo szczęśliwa i pełna pięknych wspomnień, emocji oraz pamiątek. 😊"] },
+      { file: 'otz5', paragraphs: ["Dobry wieczór 😊", "Jestem naprawdę bardzo szczęśliwa, że trafiłyśmy do Was! Czułam się bardzo komfortowo!", "Moja młodsza córka jest zachwycona. Powiedziała: „Dziękuję, mamo, że mnie tutaj zapisałaś ❤️” …i chce zrezygnować z tańców! 😄"] },
+    ],
   },
   faq: {
     title: 'Najczęstsze pytania',

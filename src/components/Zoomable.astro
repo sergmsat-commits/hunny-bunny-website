@@ -1,0 +1,19 @@
+---
+// Обёртка для фото: ссылка на большую версию. Скрипт в Lightbox.astro открывает её во весь экран,
+// без JavaScript ссылка просто откроет картинку.
+import { getImage } from 'astro:assets';
+
+interface Props {
+  src: ImageMetadata | string;
+  alt: string;
+  label: string; // подпись для скринридера, например «Открыть фото во весь экран»
+  group?: string;
+  class?: string;
+}
+const { src, alt, label, group = 'photos', class: cls } = Astro.props;
+const full =
+  typeof src === 'string' ? src : (await getImage({ src, width: Math.min(src.width, 1600), format: 'webp', quality: 80 })).src;
+---
+<a href={full} class:list={['zoom', cls]} data-lightbox data-group={group} data-alt={alt} aria-label={`${label}: ${alt}`}>
+  <slot />
+</a>
