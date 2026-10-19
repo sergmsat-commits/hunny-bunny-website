@@ -84,15 +84,15 @@ const messenger = lang === 'pl' ? { href: business.messengers.whatsapp, icon: 'w
   }
   .hero-stats {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: 8px;
     margin: 0;
     order: 3;
   }
   .hero-stats div {
     background: var(--c-surface);
     border-radius: var(--r-m);
-    padding: 12px;
+    padding: 12px 10px;
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -100,8 +100,8 @@ const messenger = lang === 'pl' ? { href: business.messengers.whatsapp, icon: 'w
   .hero-stats dt {
     font-family: var(--f-display);
     font-weight: 600;
-    font-size: 15px;
-    overflow-wrap: anywhere;
+    font-size: 14px;
+    white-space: nowrap;
     line-height: 1.2;
   }
   .hero-stats dd {

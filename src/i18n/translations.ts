@@ -68,12 +68,14 @@ const ru = {
   },
   team: {
     title: 'Преподаватели',
-    lead: 'Преподаватели с большим опытом и международной практикой.',
+    lead: 'Преподаватели с большим опытом и международной практикой. Каждый ведёт все направления, поэтому при необходимости они заменяют друг друга и занятия не срываются.',
+    skillsTitle: 'Каждый преподаватель ведёт',
+    skills: ['Детей от 3 лет', 'Школьников и подростков', 'Взрослых', 'Подготовку к ЦТ', 'IELTS', 'Олимпиады', 'Разговорный клуб', 'Киноклуб', 'Летний клуб', 'Мастер-классы'],
     people: [
       { photo: 'satyrova', name: 'Юлия Сатырова', role: 'Основательница', note: 'TESOL (Arizona State University), обучение на Мальте' },
-      { photo: 'laevskaya', name: 'Алёна Лаевская', role: 'Преподаватель', note: 'TESOL, обучение на Мальте. Киноклуб, летний клуб, мастер-классы' },
-      { photo: 'barinova', name: 'Юлия Баринова', role: 'Преподаватель', note: 'Подготовка к IELTS' },
-      { photo: 'rud', name: 'Елизавета Рудь', role: 'Преподаватель', note: 'Подготовка к олимпиадам' },
+      { photo: 'laevskaya', name: 'Алёна Лаевская', role: 'Преподаватель', note: 'TESOL, обучение на Мальте' },
+      { photo: 'barinova', name: 'Юлия Баринова', role: 'Преподаватель', note: '' },
+      { photo: 'rud', name: 'Елизавета Рудь', role: 'Преподаватель', note: '' },
     ],
   },
   gallery: {
@@ -214,12 +216,14 @@ const en: Dict = {
   },
   team: {
     title: 'Teachers',
-    lead: 'Teachers with extensive experience and international practice.',
+    lead: 'Teachers with extensive experience and international practice. Every teacher covers all our programmes, so they can stand in for each other and lessons never get cancelled.',
+    skillsTitle: 'Every teacher teaches',
+    skills: ['Kids from age 3', 'School students and teens', 'Adults', 'IELTS', 'Olympiad prep', 'Conversation club', 'Movie club', 'Summer club', 'Workshops'],
     people: [
       { photo: 'satyrova', name: 'Yuliya Satyrava', role: 'Founder', note: 'TESOL (Arizona State University), training in Malta' },
-      { photo: 'laevskaya', name: 'Alena Laevskaya', role: 'Teacher', note: 'TESOL, training in Malta. Movie club, summer club, workshops' },
-      { photo: 'barinova', name: 'Yuliya Barinova', role: 'Teacher', note: 'IELTS preparation' },
-      { photo: 'rud', name: 'Elizaveta Rud', role: 'Teacher', note: 'Olympiad preparation' },
+      { photo: 'laevskaya', name: 'Alena Laevskaya', role: 'Teacher', note: 'TESOL, training in Malta' },
+      { photo: 'barinova', name: 'Yuliya Barinova', role: 'Teacher', note: '' },
+      { photo: 'rud', name: 'Elizaveta Rud', role: 'Teacher', note: '' },
     ],
   },
   gallery: {
@@ -358,12 +362,14 @@ const pl: Dict = {
   },
   team: {
     title: 'Lektorzy',
-    lead: 'Lektorzy z dużym doświadczeniem i międzynarodową praktyką.',
+    lead: 'Lektorki z dużym doświadczeniem i międzynarodową praktyką. Każda prowadzi wszystkie zajęcia, więc w razie potrzeby się zastępują i lekcje nie przepadają.',
+    skillsTitle: 'Każda lektorka prowadzi',
+    skills: ['Dzieci od 3 lat', 'Uczniów i młodzież', 'Dorosłych', 'IELTS', 'Olimpiady', 'Klub konwersacyjny', 'Klub filmowy', 'Letni klub', 'Warsztaty'],
     people: [
       { photo: 'satyrova', name: 'Yuliya Satyrava', role: 'Założycielka', note: 'TESOL (Arizona State University), szkolenie na Malcie' },
-      { photo: 'laevskaya', name: 'Alena Laevskaya', role: 'Lektorka', note: 'TESOL, szkolenie na Malcie. Klub filmowy, letni klub, warsztaty' },
-      { photo: 'barinova', name: 'Yuliya Barinova', role: 'Lektorka', note: 'Przygotowanie do IELTS' },
-      { photo: 'rud', name: 'Elizaveta Rud', role: 'Lektorka', note: 'Przygotowanie do olimpiad' },
+      { photo: 'laevskaya', name: 'Alena Laevskaya', role: 'Lektorka', note: 'TESOL, szkolenie na Malcie' },
+      { photo: 'barinova', name: 'Yuliya Barinova', role: 'Lektorka', note: '' },
+      { photo: 'rud', name: 'Elizaveta Rud', role: 'Lektorka', note: '' },
     ],
   },
   gallery: {

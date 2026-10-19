@@ -4,6 +4,7 @@ import satyrova from '../assets/team/satyrova.jpg';
 import laevskaya from '../assets/team/laevskaya.jpg';
 import barinova from '../assets/team/barinova.jpg';
 import rud from '../assets/team/rud.jpg';
+import Icon from './Icon.astro';
 import type { Translation } from '../i18n/translations';
 
 interface Props {
@@ -25,11 +26,19 @@ const photos: Record<string, ImageMetadata> = { satyrova, laevskaya, barinova, r
           <div class="person-body">
             <p class="person-role">{p.role}</p>
             <h3>{p.name}</h3>
-            <p class="person-note">{p.note}</p>
+            {p.note && <p class="person-note">{p.note}</p>}
           </div>
         </li>
       ))}
     </ul>
+    <div class="card skills">
+      <h3 class="skills-title">{t.team.skillsTitle}</h3>
+      <ul class="skills-list" role="list">
+        {t.team.skills.map((s) => (
+          <li><Icon name="check" size={16} stroke={2.4} />{s}</li>
+        ))}
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -71,6 +80,52 @@ const photos: Record<string, ImageMetadata> = { satyrova, laevskaya, barinova, r
     font-size: 14px;
     line-height: 1.45;
     color: var(--c-muted);
+  }
+  .skills {
+    margin-top: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .skills-title {
+    font-size: 17px;
+  }
+  .skills-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .skills-list li {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 40px;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: var(--c-lavender);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--c-ink);
+  }
+  .skills-list :global(svg) {
+    color: var(--c-primary);
+  }
+  @media (min-width: 960px) {
+    .skills {
+      margin-top: 20px;
+      padding: 24px 28px;
+      flex-direction: row;
+      align-items: center;
+      gap: 24px;
+    }
+    .skills-title {
+      flex: none;
+      max-width: 200px;
+    }
   }
   @media (min-width: 1140px) {
     .team-grid {

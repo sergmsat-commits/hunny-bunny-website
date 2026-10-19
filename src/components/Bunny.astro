@@ -16,7 +16,7 @@ const { height = 160, class: className = '', delay = 0, eager = false } = Astro.
 const width = Math.round((height * stand.width) / stand.height);
 ---
 <span class:list={['bunny', className]} style={`--bunny-h:${height}px; --bunny-w:${width}px; --bunny-delay:${delay}s`} aria-hidden="true">
-  <Image src={stand} alt="" width={width * 2} height={height * 2} loading={eager ? 'eager' : 'lazy'} class="bunny-img" />
+  <Image src={stand} alt="" width={width * 2} height={height * 2} loading={eager ? 'eager' : 'lazy'} class="bunny-img bunny-stand" />
   <Image src={wave} alt="" width={width * 2} height={height * 2} loading={eager ? 'eager' : 'lazy'} class="bunny-img bunny-wave" />
 </span>
 
@@ -38,10 +38,25 @@ const width = Math.round((height * stand.width) / stand.height);
     height: 100%;
     object-fit: contain;
   }
+  /* Позы меняются строго по очереди: пока видна одна, другая полностью скрыта.
+     Иначе сквозь прозрачные места одной позы просвечивает лапка другой («три лапы»). */
   .bunny-wave {
     opacity: 0;
     animation: bunny-wave 7s steps(1, end) infinite;
     animation-delay: var(--bunny-delay);
+  }
+  .bunny-stand {
+    opacity: 1;
+    animation: bunny-stand 7s steps(1, end) infinite;
+    animation-delay: var(--bunny-delay);
+  }
+  @keyframes bunny-stand {
+    0% { opacity: 1; }
+    62% { opacity: 0; }
+    72% { opacity: 1; }
+    76% { opacity: 0; }
+    88% { opacity: 1; }
+    100% { opacity: 1; }
   }
   @keyframes bunny-breathe {
     0%, 100% { transform: translateY(0) rotate(0deg); }
@@ -57,7 +72,8 @@ const width = Math.round((height * stand.width) / stand.height);
     100% { opacity: 0; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .bunny, .bunny-wave { animation: none; }
+    .bunny, .bunny-wave, .bunny-stand { animation: none; }
     .bunny-wave { opacity: 1; }
+    .bunny-stand { opacity: 0; }
   }
 </style>
