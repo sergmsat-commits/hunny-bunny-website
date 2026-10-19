@@ -1,0 +1,62 @@
+---
+// Нижняя панель на телефоне: главная кнопка + мессенджер. Заменяет 4 плавающие кнопки.
+import Icon from './Icon.astro';
+import { business, homePath, type Lang } from '../data/business';
+import type { Translation } from '../i18n/translations';
+
+interface Props {
+  t: Translation;
+  lang: Lang;
+}
+const { t, lang } = Astro.props;
+const msg = lang === 'pl'
+  ? { href: business.messengers.whatsapp, icon: 'whatsapp', label: 'WhatsApp' }
+  : { href: business.messengers.telegram, icon: 'telegram', label: 'Telegram' };
+---
+<div class="sticky-bar">
+  <a href={`${homePath[lang]}#contact`} class="btn btn-primary">{t.cta.trialMobile}</a>
+  <a href={msg.href} class="sticky-msg" target="_blank" rel="noopener" aria-label={msg.label}>
+    <Icon name={msg.icon} size={24} stroke={2} />
+  </a>
+</div>
+
+<style>
+  :global(:root) {
+    --sticky-bar-h: 84px;
+  }
+  .sticky-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 40;
+    display: flex;
+    gap: 10px;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    background: var(--c-surface);
+    box-shadow: 0 -8px 24px rgba(35, 30, 69, 0.08);
+  }
+  .sticky-bar .btn {
+    flex: 1;
+    min-height: 54px;
+  }
+  .sticky-msg {
+    width: 54px;
+    height: 54px;
+    flex: none;
+    border-radius: var(--r-m);
+    background: var(--c-lavender);
+    color: var(--c-primary-ink);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @media (min-width: 960px) {
+    :global(:root) {
+      --sticky-bar-h: 0px;
+    }
+    .sticky-bar {
+      display: none;
+    }
+  }
+</style>

@@ -1,517 +1,445 @@
-export const translations = {
-  ru: {
-    siteTitle: "Hunny Bunny English",
-
-    menu: {
-      about: "О нас",
-      gallery: "Галерея",
-      reviews: "Отзывы",
-      faq: "FAQ",
-      signup: "Записаться",
-    },
-
-    hero: {
-      title: "Английский язык онлайн и офлайн в Гомеле",
-      subtitle:
-        "Hunny Bunny English — курсы английского языка для детей, подростков и взрослых. Бесплатный пробный урок.",
-      description: "Обучение английскому языку детей и взрослых по всему миру",
-      button: "Записаться на пробный урок",
-    },
-
-    about: {
-      title: "О мире HUNNY BUNNY",
-      text1:
-        "HUNNY BUNNY — это современное пространство изучения английского языка для детей, подростков и взрослых.",
-      text2:
-        "Мы помогаем ученикам не просто учить слова и правила, а уверенно использовать английский в путешествиях, работе, учёбе и повседневной жизни.",
-      text3:
-        "Наши занятия проходят в дружелюбной атмосфере, где каждый ученик получает поддержку, внимание преподавателя и удовольствие от обучения.",
-
-      feature1: "🌍 Ученики по всему миру",
-      feature2: "🎯 Индивидуальный подход",
-      feature3: "💬 Живой разговорный английский",
-      feature4: "📚 Современные методики",
-    },
-    
-    courses: {
-      title: "Наши курсы",
-
-      kidsTitle: "🐰 Английский для детей",
-      kidsText:
-      "Игровое обучение, развитие разговорной речи и любовь к английскому языку с первых занятий.",
-
-      teensTitle: "🎓 Английский для подростков",
-      teensText:
-      "Подготовка к экзаменам, уверенное общение и развитие всех языковых навыков.",
-
-      adultsTitle: "💼 Английский для взрослых",
-      adultsText:
-      "Разговорный английский, работа, путешествия и индивидуальные программы обучения.",
-      
-      kidsAge: "Возраст: 3–10 лет",
-      teensAge: "Возраст: 11–17 лет",
-      adultsLevel: "Любой уровень подготовки",
-    },
- 
-    gallery: {
-      title: "Наши занятия",
-      image1: "Занятие английским языком с детьми",
-      image2: "Урок английского языка в Hunny Bunny",
-      image3: "Ученики на занятии английским языком",
-    },
-
-    reviews: {
-       title: "Отзывы наших учеников",
-
-       image1: "/images/reviews/ru/otz1.webp",
-       image2: "/images/reviews/ru/otz6.webp",
-       image3: "/images/reviews/ru/otz5.webp",
-
-       alt1: "Отзыв ученика Hunny Bunny",
-       alt2: "Отзыв ученика Hunny Bunny",
-       alt3: "Отзыв ученика Hunny Bunny",
-    },
-
-   faq: {
-      title: "❓ Часто задаваемые вопросы",
-
-      q1: "🎁 Есть ли пробный урок?",
-      a1: "Да, первое занятие проводится бесплатно. Длительность пробного занятия 20 минут.",
-
-      q2: "💻 Можно заниматься онлайн?",
-      a2: "Да, занятия проходят онлайн для учеников из любой точки мира.",
-
-      q3: "👨‍👩‍👧 Сколько человек в группе?",
-      a3: "В группе от 4 до 8 учеников для максимального внимания каждому.",
-
-      q4: "📍 Где проходят занятия?",
-      a4: "Онлайн — из любой точки мира. Офлайн — в Республике Беларусь, г. Гомель.",
-
-      q5: "🏆 Какой уровень английского нужен для начала?",
-      a5: "Мы подбираем программу для любого уровня — от Beginner до Advanced.",
-
-      q6: "🎓 Есть ли занятия для взрослых?",
-      a6: "Да, мы обучаем детей, подростков и взрослых любого уровня.",
-    },
-
-    signup: {
-      title: "Записаться на пробный урок",
-
-      name: "Ваше имя",
-      email: "Email",
-      phone: "Телефон",
-
-      namePlaceholder: "Введите ваше имя",
-      emailPlaceholder: "Введите email",
-      phonePlaceholder: "+375 __ ___-__-__",
-
-      button: "Отправить заявку",
-    },
-
-    location: {
-      title: "📍 Где проходят офлайн занятия",
-
-      address:
-       "г. Гомель, ул. Крестьянская, д. 33",
-
-      entrance:
-       "(отдельный вход со стороны улицы)",
-    },
-
-    footer: {
-      title: "HUNNY BUNNY ENGLISH",
-
-      online: "🌍 Онлайн обучение из любой страны мира",
-
-      offline: "🇧🇾 Офлайн занятия в Гомеле",
-
-      instagram: "📸 Наш Instagram",
-
-      copyright: "© 2026 HUNNY BUNNY ENGLISH",
-
-      reviewButton: "⭐ Оставить отзыв",
-    },
-
-    advantages: {
-      title: "🌟 Почему выбирают HUNNY BUNNY?",
-
-      item1: "🎓 Современные методики обучения",
-      item2: "👩‍🏫 Опытные преподаватели с международной практикой",
-      item3: "👨‍👩‍👧‍👦 Группы и индивидуальные занятия",
-      item4: "💻 Онлайн и офлайн формат",
-      item5: "🌟 Мастер-классы, киноклуб, каникулы, путешествия",
-      item6: "🎯 Индивидуальный подход к каждому ученику",
-    },
-
-    intro: {
-      onlineOffline:
-        "📍 Онлайн из любой точки мира\n📍 Офлайн занятия в Гомеле",
-
-      card1: "🌍 Онлайн по всему миру",
-      card2: "🇧🇾 Офлайн в Гомеле",
-      card3: "🎁 Бесплатный пробный урок",
-
-      promo:
-       "🎁 Бесплатный пробный урок\n🎁 Скидка 20% на первый месяц обучения",
-
-      instagram: "📸 Наш Instagram",
-    },
-
-    thankyou: {
-       title: "🐰 Спасибо за заявку!",
-       text1: "Мы получили вашу заявку и свяжемся с вами в ближайшее время.",
-       text2: "До встречи в Hunny Bunny English!",
-       button: "Вернуться на главную",
-    },
-
-    seo: {
-      title: "Курсы английского языка для детей и взрослых | Hunny Bunny English",
-      description:
-        "Онлайн и офлайн курсы английского языка для детей, подростков и взрослых. Бесплатный пробный урок."
-    },
- },
-
-  en: {
-    siteTitle: "Hunny Bunny English",
-
-    menu: {
-      about: "About",
-      gallery: "Gallery",
-      reviews: "Reviews",
-      faq: "FAQ",
-      signup: "Sign up",
-    },
-
-    hero: {
-      title: "English courses for children and adults",
-      subtitle:
-        "Online and offline English lessons. Free trial lesson.",
-      description: "English lessons for children and adults worldwide",
-      button: "Book a free trial lesson",
-    },
-
-    about: {
-      title: "About HUNNY BUNNY",
-      text1:
-        "HUNNY BUNNY is a modern English learning space for children, teenagers and adults.",
-      text2:
-        "We help students not only learn vocabulary and grammar, but also confidently use English in travel, work, study and everyday life.",
-      text3:
-        "Our lessons take place in a friendly atmosphere where every student receives support, personal attention and enjoys learning.",
-
-      feature1: "🌍 Students worldwide",
-      feature2: "🎯 Individual approach",
-      feature3: "💬 Real conversational English",
-      feature4: "📚 Modern teaching methods",
-    },
-    
-    courses: {
-      title: "Our courses",
-
-       kidsTitle: "🐰 English for children",
-       kidsText:
-       "Learning through games, developing speaking skills and a love for English from the very first lesson.",
-
-        teensTitle: "🎓 English for teenagers",
-        teensText:
-        "Exam preparation, confident communication and development of all language skills.",
-
-        adultsTitle: "💼 English for adults",
-        adultsText:
-        "Conversational English, work, travel and personalised learning programmes.",
-    
-        kidsAge: "Age: 3–10",
-        teensAge: "Age: 11–17",
-        adultsLevel: "All levels welcome",
-    },
-
-    gallery: {
-      title: "Our lessons",
-      image1: "English lesson with children",
-      image2: "English class at Hunny Bunny",
-      image3: "Students during an English lesson",
-    },
-
-    reviews: {
-      title: "Student reviews",
-
-      image1: "/images/reviews/en/otz1.webp",
-      image2: "/images/reviews/en/otz6.webp",
-      image3: "/images/reviews/en/otz5.webp",
-
-      alt1: "Student review",
-      alt2: "Student review",
-      alt3: "Student review",
-    },
-
-    faq: {
-      title: "❓ Frequently Asked Questions",
-
-      q1: "🎁 Is there a free trial lesson?",
-      a1: "Yes. Your first lesson is completely free and lasts 20 minutes.",
-
-      q2: "💻 Can I study online?",
-      a2: "Yes. We teach students online from anywhere in the world.",
-
-      q3: "👨‍👩‍👧 How many students are in a group?",
-      a3: "Our groups usually have 4–8 students to ensure personal attention.",
-
-      q4: "📍 Where are the lessons held?",
-      a4: "Online — worldwide. Offline — Gomel, Belarus.",
-
-      q5: "🏆 What English level do I need?",
-      a5: "We have programmes for every level, from Beginner to Advanced.",
-
-      q6: "🎓 Do you offer courses for adults?",
-      a6: "Yes. We teach children, teenagers and adults of all levels.",
-    },
-
-    signup: {
-      title: "Book a free trial lesson",
-
-      name: "Your name",
-      email: "Email",
-      phone: "Phone",
-
-      namePlaceholder: "Enter your name",
-      emailPlaceholder: "Enter your email",
-      phonePlaceholder: "Phone with country code",
-
-      button: "Send request",
-    },
-
-    location: {
-      title: "📍 Where offline lessons take place",
-
-      address:
-       "33 Krestyanskaya Street, Gomel",
-
-      entrance:
-       "(separate entrance from the street)",
-    },
-
-    footer: {
-      title: "HUNNY BUNNY ENGLISH",
-
-      online: "🌍 Online lessons from anywhere in the world",
-
-      offline: "🇧🇾 Offline lessons in Gomel",
-
-      instagram: "📸 Our Instagram",
-
-      copyright: "© 2026 HUNNY BUNNY ENGLISH",
-
-      reviewButton: "⭐ Leave a review",
-    },
-
-    advantages: {
-      title: "🌟 Why choose HUNNY BUNNY?",
-
-      item1: "🎓 Modern teaching methods",
-      item2: "👩‍🏫 Experienced teachers with international experience",
-      item3: "👨‍👩‍👧‍👦 Group and individual lessons",
-      item4: "💻 Online and offline learning",
-      item5: "🌟 Workshops, movie club, holiday camps and educational trips",
-      item6: "🎯 Individual approach to every student",
-    },
-
-    intro: {
-      onlineOffline:
-       "📍 Online from anywhere in the world\n📍 Offline lessons in Gomel",
-
-      card1: "🌍 Online worldwide",
-      card2: "🇧🇾 Offline in Gomel",
-      card3: "🎁 Free trial lesson",
-
-      promo:
-        "🎁 Free trial lesson\n🎁 20% discount on your first month",
-
-      instagram: "📸 Our Instagram",
-    },
-
-    thankyou: {
-      title: "🐰 Thank you!",
-      text1: "We have received your request and will contact you shortly.",
-      text2: "See you at Hunny Bunny English!",
-      button: "Back to Home",
-    },
-
-    seo: {
-      title: "English courses for children and adults | Hunny Bunny English",
-      description:
-       "Online and offline English courses for children, teenagers and adults. Free trial lesson."
-   },
- },
-
-  pl: {
-    siteTitle: "Hunny Bunny English",
-
-    menu: {
-      about: "O nas",
-      gallery: "Galeria",
-      reviews: "Opinie",
-      faq: "FAQ",
-      signup: "Zapisz się",
-    },
-
-    hero: {
-      title: "Kursy języka angielskiego dla dzieci i dorosłych",
-      subtitle:
-        "Zajęcia z języka angielskiego online i stacjonarnie. Bezpłatna lekcja próbna.",
-      description:
-        "Nauka języka angielskiego dla dzieci i dorosłych na całym świecie",
-      button: "Zapisz się na bezpłatną lekcję próbną",
-    },
-
-    about: {
-      title: "O świecie HUNNY BUNNY",
-      text1:
-        "HUNNY BUNNY to nowoczesna przestrzeń do nauki języka angielskiego dla dzieci, młodzieży i dorosłych.",
-      text2:
-        "Pomagamy uczniom nie tylko uczyć się słówek i gramatyki, ale również swobodnie używać języka angielskiego w podróżach, pracy, nauce i życiu codziennym.",
-      text3:
-        "Nasze zajęcia odbywają się w przyjaznej atmosferze, gdzie każdy uczeń otrzymuje wsparcie, uwagę nauczyciela i czerpie radość z nauki.",
-
-      feature1: "🌍 Uczniowie z całego świata",
-      feature2: "🎯 Indywidualne podejście",
-      feature3: "💬 Żywy język angielski",
-      feature4: "📚 Nowoczesne metody nauczania",
-    },
-    
-    courses: {
-      title: "Nasze kursy",
-
-      kidsTitle: "🐰 Angielski dla dzieci",
-      kidsText:
-        "Nauka poprzez zabawę, rozwój mówienia i miłość do języka angielskiego od pierwszych zajęć.",
-      teensTitle: "🎓 Angielski dla młodzieży",
-      teensText:
-        "Przygotowanie do egzaminów, swobodna komunikacja oraz rozwój wszystkich umiejętności językowych.",
-
-      adultsTitle: "💼 Angielski dla dorosłych",
-      adultsText:
-       "Język angielski w pracy, podróżach i życiu codziennym oraz indywidualne programy nauczania.",
-    
-      kidsAge: "Wiek: 3–10 lat",
-      teensAge: "Wiek: 11–17 lat",
-      adultsLevel: "Każdy poziom zaawansowania",
-    },
-
-    gallery: {
-      title: "Nasze zajęcia",
-       image1: "Lekcja języka angielskiego z dziećmi",
-       image2: "Zajęcia języka angielskiego w Hunny Bunny",
-       image3: "Uczniowie podczas lekcji języka angielskiego",
-    },
-
-    reviews: {
-      title: "Opinie naszych uczniów",
-
-      image1: "/images/reviews/pl/otz1.webp",
-      image2: "/images/reviews/pl/otz6.webp",
-      image3: "/images/reviews/pl/otz5.webp",
-
-      alt1: "Opinia ucznia",
-      alt2: "Opinia ucznia",
-      alt3: "Opinia ucznia",
-    },
-
-    faq: {
-      title: "❓ Najczęściej zadawane pytania",
-   
-      q1: "🎁 Czy oferujecie bezpłatną lekcję próbną?",
-      a1: "Tak. Pierwsza lekcja jest całkowicie bezpłatna i trwa 20 minut.",
-
-      q2: "💻 Czy można uczyć się online?",
-      a2: "Tak. Prowadzimy zajęcia online dla uczniów z całego świata.",
-
-      q3: "👨‍👩‍👧 Ile osób jest w grupie?",
-      a3: "Grupy liczą od 4 do 8 osób, aby każdy uczeń otrzymał indywidualną uwagę.",
-
-      q4: "📍 Gdzie odbywają się zajęcia?",
-      a4: "Online — z dowolnego miejsca na świecie. Stacjonarnie — Homel, Białoruś.",
-
-      q5: "🏆 Jaki poziom języka angielskiego jest wymagany?",
-      a5: "Dobieramy program odpowiedni dla każdego poziomu — od Beginner do Advanced.",
-
-      q6: "🎓 Czy prowadzicie zajęcia dla dorosłych?",
-      a6: "Tak. Uczymy dzieci, młodzież i dorosłych na każdym poziomie zaawansowania.",
-    },
-
-    signup: {
-      title: "Zapisz się na bezpłatną lekcję próbną",
-
-      name: "Imię",
-      email: "Email",
-      phone: "Telefon",
-
-      namePlaceholder: "Wpisz swoje imię",
-      emailPlaceholder: "Wpisz adres e-mail",
-      phonePlaceholder: "+48 ___ ___ ___",
-
-      button: "Wyślij zgłoszenie",
-    },
-
-    location: {
-      title: "📍 Gdzie odbywają się zajęcia stacjonarne",
-
-      address:
-       "Gomel, ul. Krestyanskaya 33",
-
-      entrance:
-       "(osobne wejście od strony ulicy)",
-    },
-
-    footer: {
-      title: "HUNNY BUNNY ENGLISH",
-
-      online: "🌍 Lekcje online z każdego miejsca na świecie",
-
-      offline: "🇧🇾 Zajęcia stacjonarne w Homlu",
-
-      instagram: "📸 Nasz Instagram",
-
-      copyright: "© 2026 HUNNY BUNNY ENGLISH",
-
-     reviewButton: "⭐ Zostaw opinię",
-    },
-
-    advantages: {
-      title: "🌟 Dlaczego warto wybrać HUNNY BUNNY?",
-
-      item1: "🎓 Nowoczesne metody nauczania",
-      item2: "👩‍🏫 Doświadczeni nauczyciele z międzynarodową praktyką",
-      item3: "👨‍👩‍👧‍👦 Zajęcia grupowe i indywidualne",
-      item4: "💻 Nauka online i stacjonarnie",
-      item5: "🌟 Warsztaty, klub filmowy, półkolonie i wyjazdy edukacyjne",
-      item6: "🎯 Indywidualne podejście do każdego ucznia",
-   },
-
-   intro: {
-      onlineOffline:
-        "📍 Online z każdego miejsca na świecie\n📍 Zajęcia stacjonarne w Homlu",
-
-      card1: "🌍 Nauka online na całym świecie",
-      card2: "🇧🇾 Zajęcia stacjonarne w Homlu",
-      card3: "🎁 Bezpłatna lekcja próbna",
-
-      promo:
-        "🎁 Bezpłatna lekcja próbna\n🎁 20% zniżki na pierwszy miesiąc",
-
-      instagram: "📸 Nasz Instagram",
-    },
-
-    thankyou: {
-      title: "🐰 Dziękujemy!",
-      text1: "Otrzymaliśmy Twoje zgłoszenie i wkrótce się z Tobą skontaktujemy.",
-      text2: "Do zobaczenia w Hunny Bunny English!",
-      button: "Powrót na stronę główną",
-    },
-
-    seo: {
-      title: "Kursy języka angielskiego dla dzieci i dorosłych | Hunny Bunny English",
-      description:
-       "Kursy języka angielskiego online i stacjonarnie dla dzieci, młodzieży i dorosłych. Darmowa lekcja próbna."
-    },
+// Все тексты сайта на трёх языках.
+// Правило: только подтверждённые факты. Нет данных — не выдумываем.
+
+const ru = {
+  lang: 'ru',
+  locale: 'ru_RU',
+  seo: {
+    title: 'Английский для детей и взрослых в Гомеле и онлайн | Hunny Bunny English',
+    description:
+      'Курсы английского для детей от 3 лет, подростков и взрослых: Гомель, ул. Крестьянская, 33, Варшава и онлайн. Подготовка к ЦТ и IELTS. Первое занятие бесплатно.',
   },
-} as const;
+  a11y: { skip: 'Перейти к содержанию', menu: 'Меню', close: 'Закрыть меню', lang: 'Язык сайта', mainNav: 'Основное меню' },
+  nav: { courses: 'Курсы', team: 'Преподаватели', reviews: 'Отзывы', faq: 'Вопросы', contact: 'Контакты' },
+  cta: { trial: 'Записаться на пробный урок', trialShort: 'Пробный урок', trialMobile: 'Записаться на пробный' },
+  hero: {
+    eyebrow: 'Гомель · Варшава · онлайн по всему миру',
+    title: 'Английский для детей и взрослых, который нравится',
+    lead: 'Дети от 3 лет, подростки и взрослые. Подготовка к ЦТ и IELTS, разговорный клуб. Группы от 4 до 8 человек и индивидуальные занятия.',
+    stats: [
+      { value: '500+', label: 'учеников в 5 странах' },
+      { value: 'Бесплатно', label: 'первое занятие' },
+      { value: '−20%', label: 'на первый месяц' },
+    ],
+    founderName: 'Юлия Сатырова',
+    founderRole: 'основательница, TESOL (Arizona State University)',
+    freeBadge: 'Первое занятие бесплатно',
+    photoMain: 'Дети смеются на занятии, сидя на фиолетовых креслах-мешках',
+    photoSecond: 'Преподаватель занимается с подростком за столом с карандашами',
+  },
+  courses: {
+    title: 'Курсы',
+    lead: 'Очно в Гомеле и Варшаве или онлайн — формат выбираете вы.',
+    items: [
+      {
+        icon: 'heart',
+        title: 'Дети 3–10 лет',
+        text: 'Игры, песни и разговорная речь с первого занятия. Ребёнок привыкает к английскому легко и с удовольствием.',
+        points: ['Группы от 4 до 8 детей', 'Очно и онлайн'],
+      },
+      {
+        icon: 'cap',
+        title: 'Школьники 11–17 лет',
+        text: 'Школьная программа без стресса, подготовка к ЦТ, IELTS и олимпиадам.',
+        points: ['Открыт набор в группы 5–9 классов на 2026/2027', 'Олимпиады — занятия по 45 минут'],
+      },
+      {
+        icon: 'chat',
+        title: 'Взрослые',
+        text: 'Английский для работы, путешествий и жизни за границей. Любой уровень — от Beginner до Advanced.',
+        points: ['Разговорный клуб', 'IELTS — 60 минут, в группе или индивидуально'],
+      },
+      {
+        icon: 'star',
+        title: 'Клубы и мастер-классы',
+        text: 'Больше, чем просто уроки: английский в живом общении.',
+        points: ['Киноклуб — 90 минут', 'Летний клуб — 10:00–14:00', 'Мастер-классы'],
+      },
+    ],
+  },
+  why: {
+    title: 'Почему выбирают Hunny Bunny',
+    items: [
+      { icon: 'users', title: 'Маленькие группы', text: 'От 4 до 8 учеников, поэтому каждый успевает говорить и получает внимание преподавателя.' },
+      { icon: 'award', title: 'Международная практика', text: 'Преподаватели с большим опытом. У основательницы и Алёны Лаевской — сертификаты TESOL и обучение на Мальте.' },
+      { icon: 'pin', title: 'Очно и онлайн', text: 'Уютный класс в центре Гомеля с отдельным входом, занятия в Варшаве и онлайн из любой страны.' },
+      { icon: 'gift', title: 'Пробный урок бесплатно', text: 'Познакомимся и подберём подходящую группу. Пробное занятие длится 20 минут.' },
+    ],
+  },
+  team: {
+    title: 'Преподаватели',
+    lead: 'Преподаватели с большим опытом и международной практикой. Каждый ведёт все направления, поэтому при необходимости они заменяют друг друга и занятия не срываются.',
+    skillsTitle: 'Каждый преподаватель ведёт',
+    skills: ['Детей от 3 лет', 'Школьников и подростков', 'Взрослых', 'Подготовку к ЦТ', 'IELTS', 'Олимпиады', 'Разговорный клуб', 'Киноклуб', 'Летний клуб', 'Мастер-классы'],
+    people: [
+      { photo: 'satyrova', name: 'Юлия Сатырова', role: 'Основательница', note: 'TESOL (Arizona State University), обучение на Мальте' },
+      { photo: 'laevskaya', name: 'Алёна Лаевская', role: 'Преподаватель', note: 'TESOL, обучение на Мальте' },
+      { photo: 'barinova', name: 'Юлия Баринова', role: 'Преподаватель', note: '' },
+      { photo: 'rud', name: 'Елизавета Рудь', role: 'Преподаватель', note: '' },
+    ],
+  },
+  gallery: {
+    title: 'Как проходят занятия',
+    alts: [
+      'Преподаватель играет с детьми в карточки на занятии',
+      'Группа детей рисует за общим столом',
+      'Дети на креслах-мешках слушают преподавателя',
+      'Урок с подростком за столом',
+    ],
+  },
+  reviews: {
+    title: 'Отзывы родителей',
+    lead: 'Публикуем с разрешения авторов.',
+    alt: 'Отзыв родителя о занятиях в Hunny Bunny',
+  },
+  faq: {
+    title: 'Частые вопросы',
+    items: [
+      { q: 'Есть ли пробный урок?', a: 'Да, первое занятие бесплатное и длится 20 минут.' },
+      { q: 'С какого возраста можно начать?', a: 'С 3 лет. Взрослых учим в любом возрасте и с любого уровня.' },
+      { q: 'Сколько человек в группе?', a: 'От 4 до 8 учеников.' },
+      { q: 'Где проходят занятия?', a: 'Очно — в Гомеле на ул. Крестьянской, 33 (отдельный вход с улицы) и в Варшаве. Онлайн — из любой страны.' },
+      { q: 'Можно заниматься онлайн?', a: 'Да. У нас учатся ребята и взрослые из Беларуси, Польши, Украины, России и США.' },
+      { q: 'Какой уровень нужен для начала?', a: 'Любой: программы от Beginner до Advanced.' },
+      { q: 'Есть ли скидки?', a: 'Да, 20% на первый месяц обучения.' },
+      { q: 'Сколько стоят занятия?', a: 'Стоимость зависит от формата: группа или индивидуально, очно или онлайн. Напишите нам — пришлём актуальный прайс.' },
+    ],
+  },
+  contact: {
+    title: 'Запишитесь на бесплатный пробный урок',
+    lead: 'Оставьте телефон — Юлия свяжется с вами и подберёт удобное время. Или напишите сразу в мессенджер.',
+    gomelTitle: 'Гомель',
+    entrance: 'Отдельный вход с улицы',
+    hoursLabel: 'Ежедневно',
+    warsawTitle: 'Варшава',
+    warsawText: 'Адрес очных занятий сообщим при записи.',
+    onlineTitle: 'Онлайн',
+    onlineText: 'Из любой страны мира.',
+    mapYandex: 'Яндекс Карты',
+    mapGoogle: 'Google Карты',
+    messengersTitle: 'Написать нам',
+    messengers: ['telegram', 'viber', 'whatsapp'],
+    form: {
+      name: 'Ваше имя',
+      phone: 'Телефон',
+      phonePlaceholder: '+375 29 000-00-00',
+      email: 'Email',
+      emailHint: 'необязательно',
+      who: 'Кто будет учиться?',
+      whoOptions: ['Ребёнок 3–10 лет', 'Школьник 11–17 лет', 'Взрослый'],
+      submit: 'Записаться на пробный урок',
+      note: 'Нажимая кнопку, вы соглашаетесь на обработку указанных данных, чтобы мы могли с вами связаться.',
+      subject: 'Новая заявка с сайта Hunny Bunny (RU)',
+    },
+    bunny: 'Жду тебя на уроке!',
+  },
+  footer: {
+    tagline: 'Школа английского для детей и взрослых. Гомель, Варшава и онлайн.',
+    follow: 'Мы в соцсетях',
+    rights: 'Все права защищены.',
+  },
+  messengerLabels: { telegram: 'Telegram', viber: 'Viber', whatsapp: 'WhatsApp' },
+  thankyou: {
+    title: 'Спасибо за заявку!',
+    text1: 'Мы получили вашу заявку и скоро свяжемся с вами.',
+    text2: 'Если удобнее, напишите нам прямо сейчас:',
+    button: 'Вернуться на главную',
+  },
+};
+
+type Dict = typeof ru;
+
+const en: Dict = {
+  lang: 'en',
+  locale: 'en_US',
+  seo: {
+    title: 'English for Kids and Adults — Online, Gomel and Warsaw | Hunny Bunny English',
+    description:
+      'English courses for children from age 3, teenagers and adults: online worldwide and in person in Gomel and Warsaw. IELTS preparation. First lesson free.',
+  },
+  a11y: { skip: 'Skip to content', menu: 'Menu', close: 'Close menu', lang: 'Site language', mainNav: 'Main menu' },
+  nav: { courses: 'Courses', team: 'Teachers', reviews: 'Reviews', faq: 'FAQ', contact: 'Contact' },
+  cta: { trial: 'Book a free trial lesson', trialShort: 'Free trial', trialMobile: 'Book a free trial' },
+  hero: {
+    eyebrow: 'Online worldwide · Gomel · Warsaw',
+    title: 'English for kids and adults that they actually enjoy',
+    lead: 'Children from age 3, teenagers and adults. IELTS preparation and a conversation club. Groups of 4 to 8 students and one-to-one lessons.',
+    stats: [
+      { value: '500+', label: 'students in 5 countries' },
+      { value: 'Free', label: 'first lesson' },
+      { value: '−20%', label: 'off your first month' },
+    ],
+    founderName: 'Yuliya Satyrava',
+    founderRole: 'founder, TESOL (Arizona State University)',
+    freeBadge: 'First lesson is free',
+    photoMain: 'Children laughing during a lesson on purple bean bags',
+    photoSecond: 'A teacher working with a teenager at a desk with pencils',
+  },
+  courses: {
+    title: 'Courses',
+    lead: 'Online or in person in Gomel and Warsaw — you choose the format.',
+    items: [
+      {
+        icon: 'heart',
+        title: 'Kids aged 3–10',
+        text: 'Games, songs and speaking from the very first lesson. Children get used to English easily and happily.',
+        points: ['Groups of 4 to 8 children', 'Online and in person'],
+      },
+      {
+        icon: 'cap',
+        title: 'Teens aged 11–17',
+        text: 'School English without stress, plus IELTS and olympiad preparation.',
+        points: ['Olympiad classes — 45 minutes', 'Online and in person'],
+      },
+      {
+        icon: 'chat',
+        title: 'Adults',
+        text: 'English for work, travel and life abroad. Any level, from Beginner to Advanced.',
+        points: ['Conversation club', 'IELTS — 60 minutes, group or one-to-one'],
+      },
+      {
+        icon: 'star',
+        title: 'Clubs and workshops',
+        text: 'More than just lessons: English through real communication.',
+        points: ['Movie club — 90 minutes', 'Summer club — 10:00–14:00', 'Workshops'],
+      },
+    ],
+  },
+  why: {
+    title: 'Why families choose Hunny Bunny',
+    items: [
+      { icon: 'users', title: 'Small groups', text: '4 to 8 students, so everyone gets to speak and gets the teacher’s attention.' },
+      { icon: 'award', title: 'International experience', text: 'Experienced teachers. Our founder and Alena Laevskaya hold TESOL certificates and trained in Malta.' },
+      { icon: 'pin', title: 'Online and in person', text: 'A cosy classroom in central Gomel with its own entrance, lessons in Warsaw and online from any country.' },
+      { icon: 'gift', title: 'Free trial lesson', text: 'Let’s get to know each other and find the right group. The trial lesson takes 20 minutes.' },
+    ],
+  },
+  team: {
+    title: 'Teachers',
+    lead: 'Teachers with extensive experience and international practice. Every teacher covers all our programmes, so they can stand in for each other and lessons never get cancelled.',
+    skillsTitle: 'Every teacher teaches',
+    skills: ['Kids from age 3', 'School students and teens', 'Adults', 'IELTS', 'Olympiad prep', 'Conversation club', 'Movie club', 'Summer club', 'Workshops'],
+    people: [
+      { photo: 'satyrova', name: 'Yuliya Satyrava', role: 'Founder', note: 'TESOL (Arizona State University), training in Malta' },
+      { photo: 'laevskaya', name: 'Alena Laevskaya', role: 'Teacher', note: 'TESOL, training in Malta' },
+      { photo: 'barinova', name: 'Yuliya Barinova', role: 'Teacher', note: '' },
+      { photo: 'rud', name: 'Elizaveta Rud', role: 'Teacher', note: '' },
+    ],
+  },
+  gallery: {
+    title: 'Inside our lessons',
+    alts: [
+      'A teacher playing a card game with children',
+      'A group of children drawing at a shared table',
+      'Children on bean bags listening to the teacher',
+      'A lesson with a teenager at a desk',
+    ],
+  },
+  reviews: {
+    title: 'What parents say',
+    lead: 'Published with the authors’ permission.',
+    alt: 'A parent’s review of lessons at Hunny Bunny',
+  },
+  faq: {
+    title: 'FAQ',
+    items: [
+      { q: 'Is there a trial lesson?', a: 'Yes. Your first lesson is free and takes 20 minutes.' },
+      { q: 'What age can my child start?', a: 'From age 3. Adults can start at any age and any level.' },
+      { q: 'How many students are in a group?', a: '4 to 8 students.' },
+      { q: 'Where do lessons take place?', a: 'In person in Gomel (33 Krestyanskaya St, separate street entrance) and in Warsaw. Online from any country.' },
+      { q: 'Can I study online?', a: 'Yes. Our students live in Belarus, Poland, Ukraine, Russia and the USA.' },
+      { q: 'What level do I need?', a: 'Any — we teach from Beginner to Advanced.' },
+      { q: 'Are there any discounts?', a: 'Yes, 20% off your first month.' },
+      { q: 'How much do lessons cost?', a: 'It depends on the format: group or one-to-one, online or in person. Message us and we’ll send the current prices.' },
+    ],
+  },
+  contact: {
+    title: 'Book a free trial lesson',
+    lead: 'Leave your phone number and Yuliya will get in touch to find a convenient time. Or message us right away.',
+    gomelTitle: 'Gomel, Belarus',
+    entrance: 'Separate entrance from the street',
+    hoursLabel: 'Daily',
+    warsawTitle: 'Warsaw, Poland',
+    warsawText: 'We’ll share the address when you book.',
+    onlineTitle: 'Online',
+    onlineText: 'From any country.',
+    mapYandex: 'Yandex Maps',
+    mapGoogle: 'Google Maps',
+    messengersTitle: 'Message us',
+    messengers: ['whatsapp', 'telegram', 'viber'],
+    form: {
+      name: 'Your name',
+      phone: 'Phone',
+      phonePlaceholder: 'With country code',
+      email: 'Email',
+      emailHint: 'optional',
+      who: 'Who will be studying?',
+      whoOptions: ['Child aged 3–10', 'Teen aged 11–17', 'Adult'],
+      submit: 'Book a free trial lesson',
+      note: 'By clicking the button, you agree that we may process these details to contact you.',
+      subject: 'New request from the Hunny Bunny website (EN)',
+    },
+    bunny: 'See you in class!',
+  },
+  footer: {
+    tagline: 'English school for kids and adults. Online, Gomel and Warsaw.',
+    follow: 'Follow us',
+    rights: 'All rights reserved.',
+  },
+  messengerLabels: { telegram: 'Telegram', viber: 'Viber', whatsapp: 'WhatsApp' },
+  thankyou: {
+    title: 'Thank you!',
+    text1: 'We have received your request and will contact you shortly.',
+    text2: 'If you prefer, message us right now:',
+    button: 'Back to home',
+  },
+};
+
+const pl: Dict = {
+  lang: 'pl',
+  locale: 'pl_PL',
+  seo: {
+    title: 'Angielski dla dzieci i dorosłych — online i w Warszawie | Hunny Bunny English',
+    description:
+      'Kursy angielskiego dla dzieci od 3 lat, młodzieży i dorosłych: online z całego świata oraz stacjonarnie w Warszawie i Homlu. Przygotowanie do IELTS. Pierwsza lekcja gratis.',
+  },
+  a11y: { skip: 'Przejdź do treści', menu: 'Menu', close: 'Zamknij menu', lang: 'Język strony', mainNav: 'Menu główne' },
+  nav: { courses: 'Kursy', team: 'Lektorzy', reviews: 'Opinie', faq: 'Pytania', contact: 'Kontakt' },
+  cta: { trial: 'Zapisz się na lekcję próbną', trialShort: 'Lekcja próbna', trialMobile: 'Zapisz się na lekcję' },
+  hero: {
+    eyebrow: 'Warszawa · Homel · online z całego świata',
+    title: 'Angielski dla dzieci i dorosłych, który daje radość',
+    lead: 'Dzieci od 3 lat, młodzież i dorośli. Przygotowanie do IELTS i klub konwersacyjny. Grupy od 4 do 8 osób oraz zajęcia indywidualne.',
+    stats: [
+      { value: '500+', label: 'uczniów w 5 krajach' },
+      { value: 'Gratis', label: 'pierwsza lekcja' },
+      { value: '−20%', label: 'na pierwszy miesiąc' },
+    ],
+    founderName: 'Yuliya Satyrava',
+    founderRole: 'założycielka, TESOL (Arizona State University)',
+    freeBadge: 'Pierwsza lekcja gratis',
+    photoMain: 'Dzieci śmieją się na zajęciach, siedząc na fioletowych pufach',
+    photoSecond: 'Lektorka pracuje z nastolatkiem przy stole z kredkami',
+  },
+  courses: {
+    title: 'Kursy',
+    lead: 'Online albo stacjonarnie w Warszawie i Homlu — wybierasz format.',
+    items: [
+      {
+        icon: 'heart',
+        title: 'Dzieci 3–10 lat',
+        text: 'Zabawy, piosenki i mówienie od pierwszej lekcji. Dziecko oswaja się z angielskim łatwo i z przyjemnością.',
+        points: ['Grupy od 4 do 8 dzieci', 'Online i stacjonarnie'],
+      },
+      {
+        icon: 'cap',
+        title: 'Młodzież 11–17 lat',
+        text: 'Szkolny angielski bez stresu, przygotowanie do IELTS i olimpiad.',
+        points: ['Olimpiady — zajęcia po 45 minut', 'Online i stacjonarnie'],
+      },
+      {
+        icon: 'chat',
+        title: 'Dorośli',
+        text: 'Angielski do pracy, podróży i życia za granicą. Każdy poziom — od Beginner do Advanced.',
+        points: ['Klub konwersacyjny', 'IELTS — 60 minut, w grupie lub indywidualnie'],
+      },
+      {
+        icon: 'star',
+        title: 'Kluby i warsztaty',
+        text: 'Więcej niż lekcje: angielski w żywej rozmowie.',
+        points: ['Klub filmowy — 90 minut', 'Letni klub — 10:00–14:00', 'Warsztaty'],
+      },
+    ],
+  },
+  why: {
+    title: 'Dlaczego Hunny Bunny',
+    items: [
+      { icon: 'users', title: 'Małe grupy', text: 'Od 4 do 8 uczniów, więc każdy ma okazję mówić i dostaje uwagę lektora.' },
+      { icon: 'award', title: 'Międzynarodowe doświadczenie', text: 'Doświadczeni lektorzy. Założycielka i Alena Laevskaya mają certyfikaty TESOL i szkolenie na Malcie.' },
+      { icon: 'pin', title: 'Online i stacjonarnie', text: 'Zajęcia w Warszawie, przytulna sala w centrum Homla i lekcje online z dowolnego kraju.' },
+      { icon: 'gift', title: 'Bezpłatna lekcja próbna', text: 'Poznajmy się i dobierzmy odpowiednią grupę. Lekcja próbna trwa 20 minut.' },
+    ],
+  },
+  team: {
+    title: 'Lektorzy',
+    lead: 'Lektorki z dużym doświadczeniem i międzynarodową praktyką. Każda prowadzi wszystkie zajęcia, więc w razie potrzeby się zastępują i lekcje nie przepadają.',
+    skillsTitle: 'Każda lektorka prowadzi',
+    skills: ['Dzieci od 3 lat', 'Uczniów i młodzież', 'Dorosłych', 'IELTS', 'Olimpiady', 'Klub konwersacyjny', 'Klub filmowy', 'Letni klub', 'Warsztaty'],
+    people: [
+      { photo: 'satyrova', name: 'Yuliya Satyrava', role: 'Założycielka', note: 'TESOL (Arizona State University), szkolenie na Malcie' },
+      { photo: 'laevskaya', name: 'Alena Laevskaya', role: 'Lektorka', note: 'TESOL, szkolenie na Malcie' },
+      { photo: 'barinova', name: 'Yuliya Barinova', role: 'Lektorka', note: '' },
+      { photo: 'rud', name: 'Elizaveta Rud', role: 'Lektorka', note: '' },
+    ],
+  },
+  gallery: {
+    title: 'Jak wyglądają zajęcia',
+    alts: [
+      'Lektorka gra z dziećmi w karty na zajęciach',
+      'Grupa dzieci rysuje przy wspólnym stole',
+      'Dzieci na pufach słuchają lektorki',
+      'Lekcja z nastolatkiem przy stole',
+    ],
+  },
+  reviews: {
+    title: 'Opinie rodziców',
+    lead: 'Publikujemy za zgodą autorów.',
+    alt: 'Opinia rodzica o zajęciach w Hunny Bunny',
+  },
+  faq: {
+    title: 'Najczęstsze pytania',
+    items: [
+      { q: 'Czy jest lekcja próbna?', a: 'Tak, pierwsza lekcja jest bezpłatna i trwa 20 minut.' },
+      { q: 'Od jakiego wieku można zacząć?', a: 'Od 3 lat. Dorośli mogą zacząć w każdym wieku i na każdym poziomie.' },
+      { q: 'Ile osób jest w grupie?', a: 'Od 4 do 8 uczniów.' },
+      { q: 'Gdzie odbywają się zajęcia?', a: 'Stacjonarnie w Warszawie i w Homlu (Białoruś), a online — z dowolnego kraju.' },
+      { q: 'Czy można uczyć się online?', a: 'Tak. Uczą się u nas osoby z Białorusi, Polski, Ukrainy, Rosji i USA.' },
+      { q: 'Jaki poziom jest potrzebny na start?', a: 'Dowolny — prowadzimy zajęcia od poziomu Beginner do Advanced.' },
+      { q: 'Czy są zniżki?', a: 'Tak, 20% rabatu na pierwszy miesiąc nauki.' },
+      { q: 'Ile kosztują zajęcia?', a: 'Cena zależy od formatu: w grupie czy indywidualnie, online czy stacjonarnie. Napisz do nas — prześlemy aktualny cennik.' },
+    ],
+  },
+  contact: {
+    title: 'Zapisz się na bezpłatną lekcję próbną',
+    lead: 'Zostaw numer telefonu — Julia skontaktuje się z Tobą i dobierze dogodny termin. Możesz też od razu napisać na WhatsAppie.',
+    gomelTitle: 'Homel, Białoruś',
+    entrance: 'Osobne wejście od ulicy',
+    hoursLabel: 'Codziennie',
+    warsawTitle: 'Warszawa',
+    warsawText: 'Adres zajęć stacjonarnych podamy przy zapisie.',
+    onlineTitle: 'Online',
+    onlineText: 'Z dowolnego kraju.',
+    mapYandex: 'Mapy Yandex',
+    mapGoogle: 'Mapy Google',
+    messengersTitle: 'Napisz do nas',
+    messengers: ['whatsapp', 'telegram', 'viber'],
+    form: {
+      name: 'Imię',
+      phone: 'Telefon',
+      phonePlaceholder: '+48 000 000 000',
+      email: 'E-mail',
+      emailHint: 'opcjonalnie',
+      who: 'Kto będzie się uczyć?',
+      whoOptions: ['Dziecko 3–10 lat', 'Uczeń 11–17 lat', 'Osoba dorosła'],
+      submit: 'Zapisz się na lekcję próbną',
+      note: 'Klikając przycisk, zgadzasz się na przetwarzanie podanych danych w celu kontaktu.',
+      subject: 'Nowe zgłoszenie ze strony Hunny Bunny (PL)',
+    },
+    bunny: 'Czekam na Ciebie!',
+  },
+  footer: {
+    tagline: 'Szkoła angielskiego dla dzieci i dorosłych. Warszawa, Homel i online.',
+    follow: 'Obserwuj nas',
+    rights: 'Wszelkie prawa zastrzeżone.',
+  },
+  messengerLabels: { telegram: 'Telegram', viber: 'Viber', whatsapp: 'WhatsApp' },
+  thankyou: {
+    title: 'Dziękujemy!',
+    text1: 'Otrzymaliśmy Twoje zgłoszenie i wkrótce się z Tobą skontaktujemy.',
+    text2: 'Jeśli wolisz, napisz do nas od razu:',
+    button: 'Wróć na stronę główną',
+  },
+};
+
+export const translations = { ru, en, pl };
+export type Translation = Dict;

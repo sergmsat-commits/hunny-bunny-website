@@ -1,0 +1,310 @@
+---
+import Icon from './Icon.astro';
+import Bunny from './Bunny.astro';
+import { business, type Lang } from '../data/business';
+import type { Translation } from '../i18n/translations';
+
+interface Props {
+  t: Translation;
+  lang: Lang;
+}
+const { t, lang } = Astro.props;
+const c = t.contact;
+const thankYou = `${business.site}${lang === 'ru' ? '' : `/${lang}`}/thank-you/`;
+const m = business.messengers;
+const messengers: Record<string, { href: string; icon: string; note: string }> = {
+  telegram: { href: m.telegram, icon: 'telegram', note: business.phones.by.display },
+  viber: { href: m.viber, icon: 'viber', note: business.phones.by.display },
+  whatsapp: { href: m.whatsapp, icon: 'whatsapp', note: business.phones.pl.display },
+};
+const g = business.gomel;
+---
+<section id="contact" class="section contact">
+  <div class="container contact-grid">
+    <div class="contact-info">
+      <div class="section-head">
+        <h2>{c.title}</h2>
+        <p>{c.lead}</p>
+      </div>
+
+      <ul class="places" role="list">
+        <li class="place">
+          <span class="icon-tile"><Icon name="pin" size={24} /></span>
+          <div>
+            <h3>{c.gomelTitle}</h3>
+            <p>{g.street[lang]}, {g.city[lang]}</p>
+            <p class="muted"><Icon name="door" size={16} /> {c.entrance}</p>
+            <p class="muted"><Icon name="clock" size={16} /> {c.hoursLabel} {g.hours}</p>
+            <p class="map-links">
+              <a href={g.yandexMaps} target="_blank" rel="noopener">{c.mapYandex}</a>
+              <a href={g.googleMaps} target="_blank" rel="noopener">{c.mapGoogle}</a>
+            </p>
+          </div>
+        </li>
+        <li class="place">
+          <span class="icon-tile"><Icon name="pin" size={24} /></span>
+          <div>
+            <h3>{c.warsawTitle}</h3>
+            <p class="muted">{c.warsawText}</p>
+          </div>
+        </li>
+        <li class="place">
+          <span class="icon-tile"><Icon name="globe" size={24} /></span>
+          <div>
+            <h3>{c.onlineTitle}</h3>
+            <p class="muted">{c.onlineText}</p>
+          </div>
+        </li>
+      </ul>
+
+      <h3 class="messengers-title">{c.messengersTitle}</h3>
+      <ul class="messengers" role="list">
+        {c.messengers.map((key) => (
+          <li>
+            <a href={messengers[key].href} target="_blank" rel="noopener" class="messenger">
+              <Icon name={messengers[key].icon} size={22} stroke={2} />
+              <span>
+                <strong>{t.messengerLabels[key as keyof typeof t.messengerLabels]}</strong>
+                <small>{messengers[key].note}</small>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="form-wrap">
+      <div class="bunny-say">
+        <Bunny height={120} delay={3} />
+        <p class="bubble">{c.bunny}</p>
+      </div>
+      <form class="card lead-form" action={`https://formsubmit.co/${business.email}`} method="POST">
+        <input type="hidden" name="_subject" value={c.form.subject} />
+        <input type="hidden" name="_next" value={thankYou} />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="Язык сайта" value={lang.toUpperCase()} />
+        <input type="text" name="_honey" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+        <div class="field">
+          <label for={`f-name-${lang}`}>{c.form.name}</label>
+          <input id={`f-name-${lang}`} name="Имя" type="text" autocomplete="given-name" required />
+        </div>
+        <div class="field">
+          <label for={`f-phone-${lang}`}>{c.form.phone}</label>
+          <input id={`f-phone-${lang}`} name="Телефон" type="tel" inputmode="tel" autocomplete="tel" placeholder={c.form.phonePlaceholder} required />
+        </div>
+        <div class="field">
+          <label for={`f-email-${lang}`}>{c.form.email} <span class="hint">({c.form.emailHint})</span></label>
+          <input id={`f-email-${lang}`} name="Email" type="email" autocomplete="email" />
+        </div>
+        <fieldset class="field">
+          <legend>{c.form.who}</legend>
+          <div class="options">
+            {c.form.whoOptions.map((o, i) => (
+              <label class="option">
+                <input type="radio" name="Кто учится" value={o} checked={i === 0} />
+                <span>{o}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+        <button type="submit" class="btn btn-primary btn-lg">{c.form.submit}</button>
+        <p class="form-note">{c.form.note}</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-grid {
+    display: grid;
+    gap: 40px;
+  }
+  .places {
+    list-style: none;
+    margin: 0 0 32px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .place {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .place h3 {
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+  .place p {
+    font-size: 16px;
+  }
+  .muted {
+    color: var(--c-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .map-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-top: 6px;
+    font-weight: 700;
+  }
+  .messengers-title {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  .messengers {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+  }
+  .messenger {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 56px;
+    padding: 10px 16px;
+    border-radius: var(--r-m);
+    background: var(--c-surface);
+    box-shadow: inset 0 0 0 1px var(--c-lavender);
+    color: var(--c-ink);
+    text-decoration: none;
+  }
+  .messenger :global(svg) {
+    color: var(--c-primary);
+    flex: none;
+  }
+  .messenger span {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+  }
+  .messenger small {
+    color: var(--c-muted);
+    font-size: 13px;
+  }
+  .messenger:hover {
+    box-shadow: inset 0 0 0 2px var(--c-primary);
+  }
+
+  .form-wrap {
+    position: relative;
+  }
+  .bunny-say {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    margin-bottom: -18px;
+    padding-left: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .bubble {
+    margin-bottom: 60px;
+    background: var(--c-surface);
+    border-radius: 18px 18px 18px 4px;
+    padding: 10px 14px;
+    font-weight: 700;
+    font-size: 15px;
+    box-shadow: var(--shadow-card);
+  }
+  .lead-form {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border: 0;
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+  }
+  .field label,
+  .field legend {
+    font-weight: 700;
+    font-size: 15px;
+    padding: 0;
+  }
+  .hint {
+    font-weight: 500;
+    color: var(--c-muted);
+  }
+  .field input[type='text'],
+  .field input[type='tel'],
+  .field input[type='email'] {
+    min-height: 52px;
+    padding: 0 14px;
+    border-radius: var(--r-s);
+    border: 2px solid var(--c-lavender-2);
+    background: var(--c-surface);
+    font: 500 16px var(--f-body);
+    color: var(--c-ink);
+  }
+  .field input:focus-visible {
+    outline: none;
+    border-color: var(--c-primary);
+    box-shadow: 0 0 0 4px var(--c-lavender);
+  }
+  .options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .option {
+    position: relative;
+  }
+  .option input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    cursor: pointer;
+  }
+  .option span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: var(--c-bg);
+    box-shadow: inset 0 0 0 2px var(--c-lavender);
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .option input:checked + span {
+    background: var(--c-lavender);
+    box-shadow: inset 0 0 0 2px var(--c-primary);
+    color: var(--c-ink);
+  }
+  .option input:focus-visible + span {
+    outline: 3px solid var(--c-primary);
+    outline-offset: 2px;
+  }
+  .form-note {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--c-muted);
+  }
+  @media (min-width: 960px) {
+    .contact-grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 64px;
+      align-items: start;
+    }
+    .lead-form {
+      padding: 32px;
+    }
+  }
+</style>

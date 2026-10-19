@@ -1,0 +1,79 @@
+---
+// 3D-маскот: две позы (стоит / машет) с одинаковым кадрированием.
+// Анимация на CSS: зайчик слегка «дышит» и время от времени машет лапкой.
+// Отключается при prefers-reduced-motion. Декоративный — скрыт от экранных дикторов.
+import { Image } from 'astro:assets';
+import stand from '../assets/bunny/bunny-stand.png';
+import wave from '../assets/bunny/bunny-wave.png';
+
+interface Props {
+  height?: number;
+  class?: string;
+  delay?: number; // сдвиг начала взмаха, чтобы несколько зайчиков не махали синхронно
+  eager?: boolean;
+}
+const { height = 160, class: className = '', delay = 0, eager = false } = Astro.props;
+const width = Math.round((height * stand.width) / stand.height);
+---
+<span class:list={['bunny', className]} style={`--bunny-h:${height}px; --bunny-w:${width}px; --bunny-delay:${delay}s`} aria-hidden="true">
+  <Image src={stand} alt="" width={width * 2} height={height * 2} loading={eager ? 'eager' : 'lazy'} class="bunny-img bunny-stand" />
+  <Image src={wave} alt="" width={width * 2} height={height * 2} loading={eager ? 'eager' : 'lazy'} class="bunny-img bunny-wave" />
+</span>
+
+<style>
+  .bunny {
+    position: relative;
+    display: inline-block;
+    width: var(--bunny-w);
+    height: var(--bunny-h);
+    transform-origin: 50% 100%;
+    animation: bunny-breathe 4s ease-in-out infinite;
+    filter: drop-shadow(0 10px 14px rgba(35, 30, 69, 0.18));
+    pointer-events: none;
+  }
+  .bunny-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  /* Позы меняются строго по очереди: пока видна одна, другая полностью скрыта.
+     Иначе сквозь прозрачные места одной позы просвечивает лапка другой («три лапы»). */
+  .bunny-wave {
+    opacity: 0;
+    animation: bunny-wave 7s steps(1, end) infinite;
+    animation-delay: var(--bunny-delay);
+  }
+  .bunny-stand {
+    opacity: 1;
+    animation: bunny-stand 7s steps(1, end) infinite;
+    animation-delay: var(--bunny-delay);
+  }
+  @keyframes bunny-stand {
+    0% { opacity: 1; }
+    62% { opacity: 0; }
+    72% { opacity: 1; }
+    76% { opacity: 0; }
+    88% { opacity: 1; }
+    100% { opacity: 1; }
+  }
+  @keyframes bunny-breathe {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-3px) rotate(-1deg); }
+  }
+  /* Мгновенная смена позы: машет ~1,8 c раз в 7 c, с коротким «опусканием» лапки посередине */
+  @keyframes bunny-wave {
+    0% { opacity: 0; }
+    62% { opacity: 1; }
+    72% { opacity: 0; }
+    76% { opacity: 1; }
+    88% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bunny, .bunny-wave, .bunny-stand { animation: none; }
+    .bunny-wave { opacity: 1; }
+    .bunny-stand { opacity: 0; }
+  }
+</style>

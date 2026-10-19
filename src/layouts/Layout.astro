@@ -1,333 +1,102 @@
 ---
-const {
-  title = "Hunny Bunny English",
-  description = "",
-  lang = "ru",
-  noindex = false
-} = Astro.props;
+import '@fontsource-variable/manrope';
+import '@fontsource-variable/unbounded';
+import '../styles/global.css';
+import { business, homePath, langs, type Lang } from '../data/business';
 
-const baseUrl = "https://hunnybunny.by";
+interface Props {
+  title: string;
+  description?: string;
+  lang?: Lang;
+  noindex?: boolean;
+  faq?: { q: string; a: string }[];
+  ogLocale?: string;
+}
 
-const canonical =
-  lang === "ru"
-    ? `${baseUrl}/`
-    : `${baseUrl}/${lang}/`;
+const { title, description = '', lang = 'ru', noindex = false, faq = [], ogLocale = 'ru_RU' } = Astro.props;
+const site = business.site;
+const canonical = `${site}${homePath[lang]}`;
+const ogImage = `${site}/images/logo.PNG`;
 
-const keywords =
-  lang === "ru"
-    ? "курсы английского языка, английский для детей, английский онлайн, школа английского языка, Hunny Bunny English"
-    : lang === "en"
-    ? "english courses, english for children, online english school, english lessons, Hunny Bunny English"
-    : "kurs angielskiego, angielski dla dzieci, szkoła języka angielskiego, lekcje angielskiego, Hunny Bunny English";
+const g = business.gomel;
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['EducationalOrganization', 'LocalBusiness'],
+  '@id': `${site}/#school`,
+  name: business.name,
+  url: `${site}/`,
+  logo: `${site}/images/logo.PNG`,
+  image: `${site}/images/logo.PNG`,
+  description:
+    lang === 'ru'
+      ? 'Школа английского языка для детей от 3 лет, подростков и взрослых: Гомель, Варшава и онлайн.'
+      : lang === 'pl'
+        ? 'Szkoła angielskiego dla dzieci od 3 lat, młodzieży i dorosłych: Warszawa, Homel i online.'
+        : 'English school for children from age 3, teenagers and adults: Gomel, Warsaw and online.',
+  telephone: business.phones.by.e164,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: g.street.ru,
+    addressLocality: g.city.ru,
+    addressRegion: 'Гомельская область',
+    postalCode: g.postalCode,
+    addressCountry: g.country,
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: g.geo.lat, longitude: g.geo.lng },
+  openingHours: g.openingHours,
+  areaServed: ['Гомель', 'Warszawa', 'Online'],
+  founder: { '@type': 'Person', name: lang === 'ru' ? 'Юлия Сатырова' : 'Yuliya Satyrava' },
+  sameAs: [business.socials.instagram, business.socials.youtube, business.messengers.telegram],
+};
+const faqSchema = faq.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      inLanguage: lang,
+      mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+    }
+  : null;
 ---
 <!doctype html>
 <html lang={lang}>
-
-
 <head>
-
- <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1ZBMP7LNPQ"></script>
-<script is:inline>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-1ZBMP7LNPQ');
-</script>
-
-	<meta charset="UTF-8" />
-
-  <meta http-equiv="content-language" content={lang} />
-
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-<link rel="icon" href="/favicon.ico" sizes="any"/>
-<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-
-<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"/>
-<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"/>
-<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
-
-<link rel="manifest" href="/site.webmanifest"/>
-
- <meta name="theme-color" content="#B8C5F4" />
-	
-  <meta name="generator" content={Astro.generator} />
-
-	<meta name="google-site-verification" content="KBQM2LkBUru2yETmVTMCcrXY2AAPoZCd3it4kSc3rOU" />
-	
-	<title>{title}</title>
-
-	<meta
-  name="description"
-  content={description}
-/>
-
-	<meta
-  name="keywords"
-  content={keywords}
-/>
-
-	<meta name="robots" content={noindex ? "noindex, follow" : "index, follow"} />
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />
   {!noindex && <link rel="canonical" href={canonical} />}
-  
-  <link
-  rel="alternate"
-  hreflang="ru"
-  href="https://hunnybunny.by/"
-/>
+  {!noindex && langs.map((l) => <link rel="alternate" hreflang={l} href={`${site}${homePath[l]}`} />)}
+  {!noindex && <link rel="alternate" hreflang="x-default" href={`${site}/`} />}
 
-<link
-  rel="alternate"
-  hreflang="en"
-  href="https://hunnybunny.by/en/"
-/>
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#F7F5FF" />
+  <meta name="google-site-verification" content="KBQM2LkBUru2yETmVTMCcrXY2AAPoZCd3it4kSc3rOU" />
 
-<link
-  rel="alternate"
-  hreflang="pl"
-  href="https://hunnybunny.by/pl/"
-/>
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Hunny Bunny English" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:locale" content={ogLocale} />
 
-<link
-  rel="alternate"
-  hreflang="x-default"
-  href="https://hunnybunny.by/"
-/>
+  {!noindex && <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />}
+  {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
 
-<meta property="og:title" content={title} />
-
-<meta property="og:description" content={description} />
-
-<meta
-	property="og:image"
-	content="https://hunnybunny.by/images/logo.PNG"
-/>
-
-<meta property="og:type" content="website" />
-
-<meta
-  property="og:locale"
-  content={
-    lang === "ru"
-      ? "ru_RU"
-      : lang === "en"
-      ? "en_US"
-      : "pl_PL"
-  }
-/>
-
-<meta property="og:url" content={canonical} />
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
-  "name": "Hunny Bunny English",
-  "url": "https://hunnybunny.by/",
-  "logo": "https://hunnybunny.by/images/logo.PNG",
-  "image": "https://hunnybunny.by/images/logo.PNG",
-  "description": "Онлайн и офлайн курсы английского языка для детей, подростков и взрослых.",
-
-  "telephone": "+375 29 625-64-42",
-  "email": "mailto:julichka1988@yandex.by",
-
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "ул. Крестьянская, 33",
-    "addressLocality": "Гомель",
-    "addressRegion": "Гомельская область",
-    "postalCode": "246003",
-    "addressCountry": "BY"
-  },
-
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 52.4345,
-    "longitude": 30.9754
-  },
-
-  "areaServed": [
-    {
-      "@type": "City",
-      "name": "Гомель"
-    },
-    {
-      "@type": "Country",
-      "name": "Беларусь"
-    },
-    {
-      "@type": "Place",
-      "name": "Онлайн по всему миру"
-    }
-  ],
-
-  "sameAs": [
-    "https://www.instagram.com/hunny_bunny_english",
-    "https://www.youtube.com/@hunnybunnyenglish",
-    "https://t.me/hunnybunnyenglish"
-  ]
-}
-</script>
-
-{lang === "ru" && !noindex && (
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Есть ли пробный урок?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Да, первое занятие проводится бесплатно. Длительность пробного занятия 20 минут."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Можно заниматься онлайн?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Да, занятия проходят онлайн для учеников из любой точки мира."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Сколько человек в группе?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "В группе от 4 до 8 учеников для максимального внимания каждому."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Где проходят занятия?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Онлайн — из любой точки мира. Офлайн — в Республике Беларусь, город Гомель."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Какой уровень английского нужен для начала?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Мы подбираем программу для любого уровня — от Beginner до Advanced."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Есть ли занятия для взрослых?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Да, мы обучаем детей, подростков и взрослых любого уровня."
-      }
-    }
-  ]
-}
-</script>
-)}
-
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1ZBMP7LNPQ"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1ZBMP7LNPQ');
+  </script>
 </head>
-	<body>
-
-<div
-  class="language-switcher"
-  style="
-    position:fixed;
-    top:20px;
-    right:20px;
-    z-index:10000;
-    display:flex;
-    gap:6px;
-    background:rgba(255,255,255,0.95);
-    padding:8px 14px;
-    border-radius:30px;
-    box-shadow:0 4px 12px rgba(0,0,0,.12);
-    font-family:Arial,sans-serif;
-    font-weight:bold;
-    backdrop-filter:blur(8px);
-  "
->
-  <a
-  href="/"
-  style={`
-    text-decoration:none;
-    font-weight:bold;
-    padding:6px 12px;
-    border-radius:20px;
-    transition:0.3s;
-    background:${lang === 'ru' ? '#8b5cf6' : 'transparent'};
-    color:${lang === 'ru' ? 'white' : '#555'};
-  `}
->
-  RU
-</a>
-
-<a
-  href="/en/"
-  style={`
-    text-decoration:none;
-    font-weight:bold;
-    padding:6px 12px;
-    border-radius:20px;
-    transition:0.3s;
-    background:${lang === 'en' ? '#8b5cf6' : 'transparent'};
-    color:${lang === 'en' ? 'white' : '#555'};
-  `}
->
-  EN
-</a>
-
-<a
-  href="/pl/"
-  style={`
-    text-decoration:none;
-    font-weight:bold;
-    padding:6px 12px;
-    border-radius:20px;
-    transition:0.3s;
-    background:${lang === 'pl' ? '#8b5cf6' : 'transparent'};
-    color:${lang === 'pl' ? 'white' : '#555'};
-  `}
->
-  PL
-</a>
-</div>
-
-<slot />
-
+<body>
+  <slot />
 </body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-  .language-switcher{
-    transition:.3s;
-}
-
-@media (max-width:768px){
-
-.language-switcher{
-
-    top:12px;
-    right:12px;
-
-    padding:6px 10px;
-
-    gap:3px;
-
-    font-size:13px;
-
-}
-
-}
-</style>

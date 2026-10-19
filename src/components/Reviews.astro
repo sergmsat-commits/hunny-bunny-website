@@ -1,0 +1,51 @@
+---
+import type { Lang } from '../data/business';
+import type { Translation } from '../i18n/translations';
+
+interface Props {
+  t: Translation;
+  lang: Lang;
+}
+const { t, lang } = Astro.props;
+const files = ['otz1', 'otz6', 'otz5'];
+---
+<section id="reviews" class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>{t.reviews.title}</h2>
+      <p>{t.reviews.lead}</p>
+    </div>
+    <ul class="reviews-grid" role="list">
+      {files.map((f) => (
+        <li class="card review">
+          <img src={`/images/reviews/${lang}/${f}.webp`} alt={t.reviews.alt} width="900" height="900" loading="lazy" decoding="async" />
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .reviews-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 16px;
+  }
+  .review {
+    overflow: hidden;
+    padding: 8px;
+  }
+  .review img {
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+  }
+  @media (min-width: 720px) {
+    .reviews-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+  }
+</style>

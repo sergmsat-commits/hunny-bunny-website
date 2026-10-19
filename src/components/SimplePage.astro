@@ -1,0 +1,70 @@
+---
+// Простая служебная страница (Спасибо, 404): шапка, зайчик, текст, кнопки.
+import Layout from '../layouts/Layout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import Bunny from './Bunny.astro';
+import Icon from './Icon.astro';
+import { translations } from '../i18n/translations';
+import { business, homePath, type Lang } from '../data/business';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  heading: string;
+  lines: string[];
+  showMessengers?: boolean;
+  button: string;
+}
+const { lang, title, heading, lines, showMessengers = false, button } = Astro.props;
+const t = translations[lang];
+const m = business.messengers;
+const order = t.contact.messengers as string[];
+const links: Record<string, string> = { telegram: m.telegram, viber: m.viber, whatsapp: m.whatsapp };
+---
+<Layout lang={lang} title={title} noindex ogLocale={t.locale}>
+  <Header t={t} lang={lang} />
+  <main class="simple">
+    <div class="container simple-inner">
+      <Bunny height={180} eager />
+      <h1>{heading}</h1>
+      {lines.map((l) => <p>{l}</p>)}
+      {showMessengers && (
+        <div class="simple-actions">
+          {order.map((k) => (
+            <a class="btn btn-secondary" href={links[k]} target="_blank" rel="noopener">
+              <Icon name={k} size={20} stroke={2} />{t.messengerLabels[k as keyof typeof t.messengerLabels]}
+            </a>
+          ))}
+        </div>
+      )}
+      <a href={homePath[lang]} class="btn btn-primary btn-lg">{button}</a>
+    </div>
+  </main>
+  <Footer t={t} lang={lang} />
+</Layout>
+
+<style>
+  .simple {
+    padding-block: 48px 72px;
+  }
+  .simple-inner {
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+  .simple-inner p {
+    font-size: 18px;
+    color: var(--c-ink-2);
+  }
+  .simple-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-block: 8px;
+  }
+</style>
