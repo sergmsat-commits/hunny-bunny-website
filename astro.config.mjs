@@ -4,5 +4,10 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://hunnybunny.by',
-  integrations: [sitemap()]
+  integrations: [
+    sitemap({
+      // служебные страницы не нужны в поиске
+      filter: (page) => !page.includes('/thank-you/'),
+    }),
+  ],
 });

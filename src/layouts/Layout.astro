@@ -2,7 +2,8 @@
 const {
   title = "Hunny Bunny English",
   description = "",
-  lang = "ru"
+  lang = "ru",
+  noindex = false
 } = Astro.props;
 
 const baseUrl = "https://hunnybunny.by";
@@ -39,7 +40,7 @@ const keywords =
 
   <meta http-equiv="content-language" content={lang} />
 
-	<meta name="viewport" content="width=device-width" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <link rel="icon" href="/favicon.ico" sizes="any"/>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
@@ -68,9 +69,9 @@ const keywords =
   content={keywords}
 />
 
-	<meta name="robots" content="index, follow" />
+	<meta name="robots" content={noindex ? "noindex, follow" : "index, follow"} />
 
-  <link rel="canonical" href={canonical} />
+  {!noindex && <link rel="canonical" href={canonical} />}
   
   <link
   rel="alternate"
@@ -130,7 +131,7 @@ const keywords =
   "image": "https://hunnybunny.by/images/logo.PNG",
   "description": "Онлайн и офлайн курсы английского языка для детей, подростков и взрослых.",
 
-  "telephone": "+48 451 090 218",
+  "telephone": "+375 29 625-64-42",
   "email": "mailto:julichka1988@yandex.by",
 
   "address": {
@@ -138,7 +139,7 @@ const keywords =
     "streetAddress": "ул. Крестьянская, 33",
     "addressLocality": "Гомель",
     "addressRegion": "Гомельская область",
-    "postalCode": "246000",
+    "postalCode": "246003",
     "addressCountry": "BY"
   },
 
@@ -166,11 +167,12 @@ const keywords =
   "sameAs": [
     "https://www.instagram.com/hunny_bunny_english",
     "https://www.youtube.com/@hunnybunnyenglish",
-    "https://t.me/+8e7QThwn7-1kMmFi"
+    "https://t.me/hunnybunnyenglish"
   ]
 }
 </script>
 
+{lang === "ru" && !noindex && (
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -227,6 +229,7 @@ const keywords =
   ]
 }
 </script>
+)}
 
 </head>
 	<body>
@@ -265,7 +268,7 @@ const keywords =
 </a>
 
 <a
-  href="/en"
+  href="/en/"
   style={`
     text-decoration:none;
     font-weight:bold;
@@ -280,7 +283,7 @@ const keywords =
 </a>
 
 <a
-  href="/pl"
+  href="/pl/"
   style={`
     text-decoration:none;
     font-weight:bold;

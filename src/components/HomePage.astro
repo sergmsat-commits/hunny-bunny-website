@@ -3,10 +3,10 @@ const { t, lang } = Astro.props;
 
 const thankYouUrl =
   lang === "en"
-    ? "https://hunnybunny.by/en/thank-you"
+    ? "https://hunnybunny.by/en/thank-you/"
     : lang === "pl"
-      ? "https://hunnybunny.by/pl/thank-you"
-      : "https://hunnybunny.by/thank-you";
+      ? "https://hunnybunny.by/pl/thank-you/"
+      : "https://hunnybunny.by/thank-you/";
 ---
  <main
     style="
@@ -161,6 +161,8 @@ const thankYouUrl =
   <img
   src="/images/logo.PNG"
   alt="Hunny Bunny English"
+  width="180"
+  height="180"
   style="
     width:180px;
     margin-bottom:20px;
@@ -182,6 +184,8 @@ const thankYouUrl =
     src="/images/stic-hb.webp"
     alt="Hunny Bunny"
     class="bunny-logo"
+    width="128"
+    height="70"
     style="
       height:70px;
       vertical-align:middle;
@@ -318,9 +322,11 @@ const thankYouUrl =
     "
   >
 
-    <a href="/images/teachers-kids.PNG" target="_blank">
+    <a href="/images/teachers-kids.webp" target="_blank">
       <img
-        src="/images/teachers-kids.PNG"
+    loading="lazy"
+    decoding="async"
+        src="/images/teachers-kids.webp"
         alt="Команда Hunny Bunny"
         style="
           width:320px;
@@ -372,6 +378,8 @@ const thankYouUrl =
 
   <a href="/images/lesson4.jpg" target="_blank">
   <img
+    loading="lazy"
+    decoding="async"
     src="/images/lesson4.jpg"
     alt={t.gallery.image1}
     style="
@@ -384,6 +392,8 @@ const thankYouUrl =
 
   <a href="/images/lesson6.jpg" target="_blank">
   <img
+    loading="lazy"
+    decoding="async"
     src="/images/lesson6.jpg"
     alt={t.gallery.image2}
     style="
@@ -396,6 +406,8 @@ const thankYouUrl =
 
   <a href="/images/lesson5.jpg" target="_blank">
   <img
+    loading="lazy"
+    decoding="async"
     src="/images/lesson5.jpg"
     alt={t.gallery.image3}
     style="
@@ -560,6 +572,8 @@ const thankYouUrl =
   "
 >
   <img
+    loading="lazy"
+    decoding="async"
     src={t.reviews.image1}
     alt={t.reviews.alt1}
     class="review-card"
@@ -571,6 +585,8 @@ const thankYouUrl =
   >
 
   <img
+    loading="lazy"
+    decoding="async"
     src={t.reviews.image2}
     alt={t.reviews.alt2}
     class="review-card"
@@ -582,6 +598,8 @@ const thankYouUrl =
   >
 
   <img
+    loading="lazy"
+    decoding="async"
     src={t.reviews.image3}
     alt={t.reviews.alt3}
     class="review-card"
@@ -873,6 +891,8 @@ const thankYouUrl =
 >
 
   <img
+    loading="lazy"
+    decoding="async"
     src="/images/stic-b.webp"
     alt="Hunny Bunny"
     style="
@@ -918,7 +938,7 @@ const thankYouUrl =
   </p>
 
 <a
-  href="https://wa.me/48451090218?text=Здравствуйте!%20Хочу%20оставить%20отзыв%20о%20школе%20Hunny%20Bunny."
+  href="https://wa.me/48573306598?text=Здравствуйте!%20Хочу%20оставить%20отзыв%20о%20школе%20Hunny%20Bunny."
   target="_blank"
   style="
     display:inline-block;
@@ -959,6 +979,8 @@ const thankYouUrl =
   "
 >
   <img
+    loading="lazy"
+    decoding="async"
     src="/images/instagram.svg"
     alt="Instagram"
     style="
@@ -981,7 +1003,7 @@ document.querySelectorAll('.fade-in').forEach((el) => {
 });
 </script>
 <a
-  href="https://t.me/+8e7QThwn7-1kMmFi"
+  href="https://t.me/hunnybunnyenglish"
   target="_blank"
   class="instagram-float tooltip"
   data-tooltip="Telegram"
@@ -1001,6 +1023,8 @@ document.querySelectorAll('.fade-in').forEach((el) => {
   "
 >
   <img
+    loading="lazy"
+    decoding="async"
     src="/images/telegram.svg"
     alt="Telegram"
     style="
@@ -1011,7 +1035,7 @@ document.querySelectorAll('.fade-in').forEach((el) => {
 </a>
 
 <a
-  href="https://wa.me/48451090218"
+  href="https://wa.me/48573306598"
   target="_blank"
   class="instagram-float tooltip"
   data-tooltip="WhatsApp"
@@ -1031,6 +1055,8 @@ document.querySelectorAll('.fade-in').forEach((el) => {
   "
 >
   <img
+    loading="lazy"
+    decoding="async"
     src="/images/whatsapp.svg"
     alt="WhatsApp"
     style="
@@ -1060,6 +1086,8 @@ document.querySelectorAll('.fade-in').forEach((el) => {
   "
 >
   <img
+    loading="lazy"
+    decoding="async"
     src="/images/youtube.svg"
     alt="YouTube"
     style="
