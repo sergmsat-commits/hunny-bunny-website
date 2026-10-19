@@ -1,0 +1,91 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { translations } from '../i18n/translations';
+import { privacy, privacyPath } from '../i18n/privacy';
+import { homePath, type Lang } from '../data/business';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = translations[lang];
+const p = privacy[lang];
+const desc = {
+  ru: 'Как Hunny Bunny English обрабатывает персональные данные и cookies: оператор, цели, сроки хранения и ваши права.',
+  en: 'How Hunny Bunny English handles personal data and cookies: controller, purposes, retention and your rights.',
+  pl: 'Jak Hunny Bunny English przetwarza dane osobowe i pliki cookies: administrator, cele, okres przechowywania i Twoje prawa.',
+}[lang];
+---
+<Layout
+  lang={lang}
+  title={`${p.title} | Hunny Bunny English`}
+  description={desc}
+  ogLocale={t.locale}
+  path={privacyPath[lang]}
+  alternates={privacyPath}
+>
+  <a href="#main" class="skip-link">{t.a11y.skip}</a>
+  <Header t={t} lang={lang} />
+  <main id="main" class="container policy">
+    <h1>{p.title}</h1>
+    <p class="policy-date">{p.updated}</p>
+    <p class="policy-intro">{p.intro}</p>
+    {p.sections.map((s) => (
+      <section>
+        <h2>{s.h}</h2>
+        {s.p?.slice(0, s.list ? 1 : undefined).map((x) => <p>{x}</p>)}
+        {s.list && (
+          <ul>
+            {s.list.map((li) => <li>{li}</li>)}
+          </ul>
+        )}
+        {s.list && s.p?.slice(1).map((x) => <p>{x}</p>)}
+      </section>
+    ))}
+    <p class="policy-back"><a href={homePath[lang]} class="btn btn-secondary">{t.legal.back}</a></p>
+  </main>
+  <Footer t={t} lang={lang} />
+</Layout>
+
+<style>
+  .policy {
+    max-width: 820px;
+    padding-block: 40px 72px;
+  }
+  .policy h1 {
+    margin-bottom: 8px;
+  }
+  .policy-date {
+    color: var(--c-muted);
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+  .policy-intro {
+    font-size: 18px;
+    color: var(--c-ink-2);
+    margin-bottom: 8px;
+  }
+  .policy section {
+    margin-top: 32px;
+  }
+  .policy h2 {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  .policy p + p,
+  .policy ul + p {
+    margin-top: 10px;
+  }
+  .policy ul {
+    margin: 8px 0 0;
+    padding-left: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .policy-back {
+    margin-top: 40px;
+  }
+</style>

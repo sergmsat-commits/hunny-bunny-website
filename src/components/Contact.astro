@@ -2,6 +2,7 @@
 import Icon from './Icon.astro';
 import Bunny from './Bunny.astro';
 import { business, type Lang } from '../data/business';
+import { privacyPath } from '../i18n/privacy';
 import type { Translation } from '../i18n/translations';
 
 interface Props {
@@ -109,8 +110,11 @@ const g = business.gomel;
             ))}
           </div>
         </fieldset>
+        <label class="consent">
+          <input type="checkbox" name="Согласие на обработку ПД" value="да" required />
+          <span>{t.legal.consentBefore}<a href={privacyPath[lang]} target="_blank">{t.legal.consentLink}</a>.</span>
+        </label>
         <button type="submit" class="btn btn-primary btn-lg">{c.form.submit}</button>
-        <p class="form-note">{c.form.note}</p>
       </form>
     </div>
   </div>
@@ -292,10 +296,21 @@ const g = business.gomel;
     outline: 3px solid var(--c-primary);
     outline-offset: 2px;
   }
-  .form-note {
-    font-size: 13px;
+  .consent {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 14px;
     line-height: 1.5;
-    color: var(--c-muted);
+    color: var(--c-ink-2);
+    cursor: pointer;
+  }
+  .consent input {
+    flex: none;
+    width: 22px;
+    height: 22px;
+    margin: 0;
+    accent-color: var(--c-primary);
   }
   @media (min-width: 960px) {
     .contact-grid {

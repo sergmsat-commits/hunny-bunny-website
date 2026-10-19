@@ -1,0 +1,93 @@
+---
+// Баннер согласия на аналитику. Пока посетитель не нажал «Принять», Google Analytics не загружается.
+import { translations } from '../i18n/translations';
+import { privacyPath } from '../i18n/privacy';
+import type { Lang } from '../data/business';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = translations[lang].legal;
+---
+<div class="cookie" role="region" aria-label={t.cookies}>
+  <p>{t.cookieText} <a href={privacyPath[lang]}>{t.cookieMore}</a></p>
+  <div class="cookie-actions">
+    <button type="button" class="btn btn-secondary" data-consent="denied">{t.cookieDecline}</button>
+    <button type="button" class="btn btn-primary" data-consent="granted">{t.cookieAccept}</button>
+  </div>
+</div>
+
+<script>
+  const KEY = 'hb-consent';
+  const root = document.documentElement;
+  const save = (value: string) => {
+    try {
+      localStorage.setItem(KEY, value);
+    } catch {
+      /* приватный режим: выбор действует до закрытия вкладки */
+    }
+    root.dataset.consent = value;
+    if (value === 'granted') {
+      (window as unknown as { hbLoadGA?: () => void }).hbLoadGA?.();
+    } else {
+      // Отказ: убираем cookies аналитики, если они уже были
+      document.cookie.split(';').forEach((c) => {
+        const name = c.split('=')[0].trim();
+        if (name.startsWith('_ga')) {
+          document.cookie = `${name}=; Max-Age=0; path=/; domain=.${location.hostname}`;
+          document.cookie = `${name}=; Max-Age=0; path=/`;
+        }
+      });
+    }
+  };
+  document.querySelectorAll<HTMLButtonElement>('.cookie [data-consent]').forEach((b) =>
+    b.addEventListener('click', () => save(b.dataset.consent || 'denied')),
+  );
+  document.querySelectorAll('[data-cookie-settings]').forEach((b) =>
+    b.addEventListener('click', () => {
+      root.dataset.consent = 'unset';
+    }),
+  );
+</script>
+
+<style>
+  .cookie {
+    display: none;
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: calc(var(--sticky-bar-h, 0px) + 12px);
+    z-index: 60;
+    max-width: 560px;
+    margin-inline: auto;
+    padding: 16px;
+    flex-direction: column;
+    gap: 12px;
+    background: var(--c-surface);
+    color: var(--c-ink);
+    border-radius: var(--r-l);
+    box-shadow: 0 16px 48px rgba(35, 30, 69, 0.22), inset 0 0 0 1px var(--c-lavender);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  :global(html[data-consent='unset']) .cookie {
+    display: flex;
+  }
+  .cookie-actions {
+    display: flex;
+    gap: 10px;
+  }
+  .cookie-actions .btn {
+    flex: 1;
+    min-height: 48px;
+  }
+  @media (min-width: 960px) {
+    .cookie {
+      left: auto;
+      right: 24px;
+      bottom: 24px;
+      margin: 0;
+    }
+  }
+</style>
