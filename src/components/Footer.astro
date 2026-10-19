@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import logo from '../assets/logo-bunny.png';
 import Icon from './Icon.astro';
 import { business, homePath, type Lang } from '../data/business';
+import { privacyPath } from '../i18n/privacy';
 import type { Translation } from '../i18n/translations';
 
 interface Props {
@@ -35,6 +36,7 @@ const g = business.gomel;
       <p>{g.street[lang]}, {g.city[lang]}</p>
       <p><a href={`tel:${business.phones.by.e164}`}>{business.phones.by.display}</a></p>
       <p><a href={`tel:${business.phones.pl.e164}`}>{business.phones.pl.display}</a></p>
+      <p><a href={`mailto:${business.email}`}>{business.email}</a></p>
       <p class="footer-social" aria-label={t.footer.follow}>
         <a href={business.socials.instagram} target="_blank" rel="noopener" aria-label="Instagram"><Icon name="instagram" size={22} /></a>
         <a href={business.socials.youtube} target="_blank" rel="noopener" aria-label="YouTube"><Icon name="youtube" size={22} /></a>
@@ -44,6 +46,10 @@ const g = business.gomel;
   </div>
   <div class="container footer-legal">
     <p>© 2026 Hunny Bunny English. {t.footer.rights}</p>
+    <p class="footer-links">
+      <a href={privacyPath[lang]}>{t.legal.privacy}</a>
+      <button type="button" class="link-btn" data-cookie-settings>{t.legal.cookies}</button>
+    </p>
     <p>{business.legal.company}, УНП {business.legal.unp}, {g.city.ru}, {g.street.ru}</p>
   </div>
 </footer>
@@ -122,6 +128,21 @@ const g = business.gomel;
     display: flex;
     flex-direction: column;
     gap: 4px;
+  }
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+  }
+  .footer-links a,
+  .link-btn {
+    color: #e9e6ff;
+    font: inherit;
+    background: none;
+    border: 0;
+    padding: 0;
+    text-decoration: underline;
+    cursor: pointer;
   }
   @media (min-width: 840px) {
     .footer-grid {
