@@ -1,0 +1,270 @@
+---
+// Видео с YouTube-канала в рамке «телефона». До нажатия — своя обложка без запросов к YouTube,
+// после нажатия загружается плеер youtube-nocookie.
+import Bunny from './Bunny.astro';
+import Deco from './Deco.astro';
+import Icon from './Icon.astro';
+import { business } from '../data/business';
+import type { Translation } from '../i18n/translations';
+
+interface Props {
+  t: Translation;
+}
+const { t } = Astro.props;
+const v = t.video;
+const id = 'DbUVfJOER4Q';
+const colours = ['#ff6b6b', '#ffb347', '#ffe066', '#7bd389', '#5bc0eb', '#9b8cff', '#f78fd6'];
+---
+<section class="section video" aria-labelledby="video-title">
+  <div class="container video-grid">
+    <div class="video-text reveal">
+      <h2 id="video-title">{v.title}</h2>
+      <p>{v.lead}</p>
+      <a href={business.socials.youtube} class="btn btn-secondary" target="_blank" rel="noopener">
+        <Icon name="youtube" size={20} stroke={2} />{v.more}
+      </a>
+      <p class="video-note">{v.note}</p>
+    </div>
+
+    <div class="phone-wrap reveal">
+      <Deco name="flower" size={70} class="d-vf1" />
+      <Deco name="flower" size={44} tone="peach" class="d-vf2" />
+      <Deco name="squiggle" size={300} class="d-vsq" />
+      <div class="phone">
+        <div class="phone-screen" data-yt={id} data-title={v.frame}>
+          <button type="button" class="yt-poster" aria-label={v.play}>
+            <span class="poster-dots" aria-hidden="true">
+              {colours.map((c, i) => <span style={`--c:${c}; --i:${i}`} />)}
+            </span>
+            <span class="poster-title" aria-hidden="true">Colors Song!</span>
+            <span class="poster-sub" aria-hidden="true">Learn colors 🎨</span>
+            <Bunny height={150} class="poster-bunny" delay={1} />
+            <span class="play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="30" height="30"><path d="M8 5.5v13l11-6.5-11-6.5Z" fill="currentColor" /></svg>
+            </span>
+            <span class="poster-brand" aria-hidden="true">Hunny Bunny English</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-yt]').forEach((box) => {
+    box.querySelector('.yt-poster')?.addEventListener('click', () => {
+      const f = document.createElement('iframe');
+      f.src = `https://www.youtube-nocookie.com/embed/${box.dataset.yt}?autoplay=1&playsinline=1&rel=0&modestbranding=1`;
+      f.title = box.dataset.title || 'YouTube';
+      f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      f.allowFullscreen = true;
+      box.replaceChildren(f);
+      f.focus();
+    });
+  });
+</script>
+
+<style>
+  .video {
+    overflow-x: clip;
+  }
+  .video-grid {
+    display: grid;
+    gap: 40px;
+    align-items: center;
+  }
+  .video-text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+    max-width: 520px;
+  }
+  .video-text > p:not(.video-note) {
+    font-size: 18px;
+    color: var(--c-ink-2);
+  }
+  .video-note {
+    font-size: 13px;
+    color: var(--c-muted);
+  }
+
+  .phone-wrap {
+    position: relative;
+    justify-self: center;
+    padding: 20px;
+  }
+  .phone {
+    position: relative;
+    z-index: 1;
+    width: min(72vw, 300px);
+    aspect-ratio: 9 / 19;
+    padding: 10px;
+    border-radius: 44px;
+    background: linear-gradient(145deg, #2f2960, #17132f);
+    box-shadow:
+      0 40px 80px -24px rgba(35, 30, 69, 0.55),
+      inset 0 0 0 2px rgba(255, 255, 255, 0.08);
+    rotate: -3deg;
+    transition: rotate 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  @media (hover: hover) {
+    .phone-wrap:hover .phone {
+      rotate: 0deg;
+    }
+  }
+  .phone-screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 34px;
+    overflow: hidden;
+    background: #000;
+  }
+  .phone-screen :global(iframe) {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .yt-poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    font: inherit;
+    color: var(--c-ink);
+    background:
+      radial-gradient(70% 45% at 50% 100%, rgba(243, 182, 234, 0.8), transparent 70%),
+      linear-gradient(180deg, #e9e5ff 0%, #f7f5ff 55%, #ffe9f8 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 48px;
+  }
+  .poster-dots {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .poster-dots span {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--c);
+    box-shadow: 0 4px 8px rgba(35, 30, 69, 0.15);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .poster-dots span {
+      animation: dot-bounce 1.8s ease-in-out infinite;
+      animation-delay: calc(var(--i) * 0.12s);
+    }
+  }
+  @keyframes dot-bounce {
+    0%,
+    60%,
+    100% {
+      translate: 0 0;
+    }
+    30% {
+      translate: 0 -8px;
+    }
+  }
+  .poster-title {
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    background: linear-gradient(90deg, #ff6b6b, #ffb347, #7bd389, #5bc0eb, #9b8cff, #f78fd6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .poster-sub {
+    margin-top: 6px;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--c-ink-2);
+  }
+  .yt-poster :global(.poster-bunny) {
+    position: absolute !important;
+    bottom: 34px;
+    left: 50%;
+    translate: -50% 0;
+  }
+  .play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 4px;
+    color: #fff;
+    background: rgba(91, 79, 217, 0.9);
+    box-shadow:
+      0 0 0 8px rgba(255, 255, 255, 0.5),
+      0 16px 32px rgba(35, 30, 69, 0.35);
+    z-index: 2;
+    transition: scale 0.3s;
+  }
+  .yt-poster:hover .play,
+  .yt-poster:focus-visible .play {
+    scale: 1.08;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .play::after {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      animation: ping 2.2s ease-out infinite;
+    }
+  }
+  @keyframes ping {
+    to {
+      scale: 1.5;
+      opacity: 0;
+    }
+  }
+  .poster-brand {
+    position: absolute;
+    bottom: 14px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: var(--c-primary-ink);
+  }
+  .phone-wrap :global(.d-vf1) {
+    top: 0;
+    right: -6px;
+    z-index: 2;
+  }
+  .phone-wrap :global(.d-vf2) {
+    bottom: 60px;
+    left: -8px;
+    z-index: 2;
+  }
+  .phone-wrap :global(.d-vsq) {
+    top: 40%;
+    left: -140px;
+    rotate: -20deg;
+  }
+
+  @media (min-width: 960px) {
+    .video-grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 64px;
+    }
+    .phone {
+      width: 300px;
+    }
+  }
+</style>

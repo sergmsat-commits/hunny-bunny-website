@@ -7,6 +7,8 @@ import Why from './Why.astro';
 import Team from './Team.astro';
 import Gallery from './Gallery.astro';
 import Reviews from './Reviews.astro';
+import Video from './Video.astro';
+import FinalCta from './FinalCta.astro';
 import Faq from './Faq.astro';
 import Contact from './Contact.astro';
 import Footer from './Footer.astro';
@@ -29,9 +31,11 @@ const t = translations[lang];
     <Why t={t} />
     <Team t={t} />
     <Gallery t={t} />
+    <Video t={t} />
     <Reviews t={t} lang={lang} />
     <Faq t={t} />
     <Contact t={t} lang={lang} />
+    <FinalCta t={t} lang={lang} />
   </main>
   <Footer t={t} lang={lang} />
   <StickyBar t={t} lang={lang} />

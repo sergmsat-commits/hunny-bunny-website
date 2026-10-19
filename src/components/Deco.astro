@@ -1,0 +1,94 @@
+---
+// Фирменные «стикеры» в духе сторис Hunny Bunny: волнистая лента, цветок, сердечко, искорка.
+// Чисто декоративные: скрыты от скринридеров и не перехватывают клики.
+interface Props {
+  name: 'squiggle' | 'flower' | 'heart' | 'sparkle';
+  size?: number;
+  class?: string;
+  style?: string;
+  tone?: 'pink' | 'lilac' | 'peach';
+}
+const { name, size = 48, class: cls, style, tone = 'pink' } = Astro.props;
+const petals: Record<string, [string, string]> = {
+  pink: ['#f3b6ea', '#d97fd3'],
+  lilac: ['#cdc6ff', '#9a8ff0'],
+  peach: ['#ffe2b8', '#f2b36d'],
+};
+const [p1, p2] = petals[tone];
+const id = `g${Math.random().toString(36).slice(2, 8)}`;
+---
+<span class:list={['deco', `deco-${name}`, cls]} style={style} aria-hidden="true">
+  {name === 'squiggle' && (
+    <svg viewBox="0 0 240 80" width={size} height={(size * 80) / 240} fill="none">
+      <path d="M6 54c22-40 46-40 58-8s30 34 46 2 34-44 54-10 34 30 70-8" stroke="currentColor" stroke-width="10" stroke-linecap="round" />
+    </svg>
+  )}
+  {name === 'flower' && (
+    <svg viewBox="0 0 100 100" width={size} height={size}>
+      <defs>
+        <radialGradient id={id} cx="50%" cy="50%" r="60%">
+          <stop offset="0.25" stop-color={p2} />
+          <stop offset="1" stop-color={p1} />
+        </radialGradient>
+      </defs>
+      <g fill={`url(#${id})`}>
+        {[0, 45, 90, 135, 180, 225, 270, 315].map((a) => (
+          <ellipse cx="50" cy="24" rx="11" ry="22" transform={`rotate(${a} 50 50)`} />
+        ))}
+      </g>
+      <circle cx="50" cy="50" r="11" fill="#f6c24b" />
+      <circle cx="47" cy="47" r="4" fill="#fbe08f" />
+    </svg>
+  )}
+  {name === 'heart' && (
+    <svg viewBox="0 0 24 24" width={size} height={size}>
+      <path d="M12 21s-7.5-4.6-9.5-9.2C1 8.4 3.2 4.5 7 4.5c2.1 0 3.6 1.1 5 3 1.4-1.9 2.9-3 5-3 3.8 0 6 3.9 4.5 7.3C19.5 16.4 12 21 12 21Z" fill="currentColor" />
+    </svg>
+  )}
+  {name === 'sparkle' && (
+    <svg viewBox="0 0 24 24" width={size} height={size}>
+      <path d="M12 1.5c.6 5.4 3.6 9.4 9.5 10.5-5.9 1.1-8.9 5.1-9.5 10.5-.6-5.4-3.6-9.4-9.5-10.5C8.4 10.9 11.4 6.9 12 1.5Z" fill="currentColor" />
+    </svg>
+  )}
+</span>
+
+<style>
+  .deco {
+    position: absolute;
+    display: block;
+    line-height: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .deco-squiggle {
+    color: #c8d3f8;
+  }
+  .deco-heart {
+    color: #e9a6e5;
+  }
+  .deco-sparkle {
+    color: #f6c24b;
+  }
+  .deco-flower svg {
+    filter: drop-shadow(0 6px 10px rgba(35, 30, 69, 0.12));
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .deco-flower {
+      animation: deco-spin 24s linear infinite;
+    }
+    .deco-sparkle {
+      animation: deco-twinkle 3.2s ease-in-out infinite;
+    }
+  }
+  @keyframes deco-spin {
+    to {
+      rotate: 360deg;
+    }
+  }
+  @keyframes deco-twinkle {
+    50% {
+      scale: 0.7;
+      opacity: 0.6;
+    }
+  }
+</style>

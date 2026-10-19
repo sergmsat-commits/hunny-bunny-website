@@ -285,3 +285,22 @@ p {
     transform: scale(1.05);
   }
 }
+
+/* Плавное появление при прокрутке. Только там, где браузер умеет анимации по прокрутке;
+   в остальных браузерах и при «уменьшить движение» всё видно сразу. Используем свойство translate,
+   чтобы не мешать эффектам наведения на transform. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+  }
+}
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    translate: 0 32px;
+  }
+}

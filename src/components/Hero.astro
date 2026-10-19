@@ -3,6 +3,7 @@ import { Image, Picture } from 'astro:assets';
 import Icon from './Icon.astro';
 import Bunny from './Bunny.astro';
 import Zoomable from './Zoomable.astro';
+import Deco from './Deco.astro';
 import photoMain from '../assets/lessons/lesson-beanbags.jpg';
 import photoSecond from '../assets/lessons/lesson-desk.jpg';
 import founder from '../assets/team/satyrova.jpg';
@@ -20,6 +21,7 @@ const messenger = lang === 'pl' ? { href: business.messengers.whatsapp, icon: 'w
 <section class="hero">
   <div class="container hero-grid">
     <div class="hero-text">
+      <Deco name="sparkle" size={22} class="d-spark1" />
       <p class="eyebrow"><Icon name="pin" size={18} stroke={2} />{h.eyebrow}</p>
       <h1>{h.title}</h1>
       <div class="lead-wrap">
@@ -35,7 +37,7 @@ const messenger = lang === 'pl' ? { href: business.messengers.whatsapp, icon: 'w
       <dl class="hero-stats">
         {h.stats.map((s) => (
           <div>
-            <dt>{s.value}</dt>
+            <dt data-count={/^\d/.test(s.value) ? s.value : undefined}>{s.value}</dt>
             <dd>{s.label}</dd>
           </div>
         ))}
@@ -43,6 +45,10 @@ const messenger = lang === 'pl' ? { href: business.messengers.whatsapp, icon: 'w
     </div>
 
     <div class="hero-media">
+      <Deco name="squiggle" size={420} class="d-squiggle" />
+      <Deco name="flower" size={64} class="d-flower1" />
+      <Deco name="flower" size={44} tone="lilac" class="d-flower2" />
+      <Deco name="heart" size={22} class="d-heart" />
       <div class="photo-main zoom-frame">
         <Zoomable src={photoMain} alt={h.photoMain} label={t.a11y.openPhoto}>
           <Picture src={photoMain} alt={h.photoMain} widths={[360, 540, 720]} sizes="(min-width: 960px) 360px, 92vw" formats={['avif', 'webp']} loading="eager" fetchpriority="high" />
@@ -68,15 +74,70 @@ const messenger = lang === 'pl' ? { href: business.messengers.whatsapp, icon: 'w
   </div>
 </section>
 
+<script>
+  // Цифры на первом экране «набегают» от нуля. В HTML остаётся настоящее значение — для поисковиков и без JS.
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll<HTMLElement>('[data-count]').forEach((el) => {
+      const raw = el.dataset.count || '';
+      const target = parseInt(raw, 10);
+      const suffix = raw.replace(/^\d+/, '');
+      const t0 = performance.now();
+      const dur = 1400;
+      const tick = (now: number) => {
+        const k = Math.min(1, (now - t0) / dur);
+        const eased = 1 - Math.pow(1 - k, 3);
+        el.textContent = Math.round(target * eased) + suffix;
+        if (k < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }
+</script>
+
 <style>
   .hero {
+    position: relative;
+    isolation: isolate;
+    overflow-x: clip;
     padding-block: 24px 48px;
+  }
+  /* Мягкое цветное сияние за первым экраном */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: -80px 0 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(42% 38% at 88% 18%, rgba(243, 182, 234, 0.5), transparent 70%),
+      radial-gradient(38% 42% at 6% 8%, rgba(207, 201, 255, 0.6), transparent 70%),
+      radial-gradient(46% 40% at 62% 96%, rgba(200, 211, 248, 0.55), transparent 72%);
+  }
+  .hero-text {
+    position: relative;
+  }
+  .hero-text :global(.d-spark1) {
+    top: -6px;
+    right: 8%;
+  }
+  .hero-media :global(.d-squiggle) {
+    display: none;
+  }
+  .hero-media :global(.d-flower1) {
+    top: -22px;
+    right: -10px;
+    z-index: 3;
+  }
+  .hero-media :global(.d-flower2),
+  .hero-media :global(.d-heart) {
+    display: none;
   }
   .hero-grid {
     display: grid;
     gap: 28px;
   }
   .hero-text {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 18px;
@@ -204,6 +265,32 @@ const messenger = lang === 'pl' ? { href: business.messengers.whatsapp, icon: 'w
     }
     .hero-media {
       height: 560px;
+    }
+    .hero-media :global(.d-squiggle) {
+      display: block;
+      left: -60px;
+      bottom: 40px;
+      opacity: 0.9;
+    }
+    .hero-media :global(.d-flower1) {
+      top: -26px;
+      left: 300px;
+      right: auto;
+    }
+    .hero-media :global(.d-flower2) {
+      display: block;
+      right: -22px;
+      top: 330px;
+      z-index: 3;
+    }
+    .hero-media :global(.d-heart) {
+      display: block;
+      left: -24px;
+      top: 120px;
+    }
+    .hero-text :global(.d-spark1) {
+      top: -18px;
+      right: 18%;
     }
     .photo-main {
       position: absolute;
