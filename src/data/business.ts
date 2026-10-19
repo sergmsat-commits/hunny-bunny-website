@@ -8,7 +8,7 @@ export const business = {
     unp: '491393414',
   },
   site: 'https://hunnybunny.by',
-  email: 'julichka1988@yandex.by', // TODO: заменить на hello@hunnybunny.by после настройки Email Routing
+  email: 'hello@hunnybunny.by', // пересылка через Cloudflare Email Routing на почту Юлии
   gomel: {
     street: { ru: 'ул. Крестьянская, 33', en: '33 Krestyanskaya St', pl: 'ul. Kriestjanskaja 33' },
     city: { ru: 'Гомель', en: 'Gomel', pl: 'Homel' },

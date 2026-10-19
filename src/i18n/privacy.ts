@@ -14,7 +14,7 @@ export const privacy: Record<'ru' | 'en' | 'pl', Policy> = {
     intro:
       'Эта политика объясняет, какие персональные данные собирает сайт hunnybunny.by школы Hunny Bunny English, зачем мы это делаем и какие у вас права. Политика подготовлена в соответствии с Законом Республики Беларусь от 7 мая 2021 г. № 99-З «О защите персональных данных» и, для посетителей из Европейского союза, с Общим регламентом по защите данных (GDPR).',
     sections: [
-      { h: '1. Оператор', p: [`Оператор персональных данных — ${operator}. Связаться с нами: телефон +375 29 625-64-42, Telegram @hunnybunnyenglish, email julichka1988@yandex.by.`] },
+      { h: '1. Оператор', p: [`Оператор персональных данных — ${operator}. Связаться с нами: телефон +375 29 625-64-42, Telegram @hunnybunnyenglish, email hello@hunnybunny.by.`] },
       {
         h: '2. Какие данные мы получаем',
         list: [
@@ -86,7 +86,7 @@ export const privacy: Record<'ru' | 'en' | 'pl', Policy> = {
     intro:
       'This policy explains what personal data the hunnybunny.by website of Hunny Bunny English collects, why we do it and what your rights are. It follows the Law of the Republic of Belarus No. 99-Z of 7 May 2021 “On Personal Data Protection” and, for visitors from the European Union, the General Data Protection Regulation (GDPR).',
     sections: [
-      { h: '1. Controller', p: [`The data controller is YUSPRO LLC (ООО «ЮСПРО»), registration number (UNP) 491393414, 33 Krestyanskaya St, Gomel, Republic of Belarus. Contact us: phone +375 29 625-64-42, Telegram @hunnybunnyenglish, email julichka1988@yandex.by.`] },
+      { h: '1. Controller', p: [`The data controller is YUSPRO LLC (ООО «ЮСПРО»), registration number (UNP) 491393414, 33 Krestyanskaya St, Gomel, Republic of Belarus. Contact us: phone +375 29 625-64-42, Telegram @hunnybunnyenglish, email hello@hunnybunny.by.`] },
       {
         h: '2. What data we receive',
         list: [
@@ -158,7 +158,7 @@ export const privacy: Record<'ru' | 'en' | 'pl', Policy> = {
     intro:
       'Niniejsza polityka wyjaśnia, jakie dane osobowe zbiera strona hunnybunny.by szkoły Hunny Bunny English, w jakim celu to robimy i jakie prawa Ci przysługują. Została przygotowana zgodnie z ustawą Republiki Białorusi nr 99-Z z dnia 7 maja 2021 r. o ochronie danych osobowych oraz, w odniesieniu do osób z Unii Europejskiej, z ogólnym rozporządzeniem o ochronie danych (RODO).',
     sections: [
-      { h: '1. Administrator', p: ['Administratorem danych jest spółka OOO «ЮСПРО» (YUSPRO), UNP 491393414, ul. Kriestjanskaja 33, Homel, Republika Białorusi. Kontakt: tel. +375 29 625-64-42, WhatsApp +48 573 306 598, Telegram @hunnybunnyenglish, e-mail julichka1988@yandex.by.'] },
+      { h: '1. Administrator', p: ['Administratorem danych jest spółka OOO «ЮСПРО» (YUSPRO), UNP 491393414, ul. Kriestjanskaja 33, Homel, Republika Białorusi. Kontakt: tel. +375 29 625-64-42, WhatsApp +48 573 306 598, Telegram @hunnybunnyenglish, e-mail hello@hunnybunny.by.'] },
       {
         h: '2. Jakie dane otrzymujemy',
         list: [
