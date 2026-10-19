@@ -1,0 +1,79 @@
+---
+import Icon from './Icon.astro';
+import type { Translation } from '../i18n/translations';
+
+interface Props {
+  t: Translation;
+}
+const { t } = Astro.props;
+---
+<section id="faq" class="section faq">
+  <div class="container faq-grid">
+    <div class="section-head">
+      <h2>{t.faq.title}</h2>
+    </div>
+    <div class="faq-list">
+      {t.faq.items.map((item) => (
+        <details class="faq-item">
+          <summary>
+            <span>{item.q}</span>
+            <Icon name="plus" size={22} stroke={2} />
+          </summary>
+          <p>{item.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    background: var(--c-surface);
+  }
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .faq-item {
+    background: var(--c-bg);
+    border-radius: var(--r-m);
+  }
+  .faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 56px;
+    padding: 14px 18px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq-item summary :global(svg) {
+    flex: none;
+    color: var(--c-primary);
+    transition: transform 0.2s ease;
+  }
+  .faq-item[open] summary :global(svg) {
+    transform: rotate(45deg);
+  }
+  .faq-item p {
+    padding: 0 18px 18px;
+    color: var(--c-ink-2);
+    font-size: 16px;
+  }
+  @media (min-width: 960px) {
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+      gap: 48px;
+      align-items: start;
+    }
+  }
+</style>

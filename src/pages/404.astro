@@ -1,44 +1,10 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import SimplePage from '../components/SimplePage.astro';
 ---
-
-<Layout lang="ru" title="Страница не найдена | Hunny Bunny English" noindex>
-  <main
-    style="
-      text-align:center;
-      padding:80px 20px;
-      max-width:720px;
-      margin:0 auto;
-      font-family:Arial, sans-serif;
-      color:#3c2f2f;
-    "
-  >
-    <img
-      src="/images/stic-hb.webp"
-      alt="Hunny Bunny"
-      width="160"
-      style="height:auto; margin-bottom:20px;"
-    />
-
-    <h1 style="font-size:36px; margin:0 0 12px;">Страница не найдена</h1>
-    <p style="font-size:18px; margin:0 0 6px;">Page not found · Nie znaleziono strony</p>
-    <p style="font-size:18px; line-height:1.6; margin:20px 0 32px;">
-      Возможно, адрес изменился или в нём опечатка. Зайчик предлагает вернуться на главную.
-    </p>
-
-    <nav style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
-      <a
-        href="/"
-        style="background:#8b5cf6; color:#fff; text-decoration:none; padding:14px 24px; border-radius:12px; font-weight:bold;"
-      >На главную</a>
-      <a
-        href="/en/"
-        style="background:#fff; color:#5b21b6; text-decoration:none; padding:14px 24px; border-radius:12px; font-weight:bold; border:2px solid #8b5cf6;"
-      >Home (EN)</a>
-      <a
-        href="/pl/"
-        style="background:#fff; color:#5b21b6; text-decoration:none; padding:14px 24px; border-radius:12px; font-weight:bold; border:2px solid #8b5cf6;"
-      >Strona główna (PL)</a>
-    </nav>
-  </main>
-</Layout>
+<SimplePage
+  lang="ru"
+  title="Страница не найдена | Hunny Bunny English"
+  heading="Страница не найдена"
+  lines={['Page not found · Nie znaleziono strony', 'Возможно, адрес изменился или в нём опечатка. Зайчик предлагает вернуться на главную.']}
+  button="На главную"
+/>

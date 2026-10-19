@@ -1,0 +1,59 @@
+---
+import Icon from './Icon.astro';
+import type { Translation } from '../i18n/translations';
+
+interface Props {
+  t: Translation;
+}
+const { t } = Astro.props;
+---
+<section class="section why">
+  <div class="container">
+    <div class="section-head">
+      <h2>{t.why.title}</h2>
+    </div>
+    <ul class="why-grid" role="list">
+      {t.why.items.map((w) => (
+        <li class="why-item">
+          <span class="icon-tile"><Icon name={w.icon} size={26} /></span>
+          <div>
+            <h3>{w.title}</h3>
+            <p>{w.text}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .why {
+    background: var(--c-surface);
+  }
+  .why-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 24px;
+  }
+  .why-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .why-item h3 {
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+  .why-item p {
+    color: var(--c-ink-2);
+    font-size: 16px;
+  }
+  @media (min-width: 720px) {
+    .why-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 32px 40px;
+    }
+  }
+</style>

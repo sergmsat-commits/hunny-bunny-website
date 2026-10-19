@@ -1,0 +1,90 @@
+---
+import { Picture } from 'astro:assets';
+import satyrova from '../assets/team/satyrova.jpg';
+import laevskaya from '../assets/team/laevskaya.jpg';
+import barinova from '../assets/team/barinova.jpg';
+import rud from '../assets/team/rud.jpg';
+import type { Translation } from '../i18n/translations';
+
+interface Props {
+  t: Translation;
+}
+const { t } = Astro.props;
+const photos: Record<string, ImageMetadata> = { satyrova, laevskaya, barinova, rud };
+---
+<section id="team" class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>{t.team.title}</h2>
+      <p>{t.team.lead}</p>
+    </div>
+    <ul class="team-grid" role="list">
+      {t.team.people.map((p) => (
+        <li class="card person">
+          <Picture src={photos[p.photo]} alt={p.name} widths={[280, 420, 560]} sizes="(min-width: 1140px) 280px, (min-width: 720px) 45vw, 90vw" formats={['avif', 'webp']} class="person-photo" />
+          <div class="person-body">
+            <p class="person-role">{p.role}</p>
+            <h3>{p.name}</h3>
+            <p class="person-note">{p.note}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .team-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .person {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .person :global(.person-photo) {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+  .person-body {
+    padding: 14px 14px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .person h3 {
+    font-size: 16px;
+  }
+  .person-role {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--c-primary-ink);
+  }
+  .person-note {
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--c-muted);
+  }
+  @media (min-width: 1140px) {
+    .team-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .person-body {
+      padding: 18px 20px 22px;
+    }
+    .person h3 {
+      font-size: 19px;
+    }
+    .person-note {
+      font-size: 15px;
+    }
+  }
+</style>

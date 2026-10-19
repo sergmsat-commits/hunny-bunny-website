@@ -1,0 +1,272 @@
+---
+import { Image, Picture } from 'astro:assets';
+import Icon from './Icon.astro';
+import Bunny from './Bunny.astro';
+import photoMain from '../assets/lessons/lesson-beanbags.jpg';
+import photoSecond from '../assets/lessons/lesson-desk.jpg';
+import founder from '../assets/team/satyrova.jpg';
+import { business, homePath, type Lang } from '../data/business';
+import type { Translation } from '../i18n/translations';
+
+interface Props {
+  t: Translation;
+  lang: Lang;
+}
+const { t, lang } = Astro.props;
+const h = t.hero;
+const messenger = lang === 'pl' ? { href: business.messengers.whatsapp, icon: 'whatsapp', label: 'WhatsApp' } : { href: business.messengers.telegram, icon: 'telegram', label: 'Telegram' };
+---
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <p class="eyebrow"><Icon name="pin" size={18} stroke={2} />{h.eyebrow}</p>
+      <h1>{h.title}</h1>
+      <div class="lead-wrap">
+        <Bunny height={104} class="bunny-mobile" eager />
+        <p class="hero-lead">{h.lead}</p>
+      </div>
+      <div class="hero-actions">
+        <a href={`${homePath[lang]}#contact`} class="btn btn-primary btn-lg">{t.cta.trial}</a>
+        <a href={messenger.href} class="btn btn-secondary btn-lg" target="_blank" rel="noopener">
+          <Icon name={messenger.icon} size={20} stroke={2} />{messenger.label}
+        </a>
+      </div>
+      <dl class="hero-stats">
+        {h.stats.map((s) => (
+          <div>
+            <dt>{s.value}</dt>
+            <dd>{s.label}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+
+    <div class="hero-media">
+      <div class="photo-main">
+        <Picture src={photoMain} alt={h.photoMain} widths={[360, 540, 720]} sizes="(min-width: 960px) 360px, 92vw" formats={['avif', 'webp']} loading="eager" fetchpriority="high" />
+        <span class="free-badge"><Icon name="heart" size={16} filled stroke={1.5} />{h.freeBadge}</span>
+      </div>
+      <div class="photo-second">
+        <Picture src={photoSecond} alt={h.photoSecond} widths={[260, 520]} sizes="260px" formats={['avif', 'webp']} />
+      </div>
+      <div class="founder-card">
+        <Bunny height={120} class="bunny-desktop" delay={1.5} />
+        <Image src={founder} alt="" width={96} height={96} class="founder-photo" />
+        <div>
+          <p class="founder-name">{h.founderName}</p>
+          <p class="founder-role">{h.founderRole}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: 24px 48px;
+  }
+  .hero-grid {
+    display: grid;
+    gap: 28px;
+  }
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .hero-lead {
+    font-size: 17px;
+    color: var(--c-ink-2);
+    max-width: 560px;
+  }
+  .hero-actions {
+    display: none;
+  }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin: 0;
+    order: 3;
+  }
+  .hero-stats div {
+    background: var(--c-surface);
+    border-radius: var(--r-m);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .hero-stats dt {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: 15px;
+    overflow-wrap: anywhere;
+    line-height: 1.2;
+  }
+  .hero-stats dd {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.35;
+    color: var(--c-muted);
+  }
+
+  .hero-media {
+    position: relative;
+  }
+  .photo-main {
+    position: relative;
+    border-radius: var(--r-l);
+    overflow: hidden;
+    background: var(--c-lavender);
+    aspect-ratio: 4 / 3.3;
+  }
+  .photo-main :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+  .free-badge {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--c-surface);
+    color: var(--c-ink);
+    border-radius: 14px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: 0 6px 20px rgba(35, 30, 69, 0.15);
+  }
+  .free-badge :global(svg) {
+    color: var(--c-heart);
+  }
+  .lead-wrap::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  :global(.bunny-mobile) {
+    float: right;
+    margin: -6px 0 0 10px;
+    shape-outside: margin-box;
+  }
+  .photo-second,
+  .founder-card {
+    display: none;
+  }
+
+  @media (min-width: 960px) {
+    .hero {
+      padding-block: 56px 72px;
+    }
+    .hero-grid {
+      grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+      gap: 56px;
+      align-items: center;
+    }
+    .hero-text {
+      gap: 24px;
+    }
+    .hero-lead {
+      font-size: 19px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      padding-top: 8px;
+    }
+    .hero-stats div {
+      background: none;
+      padding: 0;
+    }
+    .hero-stats dt {
+      font-size: 26px;
+    }
+    .hero-stats dd {
+      font-size: 14px;
+    }
+    .hero-media {
+      height: 560px;
+    }
+    .photo-main {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 340px;
+      height: 470px;
+      aspect-ratio: auto;
+      border-radius: var(--r-xl);
+    }
+    :global(.bunny-mobile) {
+      display: none !important;
+    }
+    .photo-second {
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 56px;
+      width: 236px;
+      height: 300px;
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      box-shadow: 0 0 0 8px var(--c-bg);
+    }
+    .photo-second :global(img) {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .founder-card {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      width: 320px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--c-surface);
+      border-radius: 20px;
+      padding: 14px 16px;
+      box-shadow: var(--shadow-float);
+    }
+    .founder-photo {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 15%;
+      flex: none;
+    }
+    .founder-name {
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 1.3;
+    }
+    .founder-role {
+      font-size: 13px;
+      line-height: 1.35;
+      color: var(--c-muted);
+    }
+    /* Зайчик стоит на карточке основательницы, не перекрывая фото людей */
+    :global(.bunny-desktop) {
+      position: absolute !important;
+      right: 14px;
+      bottom: calc(100% - 14px);
+    }
+  }
+  @media (max-width: 959px) {
+    :global(.bunny-desktop) {
+      display: none !important;
+    }
+  }
+</style>

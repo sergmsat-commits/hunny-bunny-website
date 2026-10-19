@@ -1,0 +1,83 @@
+---
+import Icon from './Icon.astro';
+import type { Translation } from '../i18n/translations';
+
+interface Props {
+  t: Translation;
+}
+const { t } = Astro.props;
+---
+<section id="courses" class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>{t.courses.title}</h2>
+      <p>{t.courses.lead}</p>
+    </div>
+    <ul class="courses-grid" role="list">
+      {t.courses.items.map((c) => (
+        <li class="card course">
+          <span class="icon-tile"><Icon name={c.icon} size={26} /></span>
+          <h3>{c.title}</h3>
+          <p class="course-text">{c.text}</p>
+          <ul class="course-points" role="list">
+            {c.points.map((p) => (
+              <li><Icon name="check" size={18} stroke={2.2} />{p}</li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .courses-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 16px;
+  }
+  .course {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .course-text {
+    color: var(--c-ink-2);
+    font-size: 16px;
+  }
+  .course-points {
+    list-style: none;
+    margin: 4px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .course-points li {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.45;
+  }
+  .course-points :global(svg) {
+    color: var(--c-primary);
+    flex: none;
+    margin-top: 2px;
+  }
+  @media (min-width: 720px) {
+    .courses-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+  }
+  @media (min-width: 1140px) {
+    .courses-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+</style>

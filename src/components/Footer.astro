@@ -1,0 +1,135 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo-bunny.png';
+import Icon from './Icon.astro';
+import { business, homePath, type Lang } from '../data/business';
+import type { Translation } from '../i18n/translations';
+
+interface Props {
+  t: Translation;
+  lang: Lang;
+}
+const { t, lang } = Astro.props;
+const home = homePath[lang];
+const g = business.gomel;
+---
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href={home} class="footer-logo">
+        <Image src={logo} alt="" width={88} height={88} class="footer-mark" />
+        <span>Hunny Bunny English</span>
+      </a>
+      <p>{t.footer.tagline}</p>
+    </div>
+
+    <nav aria-label={t.a11y.mainNav} class="footer-nav">
+      <a href={`${home}#courses`}>{t.nav.courses}</a>
+      <a href={`${home}#team`}>{t.nav.team}</a>
+      <a href={`${home}#reviews`}>{t.nav.reviews}</a>
+      <a href={`${home}#faq`}>{t.nav.faq}</a>
+      <a href={`${home}#contact`}>{t.nav.contact}</a>
+    </nav>
+
+    <div class="footer-contacts">
+      <p>{g.street[lang]}, {g.city[lang]}</p>
+      <p><a href={`tel:${business.phones.by.e164}`}>{business.phones.by.display}</a></p>
+      <p><a href={`tel:${business.phones.pl.e164}`}>{business.phones.pl.display}</a></p>
+      <p class="footer-social" aria-label={t.footer.follow}>
+        <a href={business.socials.instagram} target="_blank" rel="noopener" aria-label="Instagram"><Icon name="instagram" size={22} /></a>
+        <a href={business.socials.youtube} target="_blank" rel="noopener" aria-label="YouTube"><Icon name="youtube" size={22} /></a>
+        <a href={business.messengers.telegram} target="_blank" rel="noopener" aria-label="Telegram"><Icon name="telegram" size={22} /></a>
+      </p>
+    </div>
+  </div>
+  <div class="container footer-legal">
+    <p>© 2026 Hunny Bunny English. {t.footer.rights}</p>
+    <p>{business.legal.company}, УНП {business.legal.unp}, {g.city.ru}, {g.street.ru}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--c-ink);
+    color: #e9e6ff;
+    padding: 48px 0 calc(32px + var(--sticky-bar-h, 0px));
+  }
+  .site-footer a {
+    color: #fff;
+  }
+  .footer-grid {
+    display: grid;
+    gap: 32px;
+  }
+  .footer-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .footer-logo :global(.footer-mark) {
+    width: 44px;
+    height: 44px;
+  }
+  .footer-brand p {
+    color: #c9c4ef;
+    max-width: 320px;
+  }
+  .footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .footer-nav a {
+    text-decoration: none;
+    padding: 6px 0;
+    font-weight: 600;
+  }
+  .footer-contacts p {
+    margin-bottom: 6px;
+  }
+  .footer-contacts a {
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .footer-social {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .footer-social a {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--r-s);
+    background: rgba(255, 255, 255, 0.08);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .footer-social a:hover {
+    background: rgba(255, 255, 255, 0.16);
+  }
+  .footer-legal {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 13px;
+    color: #b8b2e6;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  @media (min-width: 840px) {
+    .footer-grid {
+      grid-template-columns: 2fr 1fr 1.4fr;
+    }
+    .footer-legal {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+</style>

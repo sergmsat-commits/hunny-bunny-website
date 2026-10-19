@@ -1,0 +1,248 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo-bunny.png';
+import Icon from './Icon.astro';
+import { homePath, langs, type Lang } from '../data/business';
+import type { Translation } from '../i18n/translations';
+
+interface Props {
+  t: Translation;
+  lang: Lang;
+}
+const { t, lang } = Astro.props;
+const home = homePath[lang];
+const links = [
+  { href: '#courses', label: t.nav.courses },
+  { href: '#team', label: t.nav.team },
+  { href: '#reviews', label: t.nav.reviews },
+  { href: '#faq', label: t.nav.faq },
+  { href: '#contact', label: t.nav.contact },
+];
+---
+<header class="site-header">
+  <div class="container header-row">
+    <a href={home} class="brand">
+      <Image src={logo} alt="" width={96} height={96} class="brand-mark" loading="eager" />
+      <span class="brand-name">Hunny Bunny<span class="brand-suffix"> English</span></span>
+    </a>
+
+    <nav class="nav-desktop" aria-label={t.a11y.mainNav}>
+      {links.map((l) => <a href={`${home}${l.href}`}>{l.label}</a>)}
+    </nav>
+
+    <div class="header-actions">
+      <div class="lang-switch" role="group" aria-label={t.a11y.lang}>
+        {langs.map((l) => (
+          <a href={homePath[l]} hreflang={l} lang={l} aria-current={l === lang ? 'page' : undefined}>{l.toUpperCase()}</a>
+        ))}
+      </div>
+      <a href={`${home}#contact`} class="btn btn-primary header-cta">{t.cta.trialShort}</a>
+      <button type="button" class="menu-btn" popovertarget="site-menu" aria-label={t.a11y.menu}>
+        <Icon name="menu" size={22} stroke={2} />
+      </button>
+    </div>
+  </div>
+
+  <div id="site-menu" popover class="mobile-menu">
+    <div class="mobile-menu-top">
+      <span class="brand-name">Hunny Bunny</span>
+      <button type="button" class="menu-btn" popovertarget="site-menu" popovertargetaction="hide" aria-label={t.a11y.close}>
+        <Icon name="close" size={22} stroke={2} />
+      </button>
+    </div>
+    <nav aria-label={t.a11y.mainNav} class="mobile-nav">
+      {links.map((l) => <a href={`${home}${l.href}`} data-close-menu>{l.label}</a>)}
+    </nav>
+    <div class="lang-switch lang-switch-lg" role="group" aria-label={t.a11y.lang}>
+      {langs.map((l) => (
+        <a href={homePath[l]} hreflang={l} lang={l} aria-current={l === lang ? 'page' : undefined}>{l.toUpperCase()}</a>
+      ))}
+    </div>
+    <a href={`${home}#contact`} class="btn btn-primary btn-lg" data-close-menu>{t.cta.trial}</a>
+  </div>
+</header>
+
+<script>
+  // Закрываем мобильное меню после перехода по якорю
+  const menu = document.getElementById('site-menu');
+  menu?.querySelectorAll('[data-close-menu]').forEach((el) =>
+    el.addEventListener('click', () => (menu as HTMLElement & { hidePopover?: () => void }).hidePopover?.()),
+  );
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(247, 245, 255, 0.92);
+    backdrop-filter: saturate(1.4) blur(10px);
+    -webkit-backdrop-filter: saturate(1.4) blur(10px);
+    border-bottom: 1px solid var(--c-lavender);
+  }
+  .header-row {
+    height: var(--header-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--c-ink);
+    flex: none;
+  }
+  .brand-mark {
+    width: 40px;
+    height: 40px;
+  }
+  .brand-name {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: -0.01em;
+  }
+  .brand-suffix {
+    display: none;
+  }
+  .nav-desktop {
+    display: none;
+  }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .lang-switch {
+    display: none;
+    gap: 2px;
+    background: var(--c-surface);
+    border-radius: var(--r-s);
+    padding: 4px;
+    box-shadow: inset 0 0 0 1px var(--c-lavender);
+  }
+  .lang-switch a {
+    min-width: 40px;
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--c-ink-2);
+    text-decoration: none;
+  }
+  .lang-switch a[aria-current='page'] {
+    background: var(--c-ink);
+    color: #fff;
+  }
+  .header-cta {
+    display: none;
+  }
+  .menu-btn {
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: var(--r-s);
+    background: var(--c-ink);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .mobile-menu {
+    margin: 0;
+    inset: 0 0 auto auto;
+    width: min(100vw, 420px);
+    height: 100dvh;
+    max-height: none;
+    border: 0;
+    padding: 16px var(--gutter) 32px;
+    background: var(--c-bg);
+    color: var(--c-ink);
+    box-shadow: -20px 0 60px rgba(35, 30, 69, 0.18);
+    flex-direction: column;
+    gap: 24px;
+  }
+  .mobile-menu:popover-open {
+    display: flex;
+  }
+  .mobile-menu::backdrop {
+    background: rgba(35, 30, 69, 0.35);
+  }
+  .mobile-menu-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 44px;
+  }
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+  }
+  .mobile-nav a {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--c-ink);
+    text-decoration: none;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--c-lavender);
+  }
+  .lang-switch-lg {
+    display: flex;
+    align-self: flex-start;
+  }
+  .lang-switch-lg a {
+    min-width: 56px;
+    min-height: 44px;
+    font-size: 15px;
+  }
+
+  @media (min-width: 640px) {
+    .lang-switch {
+      display: flex;
+    }
+  }
+  @media (min-width: 1080px) {
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+    }
+    .brand-name {
+      font-size: 19px;
+    }
+    .brand-suffix {
+      display: inline;
+    }
+    .nav-desktop {
+      display: flex;
+      gap: 28px;
+    }
+    .nav-desktop a {
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--c-ink);
+      text-decoration: none;
+      padding: 8px 0;
+    }
+    .nav-desktop a:hover {
+      color: var(--c-primary-ink);
+    }
+    .header-cta {
+      display: inline-flex;
+      min-height: 48px;
+      padding: 0 20px;
+      font-size: 15px;
+    }
+    .menu-btn {
+      display: none;
+    }
+  }
+</style>

@@ -1,15 +1,4 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import HomePage from "../../components/HomePage.astro";
-import { translations } from "../../i18n/translations";
-
-const t = translations.en;
+import HomePage from '../../components/HomePage.astro';
 ---
-
-<Layout
-  lang="en"
-  title={t.seo.title}
-  description={t.seo.description}
->
-  <HomePage t={t} lang="en" />
-</Layout>
+<HomePage lang="en" />
