@@ -1,0 +1,141 @@
+---
+// Яркий финал страницы перед футером: 3D-зайчик, приглашение и кнопки мессенджеров.
+import Bunny from './Bunny.astro';
+import Deco from './Deco.astro';
+import Icon from './Icon.astro';
+import { business, homePath, type Lang } from '../data/business';
+import type { Translation } from '../i18n/translations';
+
+interface Props {
+  t: Translation;
+  lang: Lang;
+}
+const { t, lang } = Astro.props;
+const m = business.messengers;
+const links: Record<string, string> = { telegram: m.telegram, viber: m.viber, whatsapp: m.whatsapp };
+const order = t.contact.messengers as string[];
+---
+<section class="final" aria-labelledby="final-title">
+  <Deco name="squiggle" size={520} class="f-sq" />
+  <Deco name="flower" size={64} class="f-fl1" />
+  <Deco name="flower" size={40} tone="lilac" class="f-fl2" />
+  <Deco name="sparkle" size={20} class="f-sp1" />
+  <Deco name="sparkle" size={14} class="f-sp2" />
+  <div class="container final-inner">
+    <Bunny height={230} class="final-bunny" delay={0.5} />
+    <div class="final-text reveal">
+      <h2 id="final-title">{t.final.title}</h2>
+      <p>{t.final.lead}</p>
+      <div class="final-actions">
+        {order.map((key) => (
+          <a href={links[key]} class="btn final-btn" target="_blank" rel="noopener">
+            <Icon name={key} size={20} stroke={2} />{t.messengerLabels[key as keyof typeof t.messengerLabels]}
+          </a>
+        ))}
+        <a href={`${homePath[lang]}#contact`} class="btn btn-primary final-btn-main">{t.final.form}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .final {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    color: #fff;
+    background:
+      radial-gradient(45% 70% at 85% 30%, rgba(224, 95, 216, 0.35), transparent 70%),
+      radial-gradient(50% 80% at 10% 100%, rgba(91, 79, 217, 0.65), transparent 70%),
+      var(--c-ink);
+    padding-block: 56px 8px;
+  }
+  .final-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+  .final-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    max-width: 640px;
+  }
+  .final h2 {
+    font-size: clamp(30px, 6vw, 52px);
+  }
+  .final p {
+    color: #d9d5ff;
+    font-size: 17px;
+  }
+  .final-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .final-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+  }
+  .final-btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+  }
+  .final-btn-main {
+    box-shadow: 0 12px 30px -8px rgba(91, 79, 217, 0.9);
+  }
+  .final :global(.f-sq) {
+    color: rgba(200, 211, 248, 0.18);
+    left: -120px;
+    top: 20px;
+  }
+  .final :global(.f-fl1) {
+    top: 28px;
+    right: 8%;
+  }
+  .final :global(.f-fl2) {
+    bottom: 40px;
+    left: 6%;
+  }
+  .final :global(.f-sp1) {
+    top: 90px;
+    left: 18%;
+  }
+  .final :global(.f-sp2) {
+    top: 40%;
+    right: 20%;
+  }
+  .final-inner :global(.final-bunny) {
+    order: 2;
+  }
+  @media (min-width: 960px) {
+    .final {
+      padding-block: 80px 0;
+    }
+    .final-inner {
+      flex-direction: row;
+      justify-content: center;
+      text-align: left;
+      gap: 48px;
+    }
+    .final-inner :global(.final-bunny) {
+      order: 0;
+      align-self: flex-end;
+    }
+    .final-text {
+      align-items: flex-start;
+      padding-bottom: 80px;
+    }
+    .final-actions {
+      justify-content: flex-start;
+    }
+  }
+</style>

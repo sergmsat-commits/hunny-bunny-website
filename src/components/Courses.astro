@@ -9,11 +9,11 @@ const { t } = Astro.props;
 ---
 <section id="courses" class="section">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head reveal">
       <h2>{t.courses.title}</h2>
       <p>{t.courses.lead}</p>
     </div>
-    <ul class="courses-grid" role="list">
+    <ul class="courses-grid" role="list" data-carousel>
       {t.courses.items.map((c) => (
         <li class="card course">
           <span class="icon-tile"><Icon name={c.icon} size={26} /></span>
@@ -27,16 +27,70 @@ const { t } = Astro.props;
         </li>
       ))}
     </ul>
+    <div class="carousel-dots" aria-hidden="true">
+      {t.courses.items.map((_, i) => <span class:list={[{ active: i === 0 }]} />)}
+    </div>
   </div>
 </section>
 
+<script>
+  // Точки под лентой курсов на телефоне показывают, какая карточка сейчас на экране
+  document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((list) => {
+    const dots = list.parentElement?.querySelectorAll<HTMLElement>('.carousel-dots span');
+    if (!dots?.length) return;
+    const cards = Array.from(list.children) as HTMLElement[];
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            const i = cards.indexOf(e.target as HTMLElement);
+            dots.forEach((d, j) => d.classList.toggle('active', j === i));
+          }
+        });
+      },
+      { root: list, threshold: 0.6 },
+    );
+    cards.forEach((c) => io.observe(c));
+  });
+</script>
+
 <style>
+  /* Телефон: курсы — горизонтальная лента с «подглядывающей» следующей карточкой */
   .courses-grid {
     list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 16px;
+    margin: 0 calc(-1 * var(--gutter));
+    padding: 4px var(--gutter) 16px;
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .courses-grid::-webkit-scrollbar {
+    display: none;
+  }
+  .courses-grid > li {
+    flex: 0 0 84%;
+    scroll-snap-align: start;
+  }
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .carousel-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--c-lavender-2);
+    transition: width 0.3s, background 0.3s;
+  }
+  .carousel-dots span.active {
+    width: 24px;
+    background: var(--c-primary);
   }
   .course {
     padding: 24px;
@@ -71,8 +125,24 @@ const { t } = Astro.props;
   }
   @media (min-width: 720px) {
     .courses-grid {
+      margin: 0;
+      padding: 0;
+      overflow: visible;
+      display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 20px;
+    }
+    .carousel-dots {
+      display: none;
+    }
+  }
+  @media (hover: hover) {
+    .course {
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s;
+    }
+    .course:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 1px 0 var(--c-lavender), 0 24px 48px -16px rgba(35, 30, 69, 0.25);
     }
   }
   @media (min-width: 1140px) {

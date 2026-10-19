@@ -15,12 +15,12 @@ const photos = [a, b, c, d];
 ---
 <section class="section gallery" aria-labelledby="gallery-title">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head reveal">
       <h2 id="gallery-title">{t.gallery.title}</h2>
     </div>
     <ul class="gallery-grid" role="list">
       {photos.map((src, i) => (
-        <li class="zoom-frame">
+        <li class="zoom-frame reveal">
           <Zoomable src={src} alt={t.gallery.alts[i]} label={t.a11y.openPhoto}>
             <Picture src={src} alt={t.gallery.alts[i]} widths={[300, 450, 600]} sizes="(min-width: 960px) 280px, 45vw" formats={['avif', 'webp']} />
           </Zoomable>

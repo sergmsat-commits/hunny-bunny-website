@@ -11,47 +11,75 @@ interface Props {
 }
 const { t } = Astro.props;
 const r = t.reviews;
-// Четыре копии ленты — для бесшовной прокрутки даже на широком экране; копии скрыты от скринридеров
-const copies = [false, true, true, true];
+type Msg = { file?: string; tag?: string; paragraphs: string[] };
+const all = r.items as Msg[];
+// Скриншоты-оригиналы (первые три) перемешиваем с остальными сообщениями
+const originals = all.filter((m) => m.file);
+const rest = all.filter((m) => !m.file);
+const parents: Msg[] = [];
+rest.forEach((m, i) => {
+  if (i % 3 === 0 && originals.length) parents.push(originals.shift()!);
+  parents.push(m);
+});
+parents.push(...originals);
+// Копии ленты нужны для бесшовной прокрутки; копий столько, чтобы лента была шире любого экрана.
+// Сами копии скрыты от скринридеров и клавиатуры.
+const copiesFor = (n: number) => (n >= 8 ? 2 : 4);
+const rows = [
+  { kind: 'parents', items: parents, copies: copiesFor(parents.length), speed: parents.length * 16 },
+  { kind: 'kids', items: (r.kids as string[]).map((k) => ({ paragraphs: [`«${k}»`] }) as Msg), copies: copiesFor(r.kids.length), speed: r.kids.length * 14 },
+];
 ---
 <section id="reviews" class="section reviews">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head reveal">
       <h2>{r.title}</h2>
       <p>{r.lead}</p>
     </div>
   </div>
 
-  <div class="marquee" data-marquee>
-    <div class="marquee-track">
-      {copies.map((dup) => (
-        <ul class="marquee-list" role="list" aria-hidden={dup ? 'true' : undefined}>
-          {r.items.map((item, i) => (
-            <li class={`msg msg-${i % 3}`}>
-              <div class="msg-head">
-                <span class="msg-avatar" aria-hidden="true"><Icon name="heart" size={16} filled stroke={1.5} /></span>
-                <span class="msg-from">{r.from}</span>
-              </div>
-              <div class="msg-bubble">
-                {item.paragraphs.map((p) => <p>{p}</p>)}
-                <span class="msg-ticks" aria-hidden="true"><Icon name="check-double" size={16} stroke={2} /></span>
-              </div>
-              <a
-                href={`/images/reviews/ru/${item.file}.webp`}
-                class="msg-original"
-                data-lightbox
-                data-group="reviews"
-                data-alt={r.alt}
-                tabindex={dup ? -1 : undefined}
-              >
-                <Icon name="expand" size={15} stroke={2} />{r.original}
-              </a>
-            </li>
-          ))}
-        </ul>
-      ))}
+  {rows.map((row) => (
+    <Fragment>
+    {row.kind === 'kids' && <p class="marquee-label container">{r.kidsTitle}</p>}
+    <div class:list={['marquee', `marquee-${row.kind}`]} data-marquee style={`--copies:${row.copies}; --speed:${row.speed}s`}>
+      <div class="marquee-track">
+        {Array.from({ length: row.copies }, (_, c) => (
+          <ul class="marquee-list" role="list" aria-hidden={c > 0 ? 'true' : undefined}>
+            {row.items.map((item, i) => (
+              <li class={`msg msg-${i % 3} msg-${row.kind}`}>
+                <div class="msg-head">
+                  <span class="msg-avatar" aria-hidden="true">
+                    <Icon name={row.kind === 'kids' ? 'star' : 'heart'} size={16} filled stroke={1.5} />
+                  </span>
+                  <span class="msg-from">
+                    {row.kind === 'kids' ? r.kid : r.from}
+                    {item.tag && <span class="msg-tag">{item.tag}</span>}
+                  </span>
+                </div>
+                <div class="msg-bubble">
+                  {item.paragraphs.map((p) => <p>{p}</p>)}
+                  {row.kind === 'parents' && <span class="msg-ticks" aria-hidden="true"><Icon name="check-double" size={16} stroke={2} /></span>}
+                </div>
+                {item.file && (
+                  <a
+                    href={`/images/reviews/ru/${item.file}.webp`}
+                    class="msg-original"
+                    data-lightbox
+                    data-group="reviews"
+                    data-alt={r.alt}
+                    tabindex={c > 0 ? -1 : undefined}
+                  >
+                    <Icon name="expand" size={15} stroke={2} />{r.original}
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
+        ))}
+      </div>
     </div>
-  </div>
+    </Fragment>
+  ))}
 </section>
 
 <script>
@@ -79,6 +107,15 @@ const copies = [false, true, true, true];
     width: max-content;
     animation: marquee var(--speed) linear infinite;
   }
+  .marquee-kids .marquee-track {
+    animation-direction: reverse;
+  }
+  .marquee-label {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
   .marquee:hover .marquee-track,
   .marquee:focus-within .marquee-track,
   .marquee.is-paused .marquee-track {
@@ -94,7 +131,7 @@ const copies = [false, true, true, true];
   }
   @keyframes marquee {
     to {
-      transform: translateX(-25%);
+      transform: translateX(calc(-100% / var(--copies)));
     }
   }
 
@@ -136,9 +173,33 @@ const copies = [false, true, true, true];
     color: var(--c-heart);
   }
   .msg-from {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
     font-size: 13px;
     font-weight: 700;
     color: var(--c-muted);
+  }
+  .msg-tag {
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--c-lavender);
+    color: var(--c-primary-ink);
+    font-size: 12px;
+  }
+  .msg-kids {
+    width: min(70vw, 280px);
+  }
+  .msg-kids .msg-avatar {
+    background: linear-gradient(135deg, #ffe2b8, #f6c24b);
+    color: #fff;
+  }
+  .msg-kids .msg-bubble {
+    border-radius: 22px 22px 6px 22px;
+    background: linear-gradient(160deg, #fff7fd, #f5efff);
+    font-weight: 600;
+    padding-bottom: 16px;
   }
   .msg-bubble {
     position: relative;

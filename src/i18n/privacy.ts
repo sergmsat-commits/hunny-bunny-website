@@ -10,7 +10,7 @@ const operator = 'ООО «ЮСПРО», УНП 491393414, Республика 
 export const privacy: Record<'ru' | 'en' | 'pl', Policy> = {
   ru: {
     title: 'Политика конфиденциальности',
-    updated: 'Редакция от 19 октября 2026 года',
+    updated: 'Редакция от 20 октября 2026 года',
     intro:
       'Эта политика объясняет, какие персональные данные собирает сайт hunnybunny.by школы Hunny Bunny English, зачем мы это делаем и какие у вас права. Политика подготовлена в соответствии с Законом Республики Беларусь от 7 мая 2021 г. № 99-З «О защите персональных данных» и, для посетителей из Европейского союза, с Общим регламентом по защите данных (GDPR).',
     sections: [
@@ -74,6 +74,7 @@ export const privacy: Record<'ru' | 'en' | 'pl', Policy> = {
         h: '9. Cookies',
         p: [
           'Сайт работает без cookies, пока вы не разрешите аналитику. В браузере сохраняется только ваш выбор в окне cookies. Если вы нажмёте «Принять», Google Analytics установит cookies _ga и _ga_* для подсчёта посещений. Изменить выбор можно в любой момент по ссылке «Настройки cookies» внизу сайта.',
+          'На главной странице есть видео с нашего YouTube-канала. Оно загружается с сервера YouTube (Google) только после того, как вы нажмёте на него; с этого момента действуют правила конфиденциальности Google. До нажатия сайт ничего не передаёт YouTube.',
         ],
       },
       { h: '10. Безопасность и изменения', p: ['Сайт работает только по защищённому протоколу HTTPS. Доступ к заявкам есть только у сотрудников школы. Если мы изменим политику, новая редакция появится на этой странице с новой датой.'] },
@@ -82,7 +83,7 @@ export const privacy: Record<'ru' | 'en' | 'pl', Policy> = {
 
   en: {
     title: 'Privacy Policy',
-    updated: 'Version of 19 October 2026',
+    updated: 'Version of 20 October 2026',
     intro:
       'This policy explains what personal data the hunnybunny.by website of Hunny Bunny English collects, why we do it and what your rights are. It follows the Law of the Republic of Belarus No. 99-Z of 7 May 2021 “On Personal Data Protection” and, for visitors from the European Union, the General Data Protection Regulation (GDPR).',
     sections: [
@@ -146,6 +147,7 @@ export const privacy: Record<'ru' | 'en' | 'pl', Policy> = {
         h: '9. Cookies',
         p: [
           'The website uses no cookies until you allow analytics; only your choice in the cookie banner is saved in your browser. If you click “Accept”, Google Analytics sets the _ga and _ga_* cookies to count visits. You can change your choice at any time via “Cookie settings” at the bottom of the page.',
+          'The home page shows a video from our YouTube channel. It loads from YouTube (Google) only after you click it; from that moment Google’s privacy policy applies. Until you click, the website sends nothing to YouTube.',
         ],
       },
       { h: '10. Security and changes', p: ['The website works over HTTPS only. Only school staff can access requests. If we change this policy, the new version will appear on this page with a new date.'] },
@@ -154,7 +156,7 @@ export const privacy: Record<'ru' | 'en' | 'pl', Policy> = {
 
   pl: {
     title: 'Polityka prywatności',
-    updated: 'Wersja z 19 października 2026 r.',
+    updated: 'Wersja z 20 października 2026 r.',
     intro:
       'Niniejsza polityka wyjaśnia, jakie dane osobowe zbiera strona hunnybunny.by szkoły Hunny Bunny English, w jakim celu to robimy i jakie prawa Ci przysługują. Została przygotowana zgodnie z ustawą Republiki Białorusi nr 99-Z z dnia 7 maja 2021 r. o ochronie danych osobowych oraz, w odniesieniu do osób z Unii Europejskiej, z ogólnym rozporządzeniem o ochronie danych (RODO).',
     sections: [
@@ -218,6 +220,7 @@ export const privacy: Record<'ru' | 'en' | 'pl', Policy> = {
         h: '9. Pliki cookies',
         p: [
           'Dopóki nie zgodzisz się na analitykę, strona nie używa plików cookies — w przeglądarce zapisujemy tylko Twój wybór z okna cookies. Po kliknięciu „Akceptuję” Google Analytics zapisze pliki _ga i _ga_* służące do liczenia odwiedzin. Swój wybór możesz zmienić w każdej chwili, klikając „Ustawienia cookies” na dole strony.',
+          'Na stronie głównej jest film z naszego kanału YouTube. Ładuje się z serwera YouTube (Google) dopiero po kliknięciu; od tej chwili obowiązują zasady prywatności Google. Do momentu kliknięcia strona nie przekazuje YouTube żadnych danych.',
         ],
       },
       { h: '10. Bezpieczeństwo i zmiany', p: ['Strona działa wyłącznie przez szyfrowane połączenie HTTPS. Dostęp do zgłoszeń mają tylko pracownicy szkoły. Jeśli zmienimy politykę, nowa wersja pojawi się na tej stronie z nową datą.'] },
