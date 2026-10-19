@@ -48,7 +48,7 @@ export const translations = {
       adultsText:
       "Разговорный английский, работа, путешествия и индивидуальные программы обучения.",
       
-      kidsAge: "Возраст: 2–10 лет",
+      kidsAge: "Возраст: 3–10 лет",
       teensAge: "Возраст: 11–17 лет",
       adultsLevel: "Любой уровень подготовки",
     },
@@ -63,9 +63,9 @@ export const translations = {
     reviews: {
        title: "Отзывы наших учеников",
 
-       image1: "/images/reviews/ru/otz1.PNG",
-       image2: "/images/reviews/ru/otz6.PNG",
-       image3: "/images/reviews/ru/otz5.PNG",
+       image1: "/images/reviews/ru/otz1.webp",
+       image2: "/images/reviews/ru/otz6.webp",
+       image3: "/images/reviews/ru/otz5.webp",
 
        alt1: "Отзыв ученика Hunny Bunny",
        alt2: "Отзыв ученика Hunny Bunny",
@@ -103,7 +103,7 @@ export const translations = {
 
       namePlaceholder: "Введите ваше имя",
       emailPlaceholder: "Введите email",
-      phonePlaceholder: "+7 (___) ___-__-__",
+      phonePlaceholder: "+375 __ ___-__-__",
 
       button: "Отправить заявку",
     },
@@ -220,7 +220,7 @@ export const translations = {
         adultsText:
         "Conversational English, work, travel and personalised learning programmes.",
     
-        kidsAge: "Age: 2–10",
+        kidsAge: "Age: 3–10",
         teensAge: "Age: 11–17",
         adultsLevel: "All levels welcome",
     },
@@ -235,9 +235,9 @@ export const translations = {
     reviews: {
       title: "Student reviews",
 
-      image1: "/images/reviews/en/otz1.PNG",
-      image2: "/images/reviews/en/otz6.PNG",
-      image3: "/images/reviews/en/otz5.PNG",
+      image1: "/images/reviews/en/otz1.webp",
+      image2: "/images/reviews/en/otz6.webp",
+      image3: "/images/reviews/en/otz5.webp",
 
       alt1: "Student review",
       alt2: "Student review",
@@ -275,7 +275,7 @@ export const translations = {
 
       namePlaceholder: "Enter your name",
       emailPlaceholder: "Enter your email",
-      phonePlaceholder: "+1 (___) ___-____",
+      phonePlaceholder: "Phone with country code",
 
       button: "Send request",
     },
@@ -392,7 +392,7 @@ export const translations = {
       adultsText:
        "Język angielski w pracy, podróżach i życiu codziennym oraz indywidualne programy nauczania.",
     
-      kidsAge: "Wiek: 2–10 lat",
+      kidsAge: "Wiek: 3–10 lat",
       teensAge: "Wiek: 11–17 lat",
       adultsLevel: "Każdy poziom zaawansowania",
     },
@@ -407,9 +407,9 @@ export const translations = {
     reviews: {
       title: "Opinie naszych uczniów",
 
-      image1: "/images/reviews/pl/otz1.PNG",
-      image2: "/images/reviews/pl/otz6.PNG",
-      image3: "/images/reviews/pl/otz5.PNG",
+      image1: "/images/reviews/pl/otz1.webp",
+      image2: "/images/reviews/pl/otz6.webp",
+      image3: "/images/reviews/pl/otz5.webp",
 
       alt1: "Opinia ucznia",
       alt2: "Opinia ucznia",
