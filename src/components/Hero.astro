@@ -2,6 +2,7 @@
 import { Image, Picture } from 'astro:assets';
 import Icon from './Icon.astro';
 import Bunny from './Bunny.astro';
+import Zoomable from './Zoomable.astro';
 import photoMain from '../assets/lessons/lesson-beanbags.jpg';
 import photoSecond from '../assets/lessons/lesson-desk.jpg';
 import founder from '../assets/team/satyrova.jpg';
@@ -42,16 +43,22 @@ const messenger = lang === 'pl' ? { href: business.messengers.whatsapp, icon: 'w
     </div>
 
     <div class="hero-media">
-      <div class="photo-main">
-        <Picture src={photoMain} alt={h.photoMain} widths={[360, 540, 720]} sizes="(min-width: 960px) 360px, 92vw" formats={['avif', 'webp']} loading="eager" fetchpriority="high" />
+      <div class="photo-main zoom-frame">
+        <Zoomable src={photoMain} alt={h.photoMain} label={t.a11y.openPhoto}>
+          <Picture src={photoMain} alt={h.photoMain} widths={[360, 540, 720]} sizes="(min-width: 960px) 360px, 92vw" formats={['avif', 'webp']} loading="eager" fetchpriority="high" />
+        </Zoomable>
         <span class="free-badge"><Icon name="heart" size={16} filled stroke={1.5} />{h.freeBadge}</span>
       </div>
-      <div class="photo-second">
-        <Picture src={photoSecond} alt={h.photoSecond} widths={[260, 520]} sizes="260px" formats={['avif', 'webp']} />
+      <div class="photo-second zoom-frame">
+        <Zoomable src={photoSecond} alt={h.photoSecond} label={t.a11y.openPhoto}>
+          <Picture src={photoSecond} alt={h.photoSecond} widths={[260, 520]} sizes="260px" formats={['avif', 'webp']} />
+        </Zoomable>
       </div>
       <div class="founder-card">
         <Bunny height={120} class="bunny-desktop" delay={1.5} />
-        <Image src={founder} alt="" width={96} height={96} class="founder-photo" />
+        <Zoomable src={founder} alt={h.founderName} label={t.a11y.openPhoto} class="founder-zoom">
+          <Image src={founder} alt="" width={96} height={96} class="founder-photo" />
+        </Zoomable>
         <div>
           <p class="founder-name">{h.founderName}</p>
           <p class="founder-role">{h.founderRole}</p>
@@ -219,7 +226,8 @@ const messenger = lang === 'pl' ? { href: business.messengers.whatsapp, icon: 'w
       height: 300px;
       border-radius: var(--r-xl);
       overflow: hidden;
-      box-shadow: 0 0 0 8px var(--c-bg);
+      --ring: 0 0 0 8px var(--c-bg);
+      box-shadow: var(--ring);
     }
     .photo-second :global(img) {
       width: 100%;
@@ -238,6 +246,12 @@ const messenger = lang === 'pl' ? { href: business.messengers.whatsapp, icon: 'w
       border-radius: 20px;
       padding: 14px 16px;
       box-shadow: var(--shadow-float);
+    }
+    :global(.founder-zoom) {
+      width: 52px !important;
+      height: 52px !important;
+      border-radius: 50%;
+      flex: none;
     }
     .founder-photo {
       width: 52px;

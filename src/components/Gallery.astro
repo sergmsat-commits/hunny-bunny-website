@@ -4,6 +4,7 @@ import a from '../assets/lessons/lesson-teacher-kids.jpg';
 import b from '../assets/lessons/lesson-group-table.jpg';
 import c from '../assets/lessons/lesson-class.jpg';
 import d from '../assets/lessons/lesson-desk.jpg';
+import Zoomable from './Zoomable.astro';
 import type { Translation } from '../i18n/translations';
 
 interface Props {
@@ -19,8 +20,10 @@ const photos = [a, b, c, d];
     </div>
     <ul class="gallery-grid" role="list">
       {photos.map((src, i) => (
-        <li>
-          <Picture src={src} alt={t.gallery.alts[i]} widths={[300, 450, 600]} sizes="(min-width: 960px) 280px, 45vw" formats={['avif', 'webp']} />
+        <li class="zoom-frame">
+          <Zoomable src={src} alt={t.gallery.alts[i]} label={t.a11y.openPhoto}>
+            <Picture src={src} alt={t.gallery.alts[i]} widths={[300, 450, 600]} sizes="(min-width: 960px) 280px, 45vw" formats={['avif', 'webp']} />
+          </Zoomable>
         </li>
       ))}
     </ul>

@@ -1,4 +1,7 @@
 ---
+// Отзывы родителей: сообщения «как в мессенджере» плывут бегущей строкой.
+// Текст — дословно из присланных сообщений; по кнопке открывается скриншот оригинала.
+import Icon from './Icon.astro';
 import type { Lang } from '../data/business';
 import type { Translation } from '../i18n/translations';
 
@@ -6,46 +9,211 @@ interface Props {
   t: Translation;
   lang: Lang;
 }
-const { t, lang } = Astro.props;
-const files = ['otz1', 'otz6', 'otz5'];
+const { t } = Astro.props;
+const r = t.reviews;
+// Четыре копии ленты — для бесшовной прокрутки даже на широком экране; копии скрыты от скринридеров
+const copies = [false, true, true, true];
 ---
-<section id="reviews" class="section">
+<section id="reviews" class="section reviews">
   <div class="container">
     <div class="section-head">
-      <h2>{t.reviews.title}</h2>
-      <p>{t.reviews.lead}</p>
+      <h2>{r.title}</h2>
+      <p>{r.lead}</p>
     </div>
-    <ul class="reviews-grid" role="list">
-      {files.map((f) => (
-        <li class="card review">
-          <img src={`/images/reviews/${lang}/${f}.webp`} alt={t.reviews.alt} width="900" height="900" loading="lazy" decoding="async" />
-        </li>
+  </div>
+
+  <div class="marquee" data-marquee>
+    <div class="marquee-track">
+      {copies.map((dup) => (
+        <ul class="marquee-list" role="list" aria-hidden={dup ? 'true' : undefined}>
+          {r.items.map((item, i) => (
+            <li class={`msg msg-${i % 3}`}>
+              <div class="msg-head">
+                <span class="msg-avatar" aria-hidden="true"><Icon name="heart" size={16} filled stroke={1.5} /></span>
+                <span class="msg-from">{r.from}</span>
+              </div>
+              <div class="msg-bubble">
+                {item.paragraphs.map((p) => <p>{p}</p>)}
+                <span class="msg-ticks" aria-hidden="true"><Icon name="check-double" size={16} stroke={2} /></span>
+              </div>
+              <a
+                href={`/images/reviews/ru/${item.file}.webp`}
+                class="msg-original"
+                data-lightbox
+                data-group="reviews"
+                data-alt={r.alt}
+                tabindex={dup ? -1 : undefined}
+              >
+                <Icon name="expand" size={15} stroke={2} />{r.original}
+              </a>
+            </li>
+          ))}
+        </ul>
       ))}
-    </ul>
+    </div>
   </div>
 </section>
 
+<script>
+  // На телефоне лента останавливается, пока палец лежит на ней
+  document.querySelectorAll<HTMLElement>('[data-marquee]').forEach((m) => {
+    m.addEventListener('touchstart', () => m.classList.add('is-paused'), { passive: true });
+    m.addEventListener('touchend', () => setTimeout(() => m.classList.remove('is-paused'), 1500), { passive: true });
+  });
+</script>
+
 <style>
-  .reviews-grid {
+  .reviews {
+    overflow: hidden;
+  }
+  .marquee {
+    --gap: 16px;
+    --speed: 60s;
+    position: relative;
+    padding-block: 8px 24px;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee var(--speed) linear infinite;
+  }
+  .marquee:hover .marquee-track,
+  .marquee:focus-within .marquee-track,
+  .marquee.is-paused .marquee-track {
+    animation-play-state: paused;
+  }
+  .marquee-list {
     list-style: none;
     margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 16px;
+    padding: 0 var(--gap) 0 0;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--gap);
   }
-  .review {
-    overflow: hidden;
-    padding: 8px;
+  @keyframes marquee {
+    to {
+      transform: translateX(-25%);
+    }
   }
-  .review img {
-    width: 100%;
-    height: auto;
-    border-radius: 18px;
+
+  .msg {
+    width: min(82vw, 340px);
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    animation: bob 6s ease-in-out infinite;
   }
-  @media (min-width: 720px) {
-    .reviews-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
+  .msg-1 {
+    margin-top: 28px;
+    animation-delay: -2s;
+  }
+  .msg-2 {
+    margin-top: 10px;
+    animation-delay: -4s;
+  }
+  @keyframes bob {
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+  .msg-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 4px;
+  }
+  .msg-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f3c4f0, var(--c-lavender-2));
+    color: var(--c-heart);
+  }
+  .msg-from {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--c-muted);
+  }
+  .msg-bubble {
+    position: relative;
+    background: var(--c-surface);
+    border-radius: 22px 22px 22px 6px;
+    padding: 16px 18px 26px;
+    box-shadow:
+      0 1px 0 var(--c-lavender),
+      0 18px 40px -16px rgba(35, 30, 69, 0.22);
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--c-ink);
+  }
+  .msg-bubble p + p {
+    margin-top: 8px;
+  }
+  .msg-1 .msg-bubble {
+    background: linear-gradient(180deg, #fff, #fbfaff);
+  }
+  .msg-ticks {
+    position: absolute;
+    right: 14px;
+    bottom: 8px;
+    color: var(--c-primary);
+    opacity: 0.7;
+  }
+  .msg-original {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 40px;
+    padding: 0 12px;
+    margin-left: 4px;
+    border-radius: 999px;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--c-primary-ink);
+    text-decoration: none;
+    cursor: zoom-in;
+    transition: background 0.2s;
+  }
+  .msg-original:hover {
+    background: var(--c-lavender);
+  }
+
+  @media (min-width: 960px) {
+    .marquee {
+      --gap: 24px;
+      --speed: 75s;
+      padding-block: 16px 32px;
+    }
+    .msg {
+      width: 380px;
+    }
+    .msg-bubble {
+      font-size: 16px;
+      padding: 20px 22px 30px;
+    }
+  }
+
+  /* Без анимации: обычная лента с прокруткой пальцем */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-mask-image: none;
+      mask-image: none;
+      padding-inline: var(--gutter);
+    }
+    .marquee-list[aria-hidden='true'] {
+      display: none;
+    }
+    .msg {
+      scroll-snap-align: start;
     }
   }
 </style>
