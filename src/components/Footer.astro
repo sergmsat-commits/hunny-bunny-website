@@ -17,6 +17,8 @@ interface Props {
 const { t, lang } = Astro.props;
 const home = homePath[lang];
 const g = business.gomel;
+// Заголовок первой колонки подвала (меню школы)
+const heads: Record<Lang, string> = { ru: 'Школа', en: 'School', pl: 'Szkoła' };
 ---
 <footer class="site-footer">
   <div class="container footer-grid">
@@ -28,20 +30,26 @@ const g = business.gomel;
       <p>{t.footer.tagline}</p>
     </div>
 
-    <nav aria-label={t.a11y.mainNav} class="footer-nav">
-      <a href={teachersPath[lang]}>{t.nav.team}</a>
-      <a href={`${home}#reviews`}>{t.nav.reviews}</a>
-      <a href={`${home}#faq`}>{t.nav.faq}</a>
-      <a href={blogPath[lang]}>{blogUi[lang].title}</a>
-      <a href={contactsPath[lang]}>{t.nav.contact}</a>
-    </nav>
+    <div class="footer-col">
+      <p class="footer-h" id="fh-school">{heads[lang]}</p>
+      <nav aria-labelledby="fh-school" class="footer-nav">
+        <a href={teachersPath[lang]}>{t.nav.team}</a>
+        <a href={`${home}#reviews`}>{t.nav.reviews}</a>
+        <a href={`${home}#faq`}>{t.nav.faq}</a>
+        <a href={blogPath[lang]}>{blogUi[lang].title}</a>
+        <a href={contactsPath[lang]}>{t.nav.contact}</a>
+      </nav>
+    </div>
 
-    <nav aria-label={courseUi[lang].courses} class="footer-nav footer-courses">
-      <a href={`${home}#courses`} class="footer-h">{courseUi[lang].courses}</a>
-      {courseIds.map((id) => <a href={coursePath[id][lang]}>{courses[id][lang].short}</a>)}
-    </nav>
+    <div class="footer-col">
+      <p class="footer-h" id="fh-courses">{courseUi[lang].courses}</p>
+      <nav aria-labelledby="fh-courses" class="footer-nav">
+        {courseIds.map((id) => <a href={coursePath[id][lang]}>{courses[id][lang].short}</a>)}
+      </nav>
+    </div>
 
-    <div class="footer-contacts">
+    <div class="footer-col footer-contacts">
+      <p class="footer-h">{t.nav.contact}</p>
       <p>{g.street[lang]}, {g.city[lang]}</p>
       <p><a href={`tel:${business.phones.by.e164}`}>{business.phones.by.display}</a></p>
       <p><a href={`tel:${business.phones.pl.e164}`}>{business.phones.pl.display}</a></p>
@@ -99,23 +107,26 @@ const g = business.gomel;
     flex-direction: column;
     gap: 6px;
   }
-  .footer-nav a.footer-h {
-    padding: 0 0 2px;
-    text-decoration: none;
+  /* Заголовки колонок: мелкий капс, сиреневый — единый стиль для всех трёх колонок */
+  .footer-h {
+    margin: 0 0 8px;
     font-size: 13px;
     font-weight: 700;
-    letter-spacing: 0.06em;
+    line-height: 1.4;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #b8b2e6;
-    margin-bottom: 2px;
-  }
-  .footer-nav a.footer-h:hover {
-    color: #fff;
   }
   .footer-nav a {
     text-decoration: none;
     padding: 6px 0;
     font-weight: 600;
+  }
+  .footer-nav a:first-child {
+    padding-top: 0;
+  }
+  .footer-contacts .footer-h {
+    margin-bottom: 8px;
   }
   .footer-contacts p {
     margin-bottom: 6px;
