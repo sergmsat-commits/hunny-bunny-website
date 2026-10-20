@@ -79,7 +79,7 @@ const g = business.gomel;
         <Bunny height={120} delay={3} />
         <p class="bubble">{c.bunny}</p>
       </div>
-      <form class="card lead-form" action={`https://formsubmit.co/${business.email}`} method="POST">
+      <form class="card lead-form" action="/api/lead" method="POST" data-lead-form>
         <input type="hidden" name="_subject" value={c.form.subject} />
         <input type="hidden" name="_next" value={thankYou} />
         <input type="hidden" name="_captcha" value="false" />
@@ -114,13 +114,66 @@ const g = business.gomel;
           <input type="checkbox" name="Согласие на обработку ПД" value="да" required />
           <span>{t.legal.consentBefore}<a href={privacyPath[lang]} target="_blank">{t.legal.consentLink}</a>.</span>
         </label>
+        {business.turnstileSiteKey && (
+          <div class="cf-turnstile" data-sitekey={business.turnstileSiteKey} data-appearance="interaction-only" data-size="flexible" data-language={lang} />
+        )}
         <button type="submit" class="btn btn-primary btn-lg">{c.form.submit}</button>
       </form>
     </div>
   </div>
 </section>
 
+<script>
+  // Невидимая проверка от спама (Cloudflare Turnstile) подгружается, только когда форма близко к экрану,
+  // чтобы не замедлять открытие сайта. Если проверка ещё не готова, отправку чуть придерживаем.
+  const form = document.querySelector<HTMLFormElement>('[data-lead-form]');
+  const box = form?.querySelector('.cf-turnstile');
+  if (form && box) {
+    let loaded = false;
+    const load = () => {
+      if (loaded) return;
+      loaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+      s.async = true;
+      document.head.appendChild(s);
+    };
+    new IntersectionObserver((e, o) => {
+      if (e.some((x) => x.isIntersecting)) {
+        load();
+        o.disconnect();
+      }
+    }, { rootMargin: '600px' }).observe(form);
+    form.addEventListener('focusin', load, { once: true });
+
+    let waiting = false;
+    form.addEventListener('submit', (ev) => {
+      const token = form.querySelector<HTMLInputElement>('[name="cf-turnstile-response"]');
+      if (token?.value || waiting) return;
+      ev.preventDefault();
+      load();
+      waiting = true;
+      const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      btn?.setAttribute('aria-busy', 'true');
+      const started = Date.now();
+      const tick = () => {
+        const t = form.querySelector<HTMLInputElement>('[name="cf-turnstile-response"]');
+        if (t?.value || Date.now() - started > 10000) form.requestSubmit();
+        else setTimeout(tick, 250);
+      };
+      tick();
+    });
+  }
+</script>
+
 <style>
+  .lead-form :global(.cf-turnstile) {
+    min-height: 0;
+  }
+  .lead-form button[aria-busy='true'] {
+    opacity: 0.7;
+    cursor: progress;
+  }
   .contact-grid {
     display: grid;
     gap: 40px;
