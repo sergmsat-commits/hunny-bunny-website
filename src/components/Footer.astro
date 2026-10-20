@@ -7,6 +7,7 @@ import { privacyPath } from '../i18n/privacy';
 import { courseIds, coursePath, courses, courseUi } from '../data/courses';
 import { teachersPath } from '../data/teachers';
 import { contactsPath } from '../data/pages';
+import { blogPath, blogUi } from '../data/blog';
 import type { Translation } from '../i18n/translations';
 
 interface Props {
@@ -32,6 +33,7 @@ const g = business.gomel;
       <a href={teachersPath[lang]}>{t.nav.team}</a>
       <a href={`${home}#reviews`}>{t.nav.reviews}</a>
       <a href={`${home}#faq`}>{t.nav.faq}</a>
+      <a href={blogPath[lang]}>{blogUi[lang].title}</a>
       <a href={contactsPath[lang]}>{t.nav.contact}</a>
     </nav>
 

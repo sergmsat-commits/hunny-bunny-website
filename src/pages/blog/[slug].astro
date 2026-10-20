@@ -1,0 +1,12 @@
+---
+import BlogPost from '../../components/BlogPost.astro';
+import { postIds, postPath } from '../../data/blog';
+
+export function getStaticPaths() {
+  return postIds
+    .filter((id) => postPath[id].ru)
+    .map((id) => ({ params: { slug: postPath[id].ru!.split('/').filter(Boolean).pop() }, props: { id } }));
+}
+const { id } = Astro.props;
+---
+<BlogPost lang="ru" id={id} />
