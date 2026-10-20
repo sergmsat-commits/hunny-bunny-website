@@ -29,12 +29,14 @@ const t = translations[lang].legal;
     }
     root.dataset.consent = value;
     if (value === 'granted') {
-      (window as unknown as { hbLoadGA?: () => void }).hbLoadGA?.();
+      const w = window as unknown as { hbLoadGA?: () => void; hbLoadYM?: () => void };
+      w.hbLoadGA?.();
+      w.hbLoadYM?.();
     } else {
-      // Отказ: убираем cookies аналитики, если они уже были
+      // Отказ: убираем cookies Google Analytics и Метрики, если они уже были
       document.cookie.split(';').forEach((c) => {
         const name = c.split('=')[0].trim();
-        if (name.startsWith('_ga')) {
+        if (name.startsWith('_ga') || name.startsWith('_ym')) {
           document.cookie = `${name}=; Max-Age=0; path=/; domain=.${location.hostname}`;
           document.cookie = `${name}=; Max-Age=0; path=/`;
         }
