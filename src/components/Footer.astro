@@ -38,7 +38,7 @@ const g = business.gomel;
     </nav>
 
     <nav aria-label={courseUi[lang].courses} class="footer-nav footer-courses">
-      <p class="footer-h">{courseUi[lang].courses}</p>
+      <a href={`${home}#courses`} class="footer-h">{courseUi[lang].courses}</a>
       {courseIds.map((id) => <a href={coursePath[id][lang]}>{courses[id][lang].short}</a>)}
     </nav>
 
@@ -100,13 +100,18 @@ const g = business.gomel;
     flex-direction: column;
     gap: 6px;
   }
-  .footer-h {
+  .footer-nav a.footer-h {
+    padding: 0 0 2px;
+    text-decoration: none;
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: #b8b2e6;
     margin-bottom: 2px;
+  }
+  .footer-nav a.footer-h:hover {
+    color: #fff;
   }
   .footer-nav a {
     text-decoration: none;
