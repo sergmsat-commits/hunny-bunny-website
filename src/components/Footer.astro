@@ -6,6 +6,7 @@ import { business, homePath, type Lang } from '../data/business';
 import { privacyPath } from '../i18n/privacy';
 import { courseIds, coursePath, courses, courseUi } from '../data/courses';
 import { teachersPath } from '../data/teachers';
+import { contactsPath } from '../data/pages';
 import type { Translation } from '../i18n/translations';
 
 interface Props {
@@ -31,7 +32,7 @@ const g = business.gomel;
       <a href={teachersPath[lang]}>{t.nav.team}</a>
       <a href={`${home}#reviews`}>{t.nav.reviews}</a>
       <a href={`${home}#faq`}>{t.nav.faq}</a>
-      <a href={`${home}#contact`}>{t.nav.contact}</a>
+      <a href={contactsPath[lang]}>{t.nav.contact}</a>
     </nav>
 
     <nav aria-label={courseUi[lang].courses} class="footer-nav footer-courses">
