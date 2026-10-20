@@ -298,6 +298,29 @@ const links = [
     font-size: 15px;
   }
 
+  /* Совсем узкие телефоны (320–359 px, iPhone SE 1-го поколения): всё в шапке чуть компактнее, чтобы не вылезало за экран */
+  @media (max-width: 359px) {
+    .header-row {
+      gap: 8px;
+    }
+    .brand {
+      gap: 6px;
+    }
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+    }
+    .brand-name {
+      font-size: 15px;
+    }
+    .header-actions {
+      gap: 6px;
+    }
+    .lang-mini summary {
+      min-width: 56px;
+      padding: 0 6px 0 10px;
+    }
+  }
   @media (min-width: 640px) {
     .lang-switch {
       display: flex;

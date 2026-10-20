@@ -69,6 +69,11 @@ const more = courseUi[lang].more;
 <style>
   /* Телефон: курсы — горизонтальная лента с «подглядывающей» следующей карточкой */
   .courses-grid {
+    /* relative: скрытые подписи для скринридеров (.visually-hidden, position:absolute) остаются внутри ленты.
+       Без этого они «выпадали» за правый край экрана и вся страница начинала ездить вбок на телефоне. */
+    position: relative;
+    /* свайп до конца ленты не передаётся странице */
+    overscroll-behavior-x: contain;
     list-style: none;
     margin: 0 calc(-1 * var(--gutter));
     padding: 4px var(--gutter) 16px;
