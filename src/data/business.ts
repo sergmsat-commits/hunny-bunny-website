@@ -31,6 +31,7 @@ export const business = {
   },
   socials: {
     instagram: 'https://www.instagram.com/hunny_bunny_english/',
+    instagramDirect: 'https://ig.me/m/hunny_bunny_english',
     youtube: 'https://www.youtube.com/@hunnybunnyenglish',
     founderInstagram: 'https://www.instagram.com/julia_satyrova/',
   },

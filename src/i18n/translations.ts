@@ -15,7 +15,7 @@ const ru = {
   hero: {
     eyebrow: 'Гомель · Варшава · онлайн по всему миру',
     title: 'Английский для детей и взрослых, который нравится',
-    lead: 'Дети от 3 лет, подростки и взрослые. Подготовка к ЦТ и IELTS, разговорный клуб. Группы от 4 до 8 человек и индивидуальные занятия.',
+    lead: 'Дети от 3 лет, подростки и взрослые. Подготовка к ЦТ и IELTS, разговорный клуб. Группы от 3 до 5 человек и индивидуальные занятия.',
     stats: [
       { value: '500+', label: 'учеников в 5 странах' },
       { value: 'Бесплатно', label: 'первое занятие' },
@@ -29,39 +29,39 @@ const ru = {
   },
   courses: {
     title: 'Курсы',
-    lead: 'Очно в Гомеле и Варшаве или онлайн — формат выбираете вы.',
+    lead: 'Очно в Гомеле и Варшаве или онлайн — формат выбираете вы. Набор в группы и на индивидуальные занятия идёт круглый год.',
     items: [
       {
         icon: 'heart',
         title: 'Дети 3–10 лет',
         text: 'Игры, песни и разговорная речь с первого занятия. Ребёнок привыкает к английскому легко и с удовольствием.',
-        points: ['Группы от 4 до 8 детей', 'Очно и онлайн'],
+        points: ['Группы от 3 до 5 детей', 'Занятие — 45 минут', 'Очно и онлайн'],
       },
       {
         icon: 'cap',
         title: 'Школьники 11–17 лет',
         text: 'Школьная программа без стресса, подготовка к ЦТ, IELTS и олимпиадам.',
-        points: ['Открыт набор в группы 5–9 классов на 2026/2027', 'Олимпиады — занятия по 45 минут'],
+        points: ['Набор круглый год — в группы и индивидуально', 'Занятие — 45 минут', 'Олимпиады — занятия по 45 минут'],
       },
       {
         icon: 'chat',
         title: 'Взрослые',
         text: 'Английский для работы, путешествий и жизни за границей. Любой уровень — от Beginner до Advanced.',
-        points: ['Разговорный клуб', 'IELTS — 60 минут, в группе или индивидуально'],
+        points: ['Занятия индивидуальные и групповые', 'Разговорный клуб', 'IELTS — 60 минут, в группе или индивидуально'],
       },
       {
         icon: 'star',
         title: 'Клубы и мастер-классы',
         text: 'Больше, чем просто уроки: английский в живом общении.',
-        points: ['Киноклуб — 90 минут', 'Летний клуб — 10:00–14:00', 'Мастер-классы'],
+        points: ['Каникулы на английском', 'Киноклуб — 90 минут', 'Летний клуб — 10:00–14:00', 'Мастер-классы'],
       },
     ],
   },
   why: {
     title: 'Почему выбирают Hunny Bunny',
     items: [
-      { big: "4–8", icon: 'users', title: 'Маленькие группы', text: 'От 4 до 8 учеников, поэтому каждый успевает говорить и получает внимание преподавателя.' },
-      { big: "TESOL", icon: 'award', title: 'Международная практика', text: 'Преподаватели с большим опытом. У основательницы и Алёны Лаевской — сертификаты TESOL и обучение на Мальте.' },
+      { big: "3–5", icon: 'users', title: 'Маленькие группы', text: 'От 3 до 5 учеников, поэтому каждый успевает говорить и получает внимание преподавателя.' },
+      { big: "TESOL", icon: 'award', title: 'Международная практика', text: 'Преподаватели с большим опытом — сертификаты TESOL и обучение на Мальте.' },
       { icon: 'pin', title: 'Очно и онлайн', text: 'Уютный класс в центре Гомеля с отдельным входом, занятия в Варшаве и онлайн из любой страны.' },
       { big: "20 мин", icon: 'gift', title: 'Пробный урок бесплатно', text: 'Познакомимся и подберём подходящую группу. Пробное занятие длится 20 минут.' },
     ],
@@ -87,6 +87,7 @@ const ru = {
       'Урок с подростком за столом',
     ],
   },
+  extras: { title: "Подарки и события", gift: { title: "Подарочный сертификат", text: "На любые занятия и услуги пространства Hunny Bunny. Номинал — от 20 BYN, сумму выбираете вы.", cta: "Заказать сертификат" }, rent: { title: "Аренда пространства", text: "Светлый уютный класс в центре Гомеля для творческих мастер-классов, дней рождения и встреч.", cta: "Условия — в директ" } },
   video: { title: "Английский с песенками", lead: "Наш зайчик поёт простые песни на английском — малыши запоминают цвета, числа и первые слова. Смотрите дома вместе с ребёнком.", play: "Смотреть видео «Colors Song»", note: "Видео загрузится с YouTube после нажатия.", more: "Все видео на YouTube", frame: "Видео YouTube: Colors Song" },
   final: { title: "До встречи на уроке!", lead: "Первое занятие бесплатно. Напишите в удобный мессенджер — Юлия ответит и подберёт группу.", form: "Оставить заявку" },
   reviews: {
@@ -119,12 +120,15 @@ const ru = {
     items: [
       { q: 'Есть ли пробный урок?', a: 'Да, первое занятие бесплатное и длится 20 минут.' },
       { q: 'С какого возраста можно начать?', a: 'С 3 лет. Взрослых учим в любом возрасте и с любого уровня.' },
-      { q: 'Сколько человек в группе?', a: 'От 4 до 8 учеников.' },
+      { q: 'Сколько человек в группе?', a: 'От 3 до 5 учеников. Можно заниматься и индивидуально.' },
+      { q: 'Сколько длится занятие?', a: 'Занятие для детей и школьников (общий английский и подготовка к ЦТ) длится 45 минут. Олимпиады — 45 минут, IELTS — 60 минут, киноклуб — 90 минут. Пробный урок — 20 минут.' },
+      { q: 'Когда можно начать заниматься?', a: 'В любое время: набор в группы и на индивидуальные занятия идёт круглый год.' },
       { q: 'Где проходят занятия?', a: 'Очно — в Гомеле на ул. Крестьянской, 33 (отдельный вход с улицы) и в Варшаве. Онлайн — из любой страны.' },
       { q: 'Можно заниматься онлайн?', a: 'Да. У нас учатся ребята и взрослые из Беларуси, Польши, Украины, России и США.' },
       { q: 'Какой уровень нужен для начала?', a: 'Любой: программы от Beginner до Advanced.' },
       { q: 'Есть ли скидки?', a: 'Да, 20% на первый месяц обучения.' },
-      { q: 'Сколько стоят занятия?', a: 'Стоимость зависит от формата: группа или индивидуально, очно или онлайн. Напишите нам — пришлём актуальный прайс.' },
+      { q: 'Сколько стоят занятия?', a: 'Цена за одно занятие, в скобках — по абонементу. Общий английский и подготовка к ЦТ: в группе очно — 40 BYN (38), онлайн — 35 BYN (33); индивидуально очно — 55 BYN (53), онлайн — 50 BYN (48). IELTS, очно и онлайн: в группе — 70 BYN (65), индивидуально — 90 BYN (85). Олимпиады — 25 BYN, киноклуб — 45 BYN, летний клуб — 50 BYN за день. Стоимость мастер-классов зависит от программы.' },
+      { q: 'Как устроена оплата и пропуски?', a: 'Занятия идут по абонементу, его оплачивают за текущий месяц до 5 числа. Пропуск по болезни не сгорает. Занятия, пропущенные по другим причинам, можно отработать в этом же месяце, иначе они списываются. Если не предупредить о пропуске или предупредить позже чем за 3 часа до начала, занятие списывается.' },
     ],
   },
   contact: {
@@ -134,7 +138,7 @@ const ru = {
     entrance: 'Отдельный вход с улицы',
     hoursLabel: 'Ежедневно',
     warsawTitle: 'Варшава',
-    warsawText: 'Адрес очных занятий сообщим при записи.',
+    warsawText: 'Очные занятия ведёт основательница Юлия Сатырова. Адрес, формат и время уточняйте при записи.',
     onlineTitle: 'Онлайн',
     onlineText: 'Из любой страны мира.',
     mapYandex: 'Яндекс Карты',
@@ -196,7 +200,7 @@ const en: Dict = {
   hero: {
     eyebrow: 'Online worldwide · Gomel · Warsaw',
     title: 'English for kids and adults that they actually enjoy',
-    lead: 'Children from age 3, teenagers and adults. IELTS preparation and a conversation club. Groups of 4 to 8 students and one-to-one lessons.',
+    lead: 'Children from age 3, teenagers and adults. IELTS preparation and a conversation club. Groups of 3 to 5 students and one-to-one lessons.',
     stats: [
       { value: '500+', label: 'students in 5 countries' },
       { value: 'Free', label: 'first lesson' },
@@ -210,39 +214,39 @@ const en: Dict = {
   },
   courses: {
     title: 'Courses',
-    lead: 'Online or in person in Gomel and Warsaw — you choose the format.',
+    lead: 'Online or in person in Gomel and Warsaw — you choose the format. We enrol students in groups and one-to-one lessons all year round.',
     items: [
       {
         icon: 'heart',
         title: 'Kids aged 3–10',
         text: 'Games, songs and speaking from the very first lesson. Children get used to English easily and happily.',
-        points: ['Groups of 4 to 8 children', 'Online and in person'],
+        points: ['Groups of 3 to 5 children', 'Lessons last 45 minutes', 'Online and in person'],
       },
       {
         icon: 'cap',
         title: 'Teens aged 11–17',
         text: 'School English without stress, plus IELTS and olympiad preparation.',
-        points: ['Olympiad classes — 45 minutes', 'Online and in person'],
+        points: ['Enrolment all year round — groups and one-to-one', 'Lessons last 45 minutes', 'Online and in person'],
       },
       {
         icon: 'chat',
         title: 'Adults',
         text: 'English for work, travel and life abroad. Any level, from Beginner to Advanced.',
-        points: ['Conversation club', 'IELTS — 60 minutes, group or one-to-one'],
+        points: ['One-to-one and group lessons', 'Conversation club', 'IELTS — 60 minutes, group or one-to-one'],
       },
       {
         icon: 'star',
         title: 'Clubs and workshops',
         text: 'More than just lessons: English through real communication.',
-        points: ['Movie club — 90 minutes', 'Summer club — 10:00–14:00', 'Workshops'],
+        points: ['Holidays in English', 'Movie club — 90 minutes', 'Summer club — 10:00–14:00', 'Workshops'],
       },
     ],
   },
   why: {
     title: 'Why families choose Hunny Bunny',
     items: [
-      { big: "4–8", icon: 'users', title: 'Small groups', text: '4 to 8 students, so everyone gets to speak and gets the teacher’s attention.' },
-      { big: "TESOL", icon: 'award', title: 'International experience', text: 'Experienced teachers. Our founder and Alena Laevskaya hold TESOL certificates and trained in Malta.' },
+      { big: "3–5", icon: 'users', title: 'Small groups', text: '3 to 5 students, so everyone gets to speak and gets the teacher’s attention.' },
+      { big: "TESOL", icon: 'award', title: 'International experience', text: 'Experienced teachers with TESOL certificates and training in Malta.' },
       { icon: 'pin', title: 'Online and in person', text: 'A cosy classroom in central Gomel with its own entrance, lessons in Warsaw and online from any country.' },
       { big: "20 min", icon: 'gift', title: 'Free trial lesson', text: 'Let’s get to know each other and find the right group. The trial lesson takes 20 minutes.' },
     ],
@@ -268,6 +272,7 @@ const en: Dict = {
       'A lesson with a teenager at a desk',
     ],
   },
+  extras: { title: "Gifts and events", gift: { title: "Gift certificate", text: "For any lessons and services at Hunny Bunny, for the amount you choose. Message us for details.", cta: "Order a certificate" }, rent: { title: "Space for your event", text: "A bright, cosy classroom in central Gomel for creative workshops, birthday parties and meet-ups.", cta: "Ask on Instagram" } },
   video: { title: "English through songs", lead: "Our bunny sings simple English songs, so little ones remember colours, numbers and their first words. Watch together at home.", play: "Play the “Colors Song” video", note: "The video loads from YouTube after you click.", more: "All videos on YouTube", frame: "YouTube video: Colors Song" },
   final: { title: "See you at the lesson!", lead: "The first lesson is free. Message us in your favourite app — Yuliya will reply and find the right group.", form: "Send a request" },
   reviews: {
@@ -300,12 +305,15 @@ const en: Dict = {
     items: [
       { q: 'Is there a trial lesson?', a: 'Yes. Your first lesson is free and takes 20 minutes.' },
       { q: 'What age can my child start?', a: 'From age 3. Adults can start at any age and any level.' },
-      { q: 'How many students are in a group?', a: '4 to 8 students.' },
+      { q: 'How many students are in a group?', a: '3 to 5 students. One-to-one lessons are also available.' },
+      { q: 'How long is a lesson?', a: 'Lessons for kids and teens last 45 minutes. Olympiad classes are 45 minutes, IELTS 60 minutes, movie club 90 minutes. The trial lesson takes 20 minutes.' },
+      { q: 'When can we start?', a: 'Any time: we enrol students in groups and one-to-one lessons all year round.' },
       { q: 'Where do lessons take place?', a: 'In person in Gomel (33 Krestyanskaya St, separate street entrance) and in Warsaw. Online from any country.' },
       { q: 'Can I study online?', a: 'Yes. Our students live in Belarus, Poland, Ukraine, Russia and the USA.' },
       { q: 'What level do I need?', a: 'Any — we teach from Beginner to Advanced.' },
       { q: 'Are there any discounts?', a: 'Yes, 20% off your first month.' },
       { q: 'How much do lessons cost?', a: 'It depends on the format: group or one-to-one, online or in person. Message us and we’ll send the current prices.' },
+      { q: 'How do payment and missed lessons work?', a: 'Lessons are paid monthly with a pass, before the 5th of the month. Lessons missed due to illness are not lost. Lessons missed for other reasons can be made up within the same month, otherwise they are deducted. If you don’t warn us or warn us less than 3 hours before the start, the lesson is deducted.' },
     ],
   },
   contact: {
@@ -315,7 +323,7 @@ const en: Dict = {
     entrance: 'Separate entrance from the street',
     hoursLabel: 'Daily',
     warsawTitle: 'Warsaw, Poland',
-    warsawText: 'We’ll share the address when you book.',
+    warsawText: 'In-person lessons are taught by our founder, Yuliya Satyrava. Ask us about the address, format and times when you book.',
     onlineTitle: 'Online',
     onlineText: 'From any country.',
     mapYandex: 'Yandex Maps',
@@ -375,7 +383,7 @@ const pl: Dict = {
   hero: {
     eyebrow: 'Warszawa · Homel · online z całego świata',
     title: 'Angielski dla dzieci i dorosłych, który daje radość',
-    lead: 'Dzieci od 3 lat, młodzież i dorośli. Przygotowanie do IELTS i klub konwersacyjny. Grupy od 4 do 8 osób oraz zajęcia indywidualne.',
+    lead: 'Dzieci od 3 lat, młodzież i dorośli. Przygotowanie do IELTS i klub konwersacyjny. Grupy od 3 do 5 osób oraz zajęcia indywidualne.',
     stats: [
       { value: '500+', label: 'uczniów w 5 krajach' },
       { value: 'Gratis', label: 'pierwsza lekcja' },
@@ -389,39 +397,39 @@ const pl: Dict = {
   },
   courses: {
     title: 'Kursy',
-    lead: 'Online albo stacjonarnie w Warszawie i Homlu — wybierasz format.',
+    lead: 'Online albo stacjonarnie w Warszawie i Homlu — wybierasz format. Zapisy do grup i na zajęcia indywidualne trwają przez cały rok.',
     items: [
       {
         icon: 'heart',
         title: 'Dzieci 3–10 lat',
         text: 'Zabawy, piosenki i mówienie od pierwszej lekcji. Dziecko oswaja się z angielskim łatwo i z przyjemnością.',
-        points: ['Grupy od 4 do 8 dzieci', 'Online i stacjonarnie'],
+        points: ['Grupy od 3 do 5 dzieci', 'Lekcja trwa 45 minut', 'Online i stacjonarnie'],
       },
       {
         icon: 'cap',
         title: 'Młodzież 11–17 lat',
         text: 'Szkolny angielski bez stresu, przygotowanie do IELTS i olimpiad.',
-        points: ['Olimpiady — zajęcia po 45 minut', 'Online i stacjonarnie'],
+        points: ['Zapisy przez cały rok — do grup i indywidualnie', 'Lekcja trwa 45 minut', 'Online i stacjonarnie'],
       },
       {
         icon: 'chat',
         title: 'Dorośli',
         text: 'Angielski do pracy, podróży i życia za granicą. Każdy poziom — od Beginner do Advanced.',
-        points: ['Klub konwersacyjny', 'IELTS — 60 minut, w grupie lub indywidualnie'],
+        points: ['Zajęcia indywidualne i grupowe', 'Klub konwersacyjny', 'IELTS — 60 minut, w grupie lub indywidualnie'],
       },
       {
         icon: 'star',
         title: 'Kluby i warsztaty',
         text: 'Więcej niż lekcje: angielski w żywej rozmowie.',
-        points: ['Klub filmowy — 90 minut', 'Letni klub — 10:00–14:00', 'Warsztaty'],
+        points: ['Ferie z angielskim', 'Klub filmowy — 90 minut', 'Letni klub — 10:00–14:00', 'Warsztaty'],
       },
     ],
   },
   why: {
     title: 'Dlaczego Hunny Bunny',
     items: [
-      { big: "4–8", icon: 'users', title: 'Małe grupy', text: 'Od 4 do 8 uczniów, więc każdy ma okazję mówić i dostaje uwagę lektora.' },
-      { big: "TESOL", icon: 'award', title: 'Międzynarodowe doświadczenie', text: 'Doświadczeni lektorzy. Założycielka i Alena Laevskaya mają certyfikaty TESOL i szkolenie na Malcie.' },
+      { big: "3–5", icon: 'users', title: 'Małe grupy', text: 'Od 3 do 5 uczniów, więc każdy ma okazję mówić i dostaje uwagę lektora.' },
+      { big: "TESOL", icon: 'award', title: 'Międzynarodowe doświadczenie', text: 'Doświadczeni lektorzy z certyfikatami TESOL i szkoleniem na Malcie.' },
       { icon: 'pin', title: 'Online i stacjonarnie', text: 'Zajęcia w Warszawie, przytulna sala w centrum Homla i lekcje online z dowolnego kraju.' },
       { big: "20 min", icon: 'gift', title: 'Bezpłatna lekcja próbna', text: 'Poznajmy się i dobierzmy odpowiednią grupę. Lekcja próbna trwa 20 minut.' },
     ],
@@ -447,6 +455,7 @@ const pl: Dict = {
       'Lekcja z nastolatkiem przy stole',
     ],
   },
+  extras: { title: "Prezenty i wydarzenia", gift: { title: "Bon podarunkowy", text: "Na dowolne zajęcia i usługi Hunny Bunny, na wybraną przez Ciebie kwotę. Napisz do nas po szczegóły.", cta: "Zamów bon" }, rent: { title: "Wynajem sali", text: "Jasna, przytulna sala w centrum Homla na warsztaty twórcze, urodziny i spotkania.", cta: "Zapytaj na Instagramie" } },
   video: { title: "Angielski z piosenkami", lead: "Nasz zajączek śpiewa proste piosenki po angielsku — maluchy zapamiętują kolory, liczby i pierwsze słowa. Oglądajcie razem w domu.", play: "Odtwórz film „Colors Song”", note: "Film załaduje się z YouTube po kliknięciu.", more: "Wszystkie filmy na YouTube", frame: "Film YouTube: Colors Song" },
   final: { title: "Do zobaczenia na lekcji!", lead: "Pierwsza lekcja jest bezpłatna. Napisz w wygodnym komunikatorze — Julia odpowie i dobierze grupę.", form: "Wyślij zgłoszenie" },
   reviews: {
@@ -479,12 +488,15 @@ const pl: Dict = {
     items: [
       { q: 'Czy jest lekcja próbna?', a: 'Tak, pierwsza lekcja jest bezpłatna i trwa 20 minut.' },
       { q: 'Od jakiego wieku można zacząć?', a: 'Od 3 lat. Dorośli mogą zacząć w każdym wieku i na każdym poziomie.' },
-      { q: 'Ile osób jest w grupie?', a: 'Od 4 do 8 uczniów.' },
+      { q: 'Ile osób jest w grupie?', a: 'Od 3 do 5 uczniów. Można też uczyć się indywidualnie.' },
+      { q: 'Ile trwa lekcja?', a: 'Lekcja dla dzieci i młodzieży trwa 45 minut. Olimpiady — 45 minut, IELTS — 60 minut, klub filmowy — 90 minut. Lekcja próbna trwa 20 minut.' },
+      { q: 'Kiedy można zacząć?', a: 'W dowolnym momencie: zapisy do grup i na zajęcia indywidualne trwają przez cały rok.' },
       { q: 'Gdzie odbywają się zajęcia?', a: 'Stacjonarnie w Warszawie i w Homlu (Białoruś), a online — z dowolnego kraju.' },
       { q: 'Czy można uczyć się online?', a: 'Tak. Uczą się u nas osoby z Białorusi, Polski, Ukrainy, Rosji i USA.' },
       { q: 'Jaki poziom jest potrzebny na start?', a: 'Dowolny — prowadzimy zajęcia od poziomu Beginner do Advanced.' },
       { q: 'Czy są zniżki?', a: 'Tak, 20% rabatu na pierwszy miesiąc nauki.' },
       { q: 'Ile kosztują zajęcia?', a: 'Cena zależy od formatu: w grupie czy indywidualnie, online czy stacjonarnie. Napisz do nas — prześlemy aktualny cennik.' },
+      { q: 'Jak wygląda płatność i nieobecności?', a: 'Zajęcia odbywają się w ramach karnetu opłacanego za bieżący miesiąc do 5. dnia miesiąca. Nieobecność z powodu choroby nie przepada. Zajęcia opuszczone z innych powodów można odrobić w tym samym miesiącu, w przeciwnym razie są odliczane. Jeśli nie uprzedzisz nas lub zrobisz to później niż 3 godziny przed zajęciami, lekcja jest odliczana.' },
     ],
   },
   contact: {
@@ -494,7 +506,7 @@ const pl: Dict = {
     entrance: 'Osobne wejście od ulicy',
     hoursLabel: 'Codziennie',
     warsawTitle: 'Warszawa',
-    warsawText: 'Adres zajęć stacjonarnych podamy przy zapisie.',
+    warsawText: 'Zajęcia stacjonarne prowadzi założycielka, Yuliya Satyrava. O adres, format i godziny zapytaj przy zapisie.',
     onlineTitle: 'Online',
     onlineText: 'Z dowolnego kraju.',
     mapYandex: 'Mapy Yandex',

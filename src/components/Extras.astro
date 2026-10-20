@@ -1,0 +1,114 @@
+---
+// Подарочные сертификаты и аренда пространства — две карточки в фирменном стиле.
+import Icon from './Icon.astro';
+import Deco from './Deco.astro';
+import { business, type Lang } from '../data/business';
+import type { Translation } from '../i18n/translations';
+
+interface Props {
+  t: Translation;
+  lang: Lang;
+}
+const { t, lang } = Astro.props;
+const e = t.extras;
+const giftLink = lang === 'pl' ? business.messengers.whatsapp : business.messengers.telegram;
+---
+<section class="section extras" aria-labelledby="extras-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2 id="extras-title">{e.title}</h2>
+    </div>
+    <ul class="extras-grid" role="list">
+      <li class="extra extra-gift reveal">
+        <Deco name="flower" size={56} class="x-fl" />
+        <Deco name="sparkle" size={16} class="x-sp" />
+        <span class="extra-icon"><Icon name="gift" size={28} stroke={1.8} /></span>
+        <h3>{e.gift.title}</h3>
+        <p>{e.gift.text}</p>
+        <a href={giftLink} class="btn btn-primary" target="_blank" rel="noopener">{e.gift.cta}</a>
+      </li>
+      <li class="extra extra-rent reveal">
+        <Deco name="flower" size={44} tone="peach" class="x-fl" />
+        <span class="extra-icon"><Icon name="calendar" size={28} stroke={1.8} /></span>
+        <h3>{e.rent.title}</h3>
+        <p>{e.rent.text}</p>
+        <a href={business.socials.instagramDirect} class="btn btn-secondary" target="_blank" rel="noopener">
+          <Icon name="instagram" size={20} stroke={2} />{e.rent.cta}
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  .extras {
+    background: var(--c-surface);
+  }
+  .extras-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 16px;
+  }
+  .extra {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--r-xl);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .extra h3 {
+    font-size: 22px;
+  }
+  .extra p {
+    color: var(--c-ink-2);
+    max-width: 440px;
+  }
+  .extra .btn {
+    margin-top: 8px;
+  }
+  .extra-gift {
+    background:
+      radial-gradient(70% 90% at 100% 0%, rgba(243, 182, 234, 0.55), transparent 70%),
+      linear-gradient(160deg, #fff, #f4f1ff);
+    box-shadow: var(--shadow-card);
+  }
+  .extra-rent {
+    background:
+      radial-gradient(70% 90% at 100% 0%, rgba(255, 226, 184, 0.7), transparent 70%),
+      linear-gradient(160deg, #fff, #fff8ef);
+    box-shadow: var(--shadow-card);
+  }
+  .extra-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--c-surface);
+    color: var(--c-primary);
+    box-shadow: 0 8px 20px -8px rgba(35, 30, 69, 0.25);
+  }
+  .extra :global(.x-fl) {
+    top: 18px;
+    right: 18px;
+  }
+  .extra :global(.x-sp) {
+    top: 84px;
+    right: 64px;
+  }
+  @media (min-width: 840px) {
+    .extras-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .extra {
+      padding: 36px 32px;
+    }
+  }
+</style>
