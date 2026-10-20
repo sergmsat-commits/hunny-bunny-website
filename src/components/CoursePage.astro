@@ -159,7 +159,7 @@ const schema = [
                       {g.rows.map((r) => (
                         <tr>
                           <th scope="row">{r.label}</th>
-                          <td colspan={g.rows.some((x) => x.pass) && !r.pass ? 2 : undefined}>{r.once}</td>
+                          <td colspan={g.rows.some((x) => x.pass) && !r.pass ? 2 : undefined} class:list={[{ wrap: !/\d/.test(r.once) }]}>{r.once}</td>
                           {r.pass && <td class="pass">{r.pass}</td>}
                         </tr>
                       ))}
@@ -438,6 +438,24 @@ const schema = [
     font-weight: 600;
     white-space: nowrap;
     padding-left: 8px;
+  }
+  /* Текст без цифр («зависит от программы») может переноситься, иначе на узком телефоне таблица вылезает за экран */
+  .price-card td.wrap {
+    white-space: normal;
+  }
+  @media (max-width: 359px) {
+    .price-card {
+      padding: 20px 14px;
+    }
+    .price-card table {
+      font-size: 14px;
+    }
+    .price-card tbody th {
+      padding-right: 6px;
+    }
+    .price-card td {
+      padding-left: 4px;
+    }
   }
   .price-card td.pass {
     color: var(--c-primary-ink);
