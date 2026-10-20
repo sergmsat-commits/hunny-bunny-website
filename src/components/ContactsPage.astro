@@ -1,0 +1,285 @@
+---
+// Страница «Контакты»: быстрые способы связи, адрес и форма, реквизиты.
+import Layout from '../layouts/Layout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import StickyBar from './StickyBar.astro';
+import Contact from './Contact.astro';
+import Icon from './Icon.astro';
+import Deco from './Deco.astro';
+import { translations } from '../i18n/translations';
+import { business, homePath, type Lang } from '../data/business';
+import { contactsPath } from '../data/pages';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = translations[lang];
+const g = business.gomel;
+const site = business.site;
+const path = contactsPath[lang];
+
+const ui = {
+  ru: {
+    seoTitle: 'Контакты школы английского Hunny Bunny в Гомеле',
+    description: 'Hunny Bunny English: Гомель, ул. Крестьянская, 33 (отдельный вход с улицы), ежедневно 10:00–21:00. Телефон +375 29 625-64-42, Telegram, Viber, WhatsApp, hello@hunnybunny.by.',
+    h1: 'Контакты',
+    lead: 'Напишите в удобный мессенджер или позвоните — Юлия ответит и подберёт время занятий.',
+    company: 'Организация',
+    unp: 'УНП',
+    home: 'Главная',
+    call: 'Позвонить',
+    email: 'Написать на почту',
+    legalTitle: 'Реквизиты',
+    legalCity: 'Юридический адрес',
+  },
+  en: {
+    seoTitle: 'Contact Hunny Bunny English',
+    description: 'Hunny Bunny English: 33 Krestyanskaya St, Gomel (separate street entrance), daily 10:00–21:00. Phone +375 29 625-64-42, WhatsApp +48 573 306 598, Telegram, hello@hunnybunny.by.',
+    h1: 'Contact us',
+    lead: 'Message us in your favourite app or call — Yuliya will reply and find a time that suits you.',
+    company: 'Company',
+    unp: 'Registration number (UNP)',
+    home: 'Home',
+    call: 'Call',
+    email: 'Email us',
+    legalTitle: 'Company details',
+    legalCity: 'Registered address',
+  },
+  pl: {
+    seoTitle: 'Kontakt — Hunny Bunny English',
+    description: 'Hunny Bunny English: Homel, ul. Kriestjanskaja 33, codziennie 10:00–21:00. WhatsApp +48 573 306 598, Telegram, tel. +375 29 625-64-42, hello@hunnybunny.by.',
+    h1: 'Kontakt',
+    lead: 'Napisz w wygodnym komunikatorze lub zadzwoń — Julia odpowie i dobierze termin zajęć.',
+    company: 'Firma',
+    unp: 'Numer rejestrowy (UNP)',
+    home: 'Strona główna',
+    call: 'Zadzwoń',
+    email: 'Napisz e-mail',
+    legalTitle: 'Dane firmy',
+    legalCity: 'Adres rejestrowy',
+  },
+}[lang];
+
+const m = business.messengers;
+const quick = [
+  ...(lang === 'pl'
+    ? [
+        { href: m.whatsapp, icon: 'whatsapp', label: 'WhatsApp', note: business.phones.pl.display },
+        { href: m.telegram, icon: 'telegram', label: 'Telegram', note: '@hunnybunnyenglish' },
+      ]
+    : [
+        { href: m.telegram, icon: 'telegram', label: 'Telegram', note: '@hunnybunnyenglish' },
+        { href: m.viber, icon: 'viber', label: 'Viber', note: business.phones.by.display },
+        { href: m.whatsapp, icon: 'whatsapp', label: 'WhatsApp', note: business.phones.pl.display },
+      ]),
+  { href: `tel:${business.phones.by.e164}`, icon: 'phone', label: ui.call, note: business.phones.by.display },
+  { href: `mailto:${business.email}`, icon: 'mail', label: ui.email, note: business.email },
+  { href: business.socials.instagramDirect, icon: 'instagram', label: 'Instagram', note: '@hunny_bunny_english' },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: ui.home, item: `${site}${homePath[lang]}` },
+      { '@type': 'ListItem', position: 2, name: ui.h1, item: `${site}${path}` },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: ui.h1,
+    url: `${site}${path}`,
+    about: { '@id': `${site}/#school` },
+  },
+];
+---
+<Layout lang={lang} title={ui.seoTitle} description={ui.description} ogLocale={t.locale} path={path} alternates={contactsPath} schema={schema}>
+  <a href="#main" class="skip-link">{t.a11y.skip}</a>
+  <Header t={t} lang={lang} />
+  <main id="main">
+    <section class="k-hero">
+      <Deco name="flower" size={60} class="k-fl" />
+      <Deco name="sparkle" size={18} class="k-sp" />
+      <div class="container">
+        <nav class="crumbs" aria-label="breadcrumbs">
+          <a href={homePath[lang]}>{ui.home}</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">{ui.h1}</span>
+        </nav>
+        <h1>{ui.h1}</h1>
+        <p class="k-lead">{ui.lead}</p>
+        <ul class="quick" role="list">
+          {quick.map((q) => (
+            <li>
+              <a href={q.href} class="quick-item" target={q.href.startsWith('http') ? '_blank' : undefined} rel={q.href.startsWith('http') ? 'noopener' : undefined}>
+                <span class="quick-icon"><Icon name={q.icon} size={22} stroke={2} /></span>
+                <span class="quick-text">
+                  <strong>{q.label}</strong>
+                  <small>{q.note}</small>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <Contact t={t} lang={lang} />
+
+    <section class="section k-legal" aria-labelledby="legal-title">
+      <div class="container">
+        <div class="card legal reveal">
+          <h2 id="legal-title">{ui.legalTitle}</h2>
+          <dl>
+            <div><dt>{ui.company}</dt><dd>{business.legal.company}</dd></div>
+            <div><dt>{ui.unp}</dt><dd>{business.legal.unp}</dd></div>
+            <div><dt>{ui.legalCity}</dt><dd>{g.postalCode}, {g.city.ru}, {g.street.ru}</dd></div>
+            <div><dt>Email</dt><dd><a href={`mailto:${business.email}`}>{business.email}</a></dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer t={t} lang={lang} />
+  <StickyBar t={t} lang={lang} contactHref="#contact" />
+</Layout>
+
+<style>
+  .k-hero {
+    position: relative;
+    isolation: isolate;
+    overflow-x: clip;
+    padding-block: 20px 8px;
+  }
+  .k-hero::before {
+    content: '';
+    position: absolute;
+    inset: -80px 0 -40px;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(40% 60% at 90% 30%, rgba(243, 182, 234, 0.4), transparent 70%),
+      radial-gradient(40% 60% at 5% 10%, rgba(207, 201, 255, 0.55), transparent 70%);
+  }
+  .k-hero :global(.k-fl) {
+    top: 10px;
+    right: 6%;
+  }
+  .k-hero :global(.k-sp) {
+    top: 80px;
+    right: 16%;
+  }
+  .crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--c-muted);
+    margin-bottom: 14px;
+  }
+  .crumbs a {
+    color: var(--c-primary-ink);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .k-lead {
+    margin-top: 12px;
+    font-size: 18px;
+    color: var(--c-ink-2);
+    max-width: 640px;
+  }
+  .quick {
+    list-style: none;
+    margin: 24px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+  }
+  .quick-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 68px;
+    padding: 10px 16px;
+    border-radius: var(--r-l);
+    background: var(--c-surface);
+    box-shadow: var(--shadow-card);
+    color: var(--c-ink);
+    text-decoration: none;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s;
+  }
+  .quick-item:hover {
+    color: var(--c-ink);
+    transform: translateY(-3px);
+    box-shadow: 0 1px 0 var(--c-lavender), 0 20px 40px -16px rgba(35, 30, 69, 0.3);
+  }
+  .quick-icon {
+    flex: none;
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background: linear-gradient(135deg, var(--c-primary), var(--c-heart));
+  }
+  .quick-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+    min-width: 0;
+  }
+  .quick-text small {
+    color: var(--c-muted);
+    font-size: 14px;
+    overflow-wrap: anywhere;
+  }
+  .legal {
+    padding: 24px;
+  }
+  .legal h2 {
+    font-size: 22px;
+    margin-bottom: 14px;
+  }
+  .legal dl {
+    margin: 0;
+    display: grid;
+    gap: 10px;
+  }
+  .legal dt {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--c-muted);
+  }
+  .legal dd {
+    margin: 0;
+    font-weight: 600;
+  }
+  .k-legal {
+    padding-top: 0;
+  }
+  @media (min-width: 720px) {
+    .quick {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .legal dl {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 960px) {
+    .k-hero {
+      padding-block: 40px 16px;
+    }
+    .legal {
+      padding: 32px;
+    }
+    .legal dl {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+</style>
