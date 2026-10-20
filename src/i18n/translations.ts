@@ -18,8 +18,7 @@ const ru = {
     lead: 'Дети от 3 лет, подростки и взрослые. Подготовка к ЦТ и IELTS, разговорный клуб. Группы от 3 до 5 человек и индивидуальные занятия.',
     stats: [
       { value: '500+', label: 'учеников в 5 странах' },
-      { value: 'Бесплатно', label: 'первое занятие' },
-      { value: '−20%', label: 'на первый месяц' },
+      { value: 'Бесплатно', label: 'первое пробное занятие' },
     ],
     founderName: 'Юлия Сатырова',
     founderRole: 'основательница, TESOL (Arizona State University)',
@@ -203,8 +202,7 @@ const en: Dict = {
     lead: 'Children from age 3, teenagers and adults. IELTS preparation and a conversation club. Groups of 3 to 5 students and one-to-one lessons.',
     stats: [
       { value: '500+', label: 'students in 5 countries' },
-      { value: 'Free', label: 'first lesson' },
-      { value: '−20%', label: 'off your first month' },
+      { value: 'Free', label: 'first trial lesson' },
     ],
     founderName: 'Yuliya Satyrava',
     founderRole: 'founder, TESOL (Arizona State University)',
@@ -386,8 +384,7 @@ const pl: Dict = {
     lead: 'Dzieci od 3 lat, młodzież i dorośli. Przygotowanie do IELTS i klub konwersacyjny. Grupy od 3 do 5 osób oraz zajęcia indywidualne.',
     stats: [
       { value: '500+', label: 'uczniów w 5 krajach' },
-      { value: 'Gratis', label: 'pierwsza lekcja' },
-      { value: '−20%', label: 'na pierwszy miesiąc' },
+      { value: 'Gratis', label: 'pierwsza lekcja próbna' },
     ],
     founderName: 'Yuliya Satyrava',
     founderRole: 'założycielka, TESOL (Arizona State University)',
