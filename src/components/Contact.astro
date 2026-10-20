@@ -8,8 +8,9 @@ import type { Translation } from '../i18n/translations';
 interface Props {
   t: Translation;
   lang: Lang;
+  who?: number; // какой вариант «Кто будет учиться» выбран заранее (на страницах курсов)
 }
-const { t, lang } = Astro.props;
+const { t, lang, who = 0 } = Astro.props;
 const c = t.contact;
 const thankYou = `${business.site}${lang === 'ru' ? '' : `/${lang}`}/thank-you/`;
 const m = business.messengers;
@@ -104,7 +105,7 @@ const g = business.gomel;
           <div class="options">
             {c.form.whoOptions.map((o, i) => (
               <label class="option">
-                <input type="radio" name="Кто учится" value={o} checked={i === 0} />
+                <input type="radio" name="Кто учится" value={o} checked={i === who} />
                 <span>{o}</span>
               </label>
             ))}
