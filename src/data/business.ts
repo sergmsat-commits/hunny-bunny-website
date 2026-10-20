@@ -4,7 +4,7 @@
 export const business = {
   name: 'Hunny Bunny English',
   // Cloudflare Turnstile (защита формы от спама): публичный ключ сайта. Пустой — проверка не показывается.
-  turnstileSiteKey: '',
+  turnstileSiteKey: '0x4AAAAAAFdl8lG0qoCI2KRY',
   legal: {
     company: 'ООО «ЮСПРО»',
     unp: '491393414',
