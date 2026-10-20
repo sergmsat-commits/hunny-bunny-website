@@ -72,10 +72,10 @@ const ru = {
     skillsTitle: 'Каждый преподаватель ведёт',
     skills: ['Детей от 3 лет', 'Школьников и подростков', 'Взрослых', 'Подготовку к ЦТ', 'IELTS', 'Олимпиады', 'Разговорный клуб', 'Киноклуб', 'Летний клуб', 'Мастер-классы'],
     people: [
-      { photo: 'satyrova', name: 'Юлия Сатырова', role: 'Основательница', note: 'TESOL (Arizona State University), обучение на Мальте' },
+      { photo: 'satyrova', name: 'Юлия Сатырова', role: 'Основательница', note: 'TESOL (Arizona State University), GV Malta English Centre' },
       { photo: 'laevskaya', name: 'Алёна Лаевская', role: 'Преподаватель', note: 'TESOL, обучение на Мальте' },
-      { photo: 'barinova', name: 'Юлия Баринова', role: 'Преподаватель', note: '' },
-      { photo: 'rud', name: 'Елизавета Рудь', role: 'Преподаватель', note: '' },
+      { photo: 'barinova', name: 'Юлия Баринова', role: 'Преподаватель', note: 'ГГУ им. Ф. Скорины, языковая практика в США' },
+      { photo: 'rud', name: 'Елизавета Рудь', role: 'Преподаватель', note: 'ГГУ им. Ф. Скорины, английский и немецкий' },
     ],
   },
   gallery: {
@@ -259,8 +259,8 @@ const en: Dict = {
     people: [
       { photo: 'satyrova', name: 'Yuliya Satyrava', role: 'Founder', note: 'TESOL (Arizona State University), training in Malta' },
       { photo: 'laevskaya', name: 'Alena Laevskaya', role: 'Teacher', note: 'TESOL, training in Malta' },
-      { photo: 'barinova', name: 'Yuliya Barinova', role: 'Teacher', note: '' },
-      { photo: 'rud', name: 'Elizaveta Rud', role: 'Teacher', note: '' },
+      { photo: 'barinova', name: 'Yuliya Barinova', role: 'Teacher', note: 'Gomel State University, language internship in the USA' },
+      { photo: 'rud', name: 'Elizaveta Rud', role: 'Teacher', note: 'Gomel State University, English and German' },
     ],
   },
   gallery: {
@@ -442,8 +442,8 @@ const pl: Dict = {
     people: [
       { photo: 'satyrova', name: 'Yuliya Satyrava', role: 'Założycielka', note: 'TESOL (Arizona State University), szkolenie na Malcie' },
       { photo: 'laevskaya', name: 'Alena Laevskaya', role: 'Lektorka', note: 'TESOL, szkolenie na Malcie' },
-      { photo: 'barinova', name: 'Yuliya Barinova', role: 'Lektorka', note: '' },
-      { photo: 'rud', name: 'Elizaveta Rud', role: 'Lektorka', note: '' },
+      { photo: 'barinova', name: 'Yuliya Barinova', role: 'Lektorka', note: 'Uniwersytet w Homlu, praktyka językowa w USA' },
+      { photo: 'rud', name: 'Elizaveta Rud', role: 'Lektorka', note: 'Uniwersytet w Homlu, angielski i niemiecki' },
     ],
   },
   gallery: {

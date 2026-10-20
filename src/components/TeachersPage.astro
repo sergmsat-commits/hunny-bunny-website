@@ -1,0 +1,376 @@
+---
+// Страница «Преподаватели»: профили, сертификаты основательницы, направления, форма записи.
+import { Picture } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import StickyBar from './StickyBar.astro';
+import Contact from './Contact.astro';
+import Icon from './Icon.astro';
+import Deco from './Deco.astro';
+import Zoomable from './Zoomable.astro';
+import satyrova from '../assets/team/satyrova.jpg';
+import laevskaya from '../assets/team/laevskaya.jpg';
+import barinova from '../assets/team/barinova.jpg';
+import rud from '../assets/team/rud.jpg';
+import tesol from '../assets/certs/tesol-asu.jpg';
+import malta from '../assets/certs/malta-gv.jpg';
+import { translations } from '../i18n/translations';
+import { business, homePath, type Lang } from '../data/business';
+import { teacherIds, teachers, teachersPath, teachersUi } from '../data/teachers';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = translations[lang];
+const ui = teachersUi[lang];
+const photos = { satyrova, laevskaya, barinova, rud };
+const site = business.site;
+const path = teachersPath[lang];
+const certs = [
+  { src: tesol, caption: ui.certTesol },
+  { src: malta, caption: ui.certMalta },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: ui.home, item: `${site}${homePath[lang]}` },
+      { '@type': 'ListItem', position: 2, name: ui.h1, item: `${site}${path}` },
+    ],
+  },
+  ...teacherIds.map((id) => ({
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: teachers[id][lang].name,
+    jobTitle: teachers[id][lang].role,
+    description: teachers[id][lang].bio,
+    worksFor: { '@type': 'EducationalOrganization', '@id': `${site}/#school`, name: business.name },
+    ...(id === 'barinova' || id === 'rud'
+      ? { alumniOf: { '@type': 'CollegeOrUniversity', name: 'Francisk Skorina Gomel State University' } }
+      : {}),
+  })),
+];
+---
+<Layout lang={lang} title={ui.seoTitle} description={ui.description} ogLocale={t.locale} path={path} alternates={teachersPath} schema={schema}>
+  <a href="#main" class="skip-link">{t.a11y.skip}</a>
+  <Header t={t} lang={lang} />
+  <main id="main">
+    <section class="t-hero">
+      <div class="container">
+        <nav class="crumbs" aria-label="breadcrumbs">
+          <a href={homePath[lang]}>{ui.home}</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">{ui.h1}</span>
+        </nav>
+        <h1>{ui.h1}</h1>
+        <p class="t-lead">{t.team.lead}</p>
+      </div>
+    </section>
+
+    <section class="section t-list">
+      <div class="container">
+        <ul class="profiles" role="list">
+          {teacherIds.map((id, i) => {
+            const p = teachers[id][lang];
+            return (
+              <li class:list={['profile', 'reveal', { flip: i % 2 === 1 }]}>
+                <div class="profile-photo zoom-frame">
+                  <Zoomable src={photos[id]} alt={p.name} label={t.a11y.openPhoto} group="teachers">
+                    <Picture src={photos[id]} alt={p.name} widths={[360, 540, 720]} sizes="(min-width: 960px) 380px, 92vw" formats={['avif', 'webp']} loading={i === 0 ? 'eager' : 'lazy'} />
+                  </Zoomable>
+                </div>
+                <div class="profile-body">
+                  <p class="profile-role">{p.role}</p>
+                  <h2>{p.name}</h2>
+                  <p class="profile-bio">{p.bio}</p>
+                  <ul class="creds" role="list">
+                    {p.creds.map((c) => <li><Icon name="award" size={18} stroke={2} />{c}</li>)}
+                  </ul>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </section>
+
+    <section class="section t-certs" aria-labelledby="certs-title">
+      <Deco name="flower" size={70} class="tc-fl" />
+      <Deco name="sparkle" size={18} class="tc-sp" />
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 id="certs-title">{ui.certsTitle}</h2>
+          <p>{teachers.satyrova[lang].name}</p>
+        </div>
+        <ul class="cert-grid" role="list">
+          {certs.map((c, i) => (
+            <li class:list={['cert', 'reveal', `cert-${i}`]}>
+              <figure>
+                <div class="cert-frame zoom-frame">
+                  <Zoomable src={c.src} alt={c.caption} label={t.a11y.openPhoto} group="certs">
+                    <Picture src={c.src} alt={c.caption} widths={[420, 640, 900]} sizes="(min-width: 960px) 460px, 86vw" formats={['avif', 'webp']} />
+                  </Zoomable>
+                </div>
+                <figcaption><Icon name="award" size={18} stroke={2} />{c.caption}</figcaption>
+              </figure>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="section t-skills">
+      <div class="container">
+        <div class="card skills reveal">
+          <h2 class="skills-title">{t.team.skillsTitle}</h2>
+          <ul class="skills-list" role="list">
+            {t.team.skills.map((s) => <li><Icon name="check" size={16} stroke={2.4} />{s}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <Contact t={t} lang={lang} />
+  </main>
+  <Footer t={t} lang={lang} />
+  <StickyBar t={t} lang={lang} contactHref="#contact" />
+</Layout>
+
+<style>
+  .t-hero {
+    position: relative;
+    isolation: isolate;
+    padding-block: 20px 8px;
+  }
+  .t-hero::before {
+    content: '';
+    position: absolute;
+    inset: -80px 0 -60px;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(40% 60% at 90% 30%, rgba(243, 182, 234, 0.4), transparent 70%),
+      radial-gradient(40% 60% at 5% 10%, rgba(207, 201, 255, 0.55), transparent 70%);
+  }
+  .crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--c-muted);
+    margin-bottom: 14px;
+  }
+  .crumbs a {
+    color: var(--c-primary-ink);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .t-lead {
+    margin-top: 14px;
+    font-size: 18px;
+    color: var(--c-ink-2);
+    max-width: 720px;
+  }
+
+  .profiles {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .profile {
+    display: grid;
+    gap: 18px;
+    background: var(--c-surface);
+    border-radius: var(--r-xl);
+    padding: 12px 12px 24px;
+    box-shadow: var(--shadow-card);
+  }
+  .profile-photo {
+    border-radius: var(--r-l);
+    overflow: hidden;
+    aspect-ratio: 4 / 4.2;
+    background: var(--c-lavender);
+  }
+  .profile-photo :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+  .profile-body {
+    padding: 0 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .profile-role {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--c-primary-ink);
+  }
+  .profile-body h2 {
+    font-size: clamp(24px, 3.4vw, 34px);
+  }
+  .profile-bio {
+    font-size: 17px;
+    color: var(--c-ink-2);
+  }
+  .creds {
+    list-style: none;
+    margin: 6px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .creds li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 12px 14px;
+    border-radius: var(--r-m);
+    background: var(--c-bg);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.45;
+  }
+  .creds :global(svg) {
+    flex: none;
+    color: var(--c-heart);
+    margin-top: 1px;
+  }
+
+  .t-certs {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(50% 60% at 100% 0%, rgba(243, 182, 234, 0.35), transparent 70%),
+      linear-gradient(180deg, #f1edff, #f7f5ff);
+  }
+  .t-certs :global(.tc-fl) {
+    top: 40px;
+    right: 6%;
+  }
+  .t-certs :global(.tc-sp) {
+    top: 120px;
+    right: 16%;
+  }
+  .cert-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 32px;
+    align-items: start;
+  }
+  .cert figure {
+    margin: 0;
+  }
+  /* Сертификат в «паспарту»: белое поле, тонкая золотая рамка, мягкая тень */
+  .cert-frame {
+    padding: 14px;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow:
+      inset 0 0 0 1px rgba(201, 162, 39, 0.35),
+      0 1px 0 var(--c-lavender),
+      0 30px 60px -24px rgba(35, 30, 69, 0.35);
+  }
+  .cert-frame :global(.zoom) {
+    border-radius: 6px;
+  }
+  .cert-frame :global(img) {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+  }
+  .cert figcaption {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    font-weight: 700;
+    font-size: 15px;
+    text-align: center;
+  }
+  .cert figcaption :global(svg) {
+    color: var(--c-heart);
+  }
+
+  .skills {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .skills-title {
+    font-size: 20px;
+  }
+  .skills-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .skills-list li {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 40px;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: var(--c-lavender);
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .skills-list :global(svg) {
+    color: var(--c-primary);
+  }
+  .t-skills {
+    padding-top: 0;
+  }
+
+  @media (min-width: 840px) {
+    .profile {
+      grid-template-columns: 380px minmax(0, 1fr);
+      gap: 40px;
+      align-items: center;
+      padding: 16px;
+    }
+    .profile.flip {
+      grid-template-columns: minmax(0, 1fr) 380px;
+    }
+    .profile.flip .profile-photo {
+      order: 2;
+    }
+    .profile-body {
+      padding: 16px 24px;
+    }
+    .cert-grid {
+      grid-template-columns: 1.25fr 1fr;
+      gap: 48px;
+    }
+    .cert-0 {
+      rotate: -1.5deg;
+      margin-top: 40px;
+    }
+    .cert-1 {
+      rotate: 1.5deg;
+    }
+  }
+  @media (min-width: 960px) {
+    .t-hero {
+      padding-block: 40px 16px;
+    }
+  }
+</style>

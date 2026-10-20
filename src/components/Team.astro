@@ -6,12 +6,15 @@ import barinova from '../assets/team/barinova.jpg';
 import rud from '../assets/team/rud.jpg';
 import Icon from './Icon.astro';
 import Zoomable from './Zoomable.astro';
+import { teachersPath, teachersUi } from '../data/teachers';
+import type { Lang } from '../data/business';
 import type { Translation } from '../i18n/translations';
 
 interface Props {
   t: Translation;
+  lang: Lang;
 }
-const { t } = Astro.props;
+const { t, lang } = Astro.props;
 const photos: Record<string, ImageMetadata> = { satyrova, laevskaya, barinova, rud };
 ---
 <section id="team" class="section">
@@ -34,6 +37,9 @@ const photos: Record<string, ImageMetadata> = { satyrova, laevskaya, barinova, r
         </li>
       ))}
     </ul>
+    <p class="team-more">
+      <a href={teachersPath[lang]} class="btn btn-secondary">{teachersUi[lang].more}<Icon name="arrow" size={18} stroke={2.2} /></a>
+    </p>
     <div class="card skills">
       <h3 class="skills-title">{t.team.skillsTitle}</h3>
       <ul class="skills-list" role="list">
@@ -86,6 +92,9 @@ const photos: Record<string, ImageMetadata> = { satyrova, laevskaya, barinova, r
     font-size: 14px;
     line-height: 1.45;
     color: var(--c-muted);
+  }
+  .team-more {
+    margin-top: 20px;
   }
   .skills {
     margin-top: 16px;
