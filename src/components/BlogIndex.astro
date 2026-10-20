@@ -1,0 +1,194 @@
+---
+// Список статей блога.
+import Layout from '../layouts/Layout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import StickyBar from './StickyBar.astro';
+import Icon from './Icon.astro';
+import Deco from './Deco.astro';
+import { translations } from '../i18n/translations';
+import { business, homePath, type Lang } from '../data/business';
+import { blogPath, blogUi, postIds, postMeta, postPath, posts } from '../data/blog';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = translations[lang];
+const ui = blogUi[lang];
+const list = postIds.filter((id) => posts[id][lang]);
+const site = business.site;
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: `${ui.title} — ${business.name}`,
+    url: `${site}${blogPath[lang]}`,
+    inLanguage: lang,
+    blogPost: list.map((id) => ({ '@type': 'BlogPosting', headline: posts[id][lang]!.title, url: `${site}${postPath[id][lang]}` })),
+  },
+];
+---
+<Layout lang={lang} title={ui.seoTitle} description={ui.description} ogLocale={t.locale} path={blogPath[lang]} alternates={blogPath} schema={schema}>
+  <a href="#main" class="skip-link">{t.a11y.skip}</a>
+  <Header t={t} lang={lang} />
+  <main id="main">
+    <section class="b-hero">
+      <Deco name="flower" size={60} class="b-fl" />
+      <Deco name="squiggle" size={340} class="b-sq" />
+      <div class="container">
+        <nav class="crumbs" aria-label="breadcrumbs">
+          <a href={homePath[lang]}>{ui.home}</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">{ui.title}</span>
+        </nav>
+        <h1>{ui.title}</h1>
+        <p class="b-lead">{ui.lead}</p>
+      </div>
+    </section>
+    <section class="section b-list">
+      <div class="container">
+        <ul class="cards" role="list">
+          {list.map((id) => {
+            const p = posts[id][lang]!;
+            const m = postMeta[id];
+            return (
+              <li class="reveal">
+                <a href={postPath[id][lang]} class:list={['bcard', `tone-${m.tone}`]}>
+                  <span class="bcard-emoji" aria-hidden="true">{m.emoji}</span>
+                  <span class="bcard-meta">{p.readTime}</span>
+                  <h2>{p.title}</h2>
+                  <p>{p.description}</p>
+                  <span class="bcard-read">{ui.read}<Icon name="arrow" size={18} stroke={2.2} /></span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </section>
+  </main>
+  <Footer t={t} lang={lang} />
+  <StickyBar t={t} lang={lang} />
+</Layout>
+
+<style>
+  .b-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding-block: 20px 8px;
+  }
+  .b-hero::before {
+    content: '';
+    position: absolute;
+    inset: -80px 0 -40px;
+    z-index: -1;
+    background:
+      radial-gradient(40% 70% at 90% 30%, rgba(243, 182, 234, 0.45), transparent 70%),
+      radial-gradient(40% 70% at 5% 10%, rgba(207, 201, 255, 0.6), transparent 70%);
+  }
+  .b-hero :global(.b-fl) {
+    top: 30px;
+    right: 8%;
+  }
+  .b-hero :global(.b-sq) {
+    right: -60px;
+    bottom: -10px;
+    opacity: 0.7;
+  }
+  .crumbs {
+    display: flex;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--c-muted);
+    margin-bottom: 14px;
+  }
+  .crumbs a {
+    color: var(--c-primary-ink);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .b-lead {
+    margin-top: 12px;
+    font-size: 18px;
+    color: var(--c-ink-2);
+    max-width: 640px;
+  }
+  .cards {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 16px;
+  }
+  .bcard {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 24px;
+    border-radius: var(--r-xl);
+    color: var(--c-ink);
+    text-decoration: none;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s;
+  }
+  .tone-pink {
+    background: linear-gradient(160deg, #fff, #fdeefb);
+  }
+  .tone-lilac {
+    background: linear-gradient(160deg, #fff, #efecff);
+  }
+  .tone-peach {
+    background: linear-gradient(160deg, #fff, #fff4e6);
+  }
+  .bcard:hover {
+    color: var(--c-ink);
+    transform: translateY(-4px);
+    box-shadow: 0 1px 0 var(--c-lavender), 0 26px 50px -18px rgba(35, 30, 69, 0.3);
+  }
+  .bcard-emoji {
+    width: 56px;
+    height: 56px;
+    border-radius: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    background: var(--c-surface);
+    box-shadow: 0 8px 20px -8px rgba(35, 30, 69, 0.25);
+  }
+  .bcard-meta {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--c-muted);
+  }
+  .bcard h2 {
+    font-size: 22px;
+  }
+  .bcard p {
+    color: var(--c-ink-2);
+    font-size: 16px;
+  }
+  .bcard-read {
+    margin-top: auto;
+    padding-top: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+    color: var(--c-primary-ink);
+  }
+  @media (min-width: 840px) {
+    .cards {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+  }
+  @media (min-width: 960px) {
+    .b-hero {
+      padding-block: 40px 16px;
+    }
+  }
+</style>
