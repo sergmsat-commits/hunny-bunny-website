@@ -73,7 +73,7 @@ const ru = {
     skills: ['Детей от 3 лет', 'Школьников и подростков', 'Взрослых', 'Подготовку к ЦТ', 'IELTS', 'Олимпиады', 'Разговорный клуб', 'Киноклуб', 'Летний клуб', 'Мастер-классы'],
     people: [
       { photo: 'satyrova', name: 'Юлия Сатырова', role: 'Основательница', note: 'TESOL (Arizona State University), GV Malta English Centre' },
-      { photo: 'laevskaya', name: 'Алёна Лаевская', role: 'Преподаватель', note: 'TESOL, обучение на Мальте' },
+      { photo: 'laevskaya', name: 'Алёна Лаевская', role: 'Преподаватель', note: 'TEFL/TESOL (Лондон), обучение на Мальте' },
       { photo: 'barinova', name: 'Юлия Баринова', role: 'Преподаватель', note: 'ГГУ им. Ф. Скорины, языковая практика в США' },
       { photo: 'rud', name: 'Елизавета Рудь', role: 'Преподаватель', note: 'ГГУ им. Ф. Скорины, английский и немецкий' },
     ],
@@ -87,7 +87,7 @@ const ru = {
       'Урок с подростком за столом',
     ],
   },
-  extras: { title: "Подарки и события", gift: { title: "Подарочный сертификат", text: "На любые занятия и услуги пространства Hunny Bunny. Номинал — от 20 BYN, сумму выбираете вы.", cta: "Заказать сертификат" }, rent: { title: "Аренда пространства", text: "Светлый уютный класс в центре Гомеля для творческих мастер-классов, дней рождения и встреч.", cta: "Условия — в директ" } },
+  extras: { title: "Подарки и события", gift: { title: "Подарочный сертификат", text: "На любые занятия и услуги пространства Hunny Bunny. Номинал — от 20 BYN, сумму выбираете вы.", cta: "Заказать сертификат" }, rent: { title: "Аренда пространства", text: "Светлая уютная студия в центре Гомеля для творческих мастер-классов, дней рождения и встреч.", cta: "Условия — в директ" } },
   video: { title: "Английский с песенками", lead: "Наш зайчик поёт простые песни на английском — малыши запоминают цвета, числа и первые слова. Смотрите дома вместе с ребёнком.", play: "Смотреть видео «Colors Song»", note: "Видео загрузится с YouTube после нажатия.", more: "Все видео на YouTube", frame: "Видео YouTube: Colors Song" },
   final: { title: "До встречи на уроке!", lead: "Первое занятие бесплатно. Напишите в удобный мессенджер — Юлия ответит и подберёт группу.", form: "Оставить заявку" },
   reviews: {
@@ -258,7 +258,7 @@ const en: Dict = {
     skills: ['Kids from age 3', 'School students and teens', 'Adults', 'IELTS', 'Olympiad prep', 'Conversation club', 'Movie club', 'Summer club', 'Workshops'],
     people: [
       { photo: 'satyrova', name: 'Yuliya Satyrava', role: 'Founder', note: 'TESOL (Arizona State University), training in Malta' },
-      { photo: 'laevskaya', name: 'Alena Laevskaya', role: 'Teacher', note: 'TESOL, training in Malta' },
+      { photo: 'laevskaya', name: 'Alena Laevskaya', role: 'Teacher', note: 'TEFL/TESOL (London), training in Malta' },
       { photo: 'barinova', name: 'Yuliya Barinova', role: 'Teacher', note: 'Gomel State University, language internship in the USA' },
       { photo: 'rud', name: 'Elizaveta Rud', role: 'Teacher', note: 'Gomel State University, English and German' },
     ],
@@ -272,7 +272,7 @@ const en: Dict = {
       'A lesson with a teenager at a desk',
     ],
   },
-  extras: { title: "Gifts and events", gift: { title: "Gift certificate", text: "For any lessons and services at Hunny Bunny, for the amount you choose. Message us for details.", cta: "Order a certificate" }, rent: { title: "Space for your event", text: "A bright, cosy classroom in central Gomel for creative workshops, birthday parties and meet-ups.", cta: "Ask on Instagram" } },
+  extras: { title: "Gifts and events", gift: { title: "Gift certificate", text: "For any lessons and services at Hunny Bunny, for the amount you choose. Message us for details.", cta: "Order a certificate" }, rent: { title: "Space for your event", text: "A bright, cosy studio in central Gomel for creative workshops, birthday parties and meet-ups.", cta: "Ask on Instagram" } },
   video: { title: "English through songs", lead: "Our bunny sings simple English songs, so little ones remember colours, numbers and their first words. Watch together at home.", play: "Play the “Colors Song” video", note: "The video loads from YouTube after you click.", more: "All videos on YouTube", frame: "YouTube video: Colors Song" },
   final: { title: "See you at the lesson!", lead: "The first lesson is free. Message us in your favourite app — Yuliya will reply and find the right group.", form: "Send a request" },
   reviews: {
@@ -441,7 +441,7 @@ const pl: Dict = {
     skills: ['Dzieci od 3 lat', 'Uczniów i młodzież', 'Dorosłych', 'IELTS', 'Olimpiady', 'Klub konwersacyjny', 'Klub filmowy', 'Letni klub', 'Warsztaty'],
     people: [
       { photo: 'satyrova', name: 'Yuliya Satyrava', role: 'Założycielka', note: 'TESOL (Arizona State University), szkolenie na Malcie' },
-      { photo: 'laevskaya', name: 'Alena Laevskaya', role: 'Lektorka', note: 'TESOL, szkolenie na Malcie' },
+      { photo: 'laevskaya', name: 'Alena Laevskaya', role: 'Lektorka', note: 'TEFL/TESOL (Londyn), szkolenie na Malcie' },
       { photo: 'barinova', name: 'Yuliya Barinova', role: 'Lektorka', note: 'Uniwersytet w Homlu, praktyka językowa w USA' },
       { photo: 'rud', name: 'Elizaveta Rud', role: 'Lektorka', note: 'Uniwersytet w Homlu, angielski i niemiecki' },
     ],
@@ -455,7 +455,7 @@ const pl: Dict = {
       'Lekcja z nastolatkiem przy stole',
     ],
   },
-  extras: { title: "Prezenty i wydarzenia", gift: { title: "Bon podarunkowy", text: "Na dowolne zajęcia i usługi Hunny Bunny, na wybraną przez Ciebie kwotę. Napisz do nas po szczegóły.", cta: "Zamów bon" }, rent: { title: "Wynajem sali", text: "Jasna, przytulna sala w centrum Homla na warsztaty twórcze, urodziny i spotkania.", cta: "Zapytaj na Instagramie" } },
+  extras: { title: "Prezenty i wydarzenia", gift: { title: "Bon podarunkowy", text: "Na dowolne zajęcia i usługi Hunny Bunny, na wybraną przez Ciebie kwotę. Napisz do nas po szczegóły.", cta: "Zamów bon" }, rent: { title: "Wynajem sali", text: "Jasne, przytulne studio w centrum Homla na warsztaty twórcze, urodziny i spotkania.", cta: "Zapytaj na Instagramie" } },
   video: { title: "Angielski z piosenkami", lead: "Nasz zajączek śpiewa proste piosenki po angielsku — maluchy zapamiętują kolory, liczby i pierwsze słowa. Oglądajcie razem w domu.", play: "Odtwórz film „Colors Song”", note: "Film załaduje się z YouTube po kliknięciu.", more: "Wszystkie filmy na YouTube", frame: "Film YouTube: Colors Song" },
   final: { title: "Do zobaczenia na lekcji!", lead: "Pierwsza lekcja jest bezpłatna. Napisz w wygodnym komunikatorze — Julia odpowie i dobierze grupę.", form: "Wyślij zgłoszenie" },
   reviews: {

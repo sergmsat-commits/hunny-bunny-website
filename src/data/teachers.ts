@@ -43,19 +43,19 @@ export const teachers: Record<TeacherId, Record<Lang, Teacher>> = {
       name: 'Алёна Лаевская',
       role: 'Преподаватель',
       bio: 'Преподаватель с большим опытом и международной практикой. Ведёт все направления: от детей 3 лет до школьников и взрослых.',
-      creds: ['Сертификат TESOL', 'Обучение на Мальте'],
+      creds: ['Сертификат TEFL/TESOL — Global Language Training (Лондон), 150 часов, оценка A, 2021', 'Обучение на Мальте'],
     },
     en: {
       name: 'Alena Laevskaya',
       role: 'Teacher',
       bio: 'An experienced teacher with international training. She teaches every programme, from 3-year-olds to teenagers and adults.',
-      creds: ['TESOL certificate', 'Training in Malta'],
+      creds: ['TEFL/TESOL certificate — Global Language Training (London), 150 hours, grade A, 2021', 'Training in Malta'],
     },
     pl: {
       name: 'Alena Laevskaya',
       role: 'Lektorka',
       bio: 'Doświadczona lektorka z międzynarodową praktyką. Prowadzi wszystkie programy: od dzieci w wieku 3 lat po młodzież i dorosłych.',
-      creds: ['Certyfikat TESOL', 'Szkolenie na Malcie'],
+      creds: ['Certyfikat TEFL/TESOL — Global Language Training (Londyn), 150 godzin, ocena A, 2021', 'Szkolenie na Malcie'],
     },
   },
   barinova: {
@@ -105,35 +105,38 @@ export const teachers: Record<TeacherId, Record<Lang, Teacher>> = {
 
 export const teachersUi: Record<
   Lang,
-  { seoTitle: string; description: string; h1: string; certsTitle: string; certTesol: string; certMalta: string; more: string; home: string }
+  { seoTitle: string; description: string; h1: string; certsTitle: string; certTesol: string; certMalta: string; certTefl: string; more: string; home: string }
 > = {
   ru: {
     seoTitle: 'Преподаватели английского в Гомеле и онлайн | Hunny Bunny English',
-    description: 'Преподаватели Hunny Bunny English: основательница Юлия Сатырова (TESOL, Arizona State University), Алёна Лаевская, Юлия Баринова и Елизавета Рудь. Образование и сертификаты.',
+    description: 'Преподаватели Hunny Bunny English: основательница Юлия Сатырова (TESOL, Arizona State University), Алёна Лаевская (TEFL/TESOL), Юлия Баринова и Елизавета Рудь. Образование и сертификаты.',
     h1: 'Наши преподаватели',
     certsTitle: 'Сертификаты',
     certTesol: 'TESOL — Arizona State University, 2023',
     certMalta: 'GV Malta English Centre, 2026',
+    certTefl: 'TEFL/TESOL — Global Language Training, Лондон, 2021',
     more: 'Подробнее о преподавателях',
     home: 'Главная',
   },
   en: {
     seoTitle: 'Our English Teachers | Hunny Bunny English',
-    description: 'Meet the Hunny Bunny English teachers: founder Yuliya Satyrava (TESOL, Arizona State University), Alena Laevskaya, Yuliya Barinova and Elizaveta Rud. Education and certificates.',
+    description: 'Meet the Hunny Bunny English teachers: founder Yuliya Satyrava (TESOL, Arizona State University), Alena Laevskaya (TEFL/TESOL), Yuliya Barinova and Elizaveta Rud. Education and certificates.',
     h1: 'Our teachers',
     certsTitle: 'Certificates',
     certTesol: 'TESOL — Arizona State University, 2023',
     certMalta: 'GV Malta English Centre, 2026',
+    certTefl: 'TEFL/TESOL — Global Language Training, London, 2021',
     more: 'More about our teachers',
     home: 'Home',
   },
   pl: {
     seoTitle: 'Nasi lektorzy angielskiego | Hunny Bunny English',
-    description: 'Poznaj lektorów Hunny Bunny English: założycielka Yuliya Satyrava (TESOL, Arizona State University), Alena Laevskaya, Yuliya Barinova i Elizaveta Rud. Wykształcenie i certyfikaty.',
+    description: 'Poznaj lektorów Hunny Bunny English: założycielka Yuliya Satyrava (TESOL, Arizona State University), Alena Laevskaya (TEFL/TESOL), Yuliya Barinova i Elizaveta Rud. Wykształcenie i certyfikaty.',
     h1: 'Nasi lektorzy',
     certsTitle: 'Certyfikaty',
     certTesol: 'TESOL — Arizona State University, 2023',
     certMalta: 'GV Malta English Centre, 2026',
+    certTefl: 'TEFL/TESOL — Global Language Training, Londyn, 2021',
     more: 'Więcej o lektorach',
     home: 'Strona główna',
   },
