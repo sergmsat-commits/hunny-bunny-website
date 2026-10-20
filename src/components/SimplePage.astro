@@ -44,8 +44,11 @@ const links: Record<string, string> = { telegram: m.telegram, viber: m.viber, wh
   <Footer t={t} lang={lang} />
   {showMessengers && (
     <script is:inline>
-      // Страница «Спасибо» = заявка отправлена. Считаем её в GA4, только если посетитель согласился на аналитику.
-      if (window.gtag && document.documentElement.dataset.consent === 'granted') window.gtag('event', 'generate_lead', { form: 'trial_lesson' });
+      // Страница «Спасибо» = заявка отправлена. Считаем её в GA4 и Метрике (цель lead), только если посетитель согласился на аналитику.
+      if (document.documentElement.dataset.consent === 'granted') {
+        if (window.gtag) window.gtag('event', 'generate_lead', { form: 'trial_lesson' });
+        if (window.ym) window.ym(113689907, 'reachGoal', 'lead');
+      }
     </script>
   )}
 </Layout>

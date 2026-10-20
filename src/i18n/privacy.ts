@@ -20,7 +20,7 @@ export const privacy: Record<'ru' | 'en' | 'pl', Policy> = {
         list: [
           'Через форму записи: имя, номер телефона, email (по желанию), кто будет учиться (ребёнок, школьник или взрослый) и язык сайта, с которого отправлена заявка.',
           'Когда вы пишете нам в мессенджер: те данные, которые вы сами сообщаете в переписке.',
-          'Если вы разрешили аналитические cookies: обезличенные сведения о посещении сайта (страницы, устройство, примерное местоположение по IP), которые собирает Google Analytics.',
+          'Если вы разрешили аналитические cookies: обезличенные сведения о посещении сайта (страницы, устройство, примерное местоположение по IP), которые собирают Google Analytics и Яндекс Метрика. Метрика также записывает обезличенные действия на страницах (прокрутку, клики, движения мыши — «Вебвизор»); то, что вы вводите в поля формы, не записывается.',
         ],
       },
       {
@@ -44,6 +44,7 @@ export const privacy: Record<'ru' | 'en' | 'pl', Policy> = {
         list: [
           'FormSubmit (formsubmit.co) — пересылает заявки с сайта нам на почту;',
           'Google LLC (Google Analytics) — статистика посещений, только с вашего согласия;',
+          'ООО «Яндекс» (Яндекс Метрика) — статистика посещений, только с вашего согласия;',
           'Cloudflare, Inc. — хостинг сайта и защита от атак;',
           'мессенджеры Telegram, Viber и WhatsApp — если вы сами пишете нам туда.',
         ],
@@ -57,7 +58,7 @@ export const privacy: Record<'ru' | 'en' | 'pl', Policy> = {
       {
         h: '7. Сколько мы храним данные',
         p: [
-          'Заявки, по которым обучение не началось, мы удаляем не позднее чем через 1 год после последнего контакта. Данные учеников храним в течение срока договора и сроков, установленных законодательством для бухгалтерских документов. Данные Google Analytics хранятся 14 месяцев.',
+          'Заявки, по которым обучение не началось, мы удаляем не позднее чем через 1 год после последнего контакта. Данные учеников храним в течение срока договора и сроков, установленных законодательством для бухгалтерских документов. Данные Google Analytics хранятся 14 месяцев, данные Яндекс Метрики — по правилам Яндекса (записи Вебвизора — до 15 дней).',
         ],
       },
       {
@@ -73,7 +74,7 @@ export const privacy: Record<'ru' | 'en' | 'pl', Policy> = {
       {
         h: '9. Cookies',
         p: [
-          'Сайт работает без cookies, пока вы не разрешите аналитику. В браузере сохраняется только ваш выбор в окне cookies. Если вы нажмёте «Принять», Google Analytics установит cookies _ga и _ga_* для подсчёта посещений. Изменить выбор можно в любой момент по ссылке «Настройки cookies» внизу сайта.',
+          'Сайт работает без cookies, пока вы не разрешите аналитику. В браузере сохраняется только ваш выбор в окне cookies. Если вы нажмёте «Принять», Google Analytics установит cookies _ga и _ga_*, а Яндекс Метрика — _ym_* для подсчёта посещений. Изменить выбор можно в любой момент по ссылке «Настройки cookies» внизу сайта.',
           'На главной странице есть видео с нашего YouTube-канала. Оно загружается с сервера YouTube (Google) только после того, как вы нажмёте на него; с этого момента действуют правила конфиденциальности Google. До нажатия сайт ничего не передаёт YouTube.',
         ],
       },
@@ -93,7 +94,7 @@ export const privacy: Record<'ru' | 'en' | 'pl', Policy> = {
         list: [
           'Through the booking form: your name, phone number, email (optional), who will be studying (child, teen or adult) and the language of the page you used.',
           'When you message us: whatever you share in the conversation.',
-          'If you allow analytics cookies: anonymised information about your visit (pages, device, approximate location by IP) collected by Google Analytics.',
+          'If you allow analytics cookies: anonymised information about your visit (pages, device, approximate location by IP) collected by Google Analytics and Yandex Metrica. Metrica also records anonymised actions on pages (scrolling, clicks, mouse movement — “Webvisor”); what you type into form fields is not recorded.',
         ],
       },
       {
@@ -117,6 +118,7 @@ export const privacy: Record<'ru' | 'en' | 'pl', Policy> = {
         list: [
           'FormSubmit (formsubmit.co) — forwards website requests to our email;',
           'Google LLC (Google Analytics) — visit statistics, only with your consent;',
+          'Yandex LLC (Yandex Metrica) — visit statistics, only with your consent;',
           'Cloudflare, Inc. — website hosting and protection;',
           'Telegram, Viber and WhatsApp — if you choose to message us there.',
         ],
@@ -130,7 +132,7 @@ export const privacy: Record<'ru' | 'en' | 'pl', Policy> = {
       {
         h: '7. How long we keep data',
         p: [
-          'Requests that did not lead to lessons are deleted no later than 1 year after our last contact. Student data is kept for the duration of the contract and the periods required by accounting law. Google Analytics data is kept for 14 months.',
+          'Requests that did not lead to lessons are deleted no later than 1 year after our last contact. Student data is kept for the duration of the contract and the periods required by accounting law. Google Analytics data is kept for 14 months; Yandex Metrica data according to Yandex’s rules (Webvisor recordings up to 15 days).',
         ],
       },
       {
@@ -146,7 +148,7 @@ export const privacy: Record<'ru' | 'en' | 'pl', Policy> = {
       {
         h: '9. Cookies',
         p: [
-          'The website uses no cookies until you allow analytics; only your choice in the cookie banner is saved in your browser. If you click “Accept”, Google Analytics sets the _ga and _ga_* cookies to count visits. You can change your choice at any time via “Cookie settings” at the bottom of the page.',
+          'The website uses no cookies until you allow analytics; only your choice in the cookie banner is saved in your browser. If you click “Accept”, Google Analytics sets the _ga and _ga_* cookies and Yandex Metrica sets _ym_* cookies to count visits. You can change your choice at any time via “Cookie settings” at the bottom of the page.',
           'The home page shows a video from our YouTube channel. It loads from YouTube (Google) only after you click it; from that moment Google’s privacy policy applies. Until you click, the website sends nothing to YouTube.',
         ],
       },
@@ -166,7 +168,7 @@ export const privacy: Record<'ru' | 'en' | 'pl', Policy> = {
         list: [
           'Przez formularz zapisu: imię, numer telefonu, e-mail (opcjonalnie), kto będzie się uczyć (dziecko, uczeń lub osoba dorosła) oraz język strony, z której wysłano zgłoszenie.',
           'Gdy piszesz do nas w komunikatorze: dane, które sam(a) podajesz w rozmowie.',
-          'Jeśli zgodzisz się na analityczne pliki cookies: zanonimizowane informacje o wizycie (odwiedzone strony, urządzenie, przybliżona lokalizacja na podstawie IP) zbierane przez Google Analytics.',
+          'Jeśli zgodzisz się na analityczne pliki cookies: zanonimizowane informacje o wizycie (odwiedzone strony, urządzenie, przybliżona lokalizacja na podstawie IP) zbierane przez Google Analytics i Yandex Metrica. Metrica zapisuje też zanonimizowane działania na stronie (przewijanie, kliknięcia, ruchy myszy — „Webvisor”); treść wpisywana w pola formularza nie jest zapisywana.',
         ],
       },
       {
@@ -190,6 +192,7 @@ export const privacy: Record<'ru' | 'en' | 'pl', Policy> = {
         list: [
           'FormSubmit (formsubmit.co) — przesyła zgłoszenia ze strony na naszą skrzynkę e-mail;',
           'Google LLC (Google Analytics) — statystyki odwiedzin, tylko za Twoją zgodą;',
+          'Yandex LLC (Yandex Metrica) — statystyki odwiedzin, tylko za Twoją zgodą;',
           'Cloudflare, Inc. — hosting i ochrona strony;',
           'Telegram, Viber i WhatsApp — jeśli sam(a) do nas tam napiszesz.',
         ],
@@ -203,7 +206,7 @@ export const privacy: Record<'ru' | 'en' | 'pl', Policy> = {
       {
         h: '7. Jak długo przechowujemy dane',
         p: [
-          'Zgłoszenia, po których nauka się nie rozpoczęła, usuwamy najpóźniej po roku od ostatniego kontaktu. Dane uczniów przechowujemy przez czas trwania umowy oraz okres wymagany przepisami o rachunkowości. Dane w Google Analytics są przechowywane przez 14 miesięcy.',
+          'Zgłoszenia, po których nauka się nie rozpoczęła, usuwamy najpóźniej po roku od ostatniego kontaktu. Dane uczniów przechowujemy przez czas trwania umowy oraz okres wymagany przepisami o rachunkowości. Dane w Google Analytics są przechowywane przez 14 miesięcy, a w Yandex Metrica — zgodnie z zasadami Yandex (nagrania Webvisor — do 15 dni).',
         ],
       },
       {
@@ -219,7 +222,7 @@ export const privacy: Record<'ru' | 'en' | 'pl', Policy> = {
       {
         h: '9. Pliki cookies',
         p: [
-          'Dopóki nie zgodzisz się na analitykę, strona nie używa plików cookies — w przeglądarce zapisujemy tylko Twój wybór z okna cookies. Po kliknięciu „Akceptuję” Google Analytics zapisze pliki _ga i _ga_* służące do liczenia odwiedzin. Swój wybór możesz zmienić w każdej chwili, klikając „Ustawienia cookies” na dole strony.',
+          'Dopóki nie zgodzisz się na analitykę, strona nie używa plików cookies — w przeglądarce zapisujemy tylko Twój wybór z okna cookies. Po kliknięciu „Akceptuję” Google Analytics zapisze pliki _ga i _ga_*, a Yandex Metrica — pliki _ym_*, służące do liczenia odwiedzin. Swój wybór możesz zmienić w każdej chwili, klikając „Ustawienia cookies” na dole strony.',
           'Na stronie głównej jest film z naszego kanału YouTube. Ładuje się z serwera YouTube (Google) dopiero po kliknięciu; od tej chwili obowiązują zasady prywatności Google. Do momentu kliknięcia strona nie przekazuje YouTube żadnych danych.',
         ],
       },
