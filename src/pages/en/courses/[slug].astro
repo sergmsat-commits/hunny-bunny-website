@@ -1,0 +1,13 @@
+---
+import CoursePage from '../../../components/CoursePage.astro';
+import { courseIds, coursePath } from '../../../data/courses';
+
+export function getStaticPaths() {
+  return courseIds.map((id) => ({
+    params: { slug: coursePath[id].en.split('/').filter(Boolean).pop() },
+    props: { id },
+  }));
+}
+const { id } = Astro.props;
+---
+<CoursePage lang="en" id={id} />

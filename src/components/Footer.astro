@@ -4,6 +4,7 @@ import logo from '../assets/logo-bunny.png';
 import Icon from './Icon.astro';
 import { business, homePath, type Lang } from '../data/business';
 import { privacyPath } from '../i18n/privacy';
+import { courseIds, coursePath, courses, courseUi } from '../data/courses';
 import type { Translation } from '../i18n/translations';
 
 interface Props {
@@ -30,6 +31,11 @@ const g = business.gomel;
       <a href={`${home}#reviews`}>{t.nav.reviews}</a>
       <a href={`${home}#faq`}>{t.nav.faq}</a>
       <a href={`${home}#contact`}>{t.nav.contact}</a>
+    </nav>
+
+    <nav aria-label={courseUi[lang].courses} class="footer-nav footer-courses">
+      <p class="footer-h">{courseUi[lang].courses}</p>
+      {courseIds.map((id) => <a href={coursePath[id][lang]}>{courses[id][lang].short}</a>)}
     </nav>
 
     <div class="footer-contacts">
@@ -90,6 +96,14 @@ const g = business.gomel;
     flex-direction: column;
     gap: 6px;
   }
+  .footer-h {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #b8b2e6;
+    margin-bottom: 2px;
+  }
   .footer-nav a {
     text-decoration: none;
     padding: 6px 0;
@@ -146,7 +160,7 @@ const g = business.gomel;
   }
   @media (min-width: 840px) {
     .footer-grid {
-      grid-template-columns: 2fr 1fr 1.4fr;
+      grid-template-columns: 1.6fr 1fr 1.2fr 1.4fr;
     }
     .footer-legal {
       flex-direction: row;

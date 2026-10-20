@@ -7,14 +7,15 @@ import type { Translation } from '../i18n/translations';
 interface Props {
   t: Translation;
   lang: Lang;
+  contactHref?: string; // на страницах курсов форма своя, ведём к ней
 }
-const { t, lang } = Astro.props;
+const { t, lang, contactHref } = Astro.props;
 const msg = lang === 'pl'
   ? { href: business.messengers.whatsapp, icon: 'whatsapp', label: 'WhatsApp' }
   : { href: business.messengers.telegram, icon: 'telegram', label: 'Telegram' };
 ---
 <div class="sticky-bar">
-  <a href={`${homePath[lang]}#contact`} class="btn btn-primary">{t.cta.trialMobile}</a>
+  <a href={contactHref ?? `${homePath[lang]}#contact`} class="btn btn-primary">{t.cta.trialMobile}</a>
   <a href={msg.href} class="sticky-msg" target="_blank" rel="noopener" aria-label={msg.label}>
     <Icon name={msg.icon} size={24} stroke={2} />
   </a>

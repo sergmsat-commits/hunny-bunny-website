@@ -15,9 +15,10 @@ interface Props {
   ogLocale?: string;
   path?: string; // адрес страницы, если это не главная, например '/privacy/'
   alternates?: Partial<Record<Lang, string>>; // адреса этой же страницы на других языках
+  schema?: object[]; // дополнительная разметка schema.org (курс, хлебные крошки)
 }
 
-const { title, description = '', lang = 'ru', noindex = false, faq = [], ogLocale = 'ru_RU', path, alternates } = Astro.props;
+const { title, description = '', lang = 'ru', noindex = false, faq = [], ogLocale = 'ru_RU', path, alternates, schema = [] } = Astro.props;
 const site = business.site;
 const canonical = `${site}${path ?? homePath[lang]}`;
 const alt: Partial<Record<Lang, string>> = alternates ?? homePath;
@@ -97,6 +98,7 @@ const faqSchema = faq.length
 
   {!noindex && !path && <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />}
   {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+  {schema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
 
   <!-- Google Analytics и Яндекс Метрика загружаются только после согласия в баннере cookies -->
   <script is:inline>

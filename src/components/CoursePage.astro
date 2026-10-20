@@ -1,0 +1,589 @@
+---
+// Страница отдельного курса: первый экран, факты, программа, шаги, цены, отзывы, другие курсы, вопросы, форма.
+import { Picture } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import StickyBar from './StickyBar.astro';
+import Contact from './Contact.astro';
+import Faq from './Faq.astro';
+import Icon from './Icon.astro';
+import Deco from './Deco.astro';
+import Bunny from './Bunny.astro';
+import Zoomable from './Zoomable.astro';
+import beanbags from '../assets/lessons/lesson-beanbags.jpg';
+import desk from '../assets/lessons/lesson-desk.jpg';
+import group from '../assets/lessons/lesson-group-table.jpg';
+import laevskaya from '../assets/team/laevskaya.jpg';
+import rud from '../assets/team/rud.jpg';
+import { translations } from '../i18n/translations';
+import { business, homePath, type Lang } from '../data/business';
+import { courses, courseIds, coursePath, coursePhoto, courseReviews, courseUi, type CourseId } from '../data/courses';
+
+interface Props {
+  lang: Lang;
+  id: CourseId;
+}
+const { lang, id } = Astro.props;
+const t = translations[lang];
+const c = courses[id][lang];
+const ui = courseUi[lang];
+const path = coursePath[id][lang];
+const site = business.site;
+const photos = { beanbags, desk, group, laevskaya, rud };
+const photo = photos[coursePhoto[id]];
+const reviews = courseReviews[id].map((i) => t.reviews.items[i]).filter(Boolean) as { paragraphs: string[]; tag?: string }[];
+const others = courseIds.filter((x) => x !== id);
+const messenger = lang === 'pl'
+  ? { href: business.messengers.whatsapp, icon: 'whatsapp', label: 'WhatsApp' }
+  : { href: business.messengers.telegram, icon: 'telegram', label: 'Telegram' };
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: ui.home, item: `${site}${homePath[lang]}` },
+      { '@type': 'ListItem', position: 2, name: ui.courses, item: `${site}${homePath[lang]}#courses` },
+      { '@type': 'ListItem', position: 3, name: c.short, item: `${site}${path}` },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    name: c.h1,
+    description: c.description,
+    url: `${site}${path}`,
+    provider: { '@type': 'EducationalOrganization', '@id': `${site}/#school`, name: business.name, url: `${site}/` },
+  },
+];
+---
+<Layout
+  lang={lang}
+  title={c.seoTitle}
+  description={c.description}
+  ogLocale={t.locale}
+  path={path}
+  alternates={coursePath[id]}
+  faq={c.faq}
+  schema={schema}
+>
+  <a href="#main" class="skip-link">{t.a11y.skip}</a>
+  <Header t={t} lang={lang} />
+  <main id="main">
+    <section class="c-hero">
+      <div class="container c-hero-grid">
+        <div class="c-hero-text">
+          <nav class="crumbs" aria-label="breadcrumbs">
+            <a href={homePath[lang]}>{ui.home}</a>
+            <span aria-hidden="true">/</span>
+            <a href={`${homePath[lang]}#courses`}>{ui.courses}</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">{c.short}</span>
+          </nav>
+          <h1>{c.h1}</h1>
+          <p class="c-lead">{c.lead}</p>
+          <ul class="c-facts" role="list">
+            {c.facts.map((f) => <li><Icon name="check" size={16} stroke={2.4} />{f}</li>)}
+          </ul>
+          <div class="c-actions">
+            <a href="#contact" class="btn btn-primary btn-lg">{ui.cta}</a>
+            <a href={messenger.href} class="btn btn-secondary btn-lg" target="_blank" rel="noopener">
+              <Icon name={messenger.icon} size={20} stroke={2} />{messenger.label}
+            </a>
+          </div>
+        </div>
+        <div class="c-hero-media">
+          <Deco name="flower" size={60} class="c-fl" />
+          <Deco name="sparkle" size={20} class="c-sp" />
+          <div class="c-photo zoom-frame">
+            <Zoomable src={photo} alt={c.h1} label={t.a11y.openPhoto}>
+              <Picture src={photo} alt={c.h1} widths={[360, 540, 720]} sizes="(min-width: 960px) 460px, 92vw" formats={['avif', 'webp']} loading="eager" fetchpriority="high" />
+            </Zoomable>
+          </div>
+          <Bunny height={120} class="c-bunny" delay={1} />
+        </div>
+      </div>
+    </section>
+
+    <section class="section c-features">
+      <div class="container">
+        <div class="section-head reveal"><h2>{c.featuresTitle}</h2></div>
+        <ul class="feat-grid" role="list">
+          {c.features.map((f) => (
+            <li class="card feat reveal">
+              <span class="icon-tile"><Icon name={f.icon} size={26} /></span>
+              <h3>{f.title}</h3>
+              <p>{f.text}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="section c-steps">
+      <div class="container">
+        <div class="section-head reveal"><h2>{ui.stepsTitle}</h2></div>
+        <ol class="steps" role="list">
+          {ui.steps.map((s, i) => (
+            <li class="step reveal">
+              <span class="step-n">{i + 1}</span>
+              <h3>{s.title}</h3>
+              <p>{s.text}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="section c-prices" id="prices">
+      <div class="container">
+        <div class="section-head reveal"><h2>{ui.pricesTitle}</h2></div>
+        {c.prices ? (
+          <Fragment>
+            <div class="price-grid">
+              {c.prices.map((g) => (
+                <div class="card price-card reveal">
+                  <h3>{g.title}</h3>
+                  <table>
+                    {g.rows.some((r) => r.pass) && (
+                      <thead>
+                        <tr>
+                          <th scope="col"><span class="visually-hidden">{g.title}</span></th>
+                          <th scope="col">{ui.priceOnce}</th>
+                          <th scope="col">{ui.pricePass}</th>
+                        </tr>
+                      </thead>
+                    )}
+                    <tbody>
+                      {g.rows.map((r) => (
+                        <tr>
+                          <th scope="row">{r.label}</th>
+                          <td colspan={g.rows.some((x) => x.pass) && !r.pass ? 2 : undefined}>{r.once}</td>
+                          {r.pass && <td class="pass">{r.pass}</td>}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ))}
+            </div>
+            <p class="price-note">{ui.priceNote}</p>
+          </Fragment>
+        ) : (
+          <div class="card price-ask reveal">
+            <p>{ui.priceAsk}</p>
+            <a href={messenger.href} class="btn btn-primary" target="_blank" rel="noopener">
+              <Icon name={messenger.icon} size={20} stroke={2} />{ui.priceAskCta}
+            </a>
+          </div>
+        )}
+      </div>
+    </section>
+
+    {reviews.length > 0 && (
+      <section class="section c-reviews">
+        <div class="container">
+          <div class="section-head reveal"><h2>{ui.reviewsTitle}</h2></div>
+          <ul class="rev-grid" role="list">
+            {reviews.map((r) => (
+              <li class="rev reveal">
+                <p class="rev-from">
+                  <span class="rev-av" aria-hidden="true"><Icon name="heart" size={14} filled stroke={1.5} /></span>
+                  {t.reviews.from}
+                  {r.tag && <span class="rev-tag">{r.tag}</span>}
+                </p>
+                <div class="rev-bubble">{r.paragraphs.map((p) => <p>{p}</p>)}</div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )}
+
+    <section class="section c-others">
+      <div class="container">
+        <div class="section-head reveal"><h2>{ui.otherTitle}</h2></div>
+        <ul class="others" role="list">
+          {others.map((o) => (
+            <li>
+              <a href={coursePath[o][lang]} class="other">
+                <span>{courses[o][lang].short}</span>
+                <Icon name="arrow" size={18} stroke={2.2} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <Faq t={t} items={c.faq} title={ui.faqTitle} />
+    <Contact t={t} lang={lang} who={id === 'teens' ? 1 : id === 'adults' ? 2 : 0} />
+  </main>
+  <Footer t={t} lang={lang} />
+  <StickyBar t={t} lang={lang} contactHref="#contact" />
+</Layout>
+
+<style>
+  .c-hero {
+    position: relative;
+    isolation: isolate;
+    overflow-x: clip;
+    padding-block: 20px 48px;
+  }
+  .c-hero::before {
+    content: '';
+    position: absolute;
+    inset: -80px 0 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(42% 40% at 90% 20%, rgba(243, 182, 234, 0.45), transparent 70%),
+      radial-gradient(40% 44% at 4% 6%, rgba(207, 201, 255, 0.6), transparent 70%);
+  }
+  .c-hero-grid {
+    display: grid;
+    gap: 28px;
+  }
+  .crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--c-muted);
+    margin-bottom: 14px;
+  }
+  .crumbs a {
+    color: var(--c-primary-ink);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .c-hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .c-lead {
+    font-size: 18px;
+    color: var(--c-ink-2);
+    max-width: 600px;
+  }
+  .c-facts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .c-facts li {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 38px;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: var(--c-surface);
+    box-shadow: inset 0 0 0 1px var(--c-lavender);
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .c-facts :global(svg) {
+    color: var(--c-primary);
+  }
+  .c-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .c-hero-media {
+    position: relative;
+  }
+  .c-photo {
+    position: relative;
+    border-radius: var(--r-xl);
+    overflow: hidden;
+    aspect-ratio: 4 / 3.4;
+    background: var(--c-lavender);
+  }
+  .c-photo :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+  }
+  .c-hero-media :global(.c-fl) {
+    top: -18px;
+    right: -8px;
+    z-index: 3;
+  }
+  .c-hero-media :global(.c-sp) {
+    top: 30px;
+    left: -10px;
+    z-index: 3;
+  }
+  .c-hero-media :global(.c-bunny) {
+    position: absolute !important;
+    right: 12px;
+    bottom: -26px;
+    z-index: 3;
+  }
+
+  .c-features {
+    background: var(--c-surface);
+  }
+  .feat-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 16px;
+  }
+  .feat {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: linear-gradient(160deg, #fff, #f7f5ff);
+  }
+  .feat h3 {
+    font-size: 19px;
+  }
+  .feat p {
+    color: var(--c-ink-2);
+    font-size: 16px;
+  }
+
+  .steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 16px;
+    counter-reset: none;
+  }
+  .step {
+    position: relative;
+    padding: 24px 24px 24px 84px;
+    border-radius: var(--r-l);
+    background: var(--c-surface);
+    box-shadow: var(--shadow-card);
+  }
+  .step-n {
+    position: absolute;
+    left: 24px;
+    top: 22px;
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: 20px;
+    color: #fff;
+    background: linear-gradient(135deg, var(--c-primary), var(--c-heart));
+  }
+  .step h3 {
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+  .step p {
+    color: var(--c-ink-2);
+    font-size: 16px;
+  }
+
+  .c-prices {
+    background: var(--c-surface);
+  }
+  .price-grid {
+    display: grid;
+    gap: 16px;
+  }
+  .price-card {
+    padding: 24px;
+    background: linear-gradient(160deg, #fff, #f4f1ff);
+  }
+  .price-card h3 {
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+  .price-card table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15.5px;
+  }
+  .price-card th,
+  .price-card td {
+    padding: 10px 0;
+    border-top: 1px solid var(--c-lavender);
+    text-align: left;
+    vertical-align: top;
+  }
+  .price-card thead th {
+    border-top: 0;
+    padding-top: 0;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--c-muted);
+  }
+  .price-card tbody th {
+    font-weight: 600;
+    padding-right: 12px;
+  }
+  .price-card td {
+    font-family: var(--f-display);
+    font-weight: 600;
+    white-space: nowrap;
+    padding-left: 8px;
+  }
+  .price-card td.pass {
+    color: var(--c-primary-ink);
+  }
+  .price-note {
+    margin-top: 16px;
+    color: var(--c-muted);
+    font-size: 15px;
+  }
+  .price-ask {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    max-width: 720px;
+  }
+  .price-ask p {
+    font-size: 18px;
+    color: var(--c-ink-2);
+  }
+
+  .rev-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 20px;
+  }
+  .rev-from {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--c-muted);
+    margin-bottom: 8px;
+  }
+  .rev-av {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f3c4f0, var(--c-lavender-2));
+    color: var(--c-heart);
+  }
+  .rev-tag {
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--c-lavender);
+    color: var(--c-primary-ink);
+    font-size: 12px;
+  }
+  .rev-bubble {
+    background: var(--c-surface);
+    border-radius: 22px 22px 22px 6px;
+    padding: 16px 18px;
+    box-shadow: 0 1px 0 var(--c-lavender), 0 18px 40px -16px rgba(35, 30, 69, 0.22);
+    font-size: 15.5px;
+    line-height: 1.55;
+  }
+  .rev-bubble p + p {
+    margin-top: 8px;
+  }
+
+  .c-others {
+    padding-top: 0;
+  }
+  .others {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+  }
+  .other {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 60px;
+    padding: 0 20px;
+    border-radius: var(--r-m);
+    background: var(--c-surface);
+    box-shadow: inset 0 0 0 1px var(--c-lavender);
+    color: var(--c-ink);
+    font-weight: 700;
+    text-decoration: none;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .other :global(svg) {
+    color: var(--c-primary);
+  }
+  .other:hover {
+    box-shadow: inset 0 0 0 2px var(--c-primary);
+    color: var(--c-ink);
+  }
+
+  @media (min-width: 720px) {
+    .feat-grid,
+    .rev-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .others {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 960px) {
+    .c-hero {
+      padding-block: 40px 80px;
+    }
+    .c-hero-grid {
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 56px;
+      align-items: center;
+    }
+    .c-lead {
+      font-size: 20px;
+    }
+    .feat-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .steps {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .step {
+      padding: 84px 28px 28px;
+    }
+    .step-n {
+      left: 28px;
+      top: 28px;
+    }
+    .price-grid {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .rev-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .others {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+</style>

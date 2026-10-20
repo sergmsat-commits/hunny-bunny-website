@@ -1,11 +1,17 @@
 ---
 import Icon from './Icon.astro';
 import type { Translation } from '../i18n/translations';
+import type { Lang } from '../data/business';
+import { coursePath, courseUi, courses, type CourseId } from '../data/courses';
 
 interface Props {
   t: Translation;
+  lang: Lang;
 }
-const { t } = Astro.props;
+const { t, lang } = Astro.props;
+// Карточки на главной идут в этом порядке; онлайн — отдельной ссылкой под ними
+const ids: CourseId[] = ['kids', 'teens', 'adults', 'clubs'];
+const more = courseUi[lang].more;
 ---
 <section id="courses" class="section">
   <div class="container">
@@ -14,7 +20,7 @@ const { t } = Astro.props;
       <p>{t.courses.lead}</p>
     </div>
     <ul class="courses-grid" role="list" data-carousel>
-      {t.courses.items.map((c) => (
+      {t.courses.items.map((c, i) => (
         <li class="card course">
           <span class="icon-tile"><Icon name={c.icon} size={26} /></span>
           <h3>{c.title}</h3>
@@ -24,9 +30,15 @@ const { t } = Astro.props;
               <li><Icon name="check" size={18} stroke={2.2} />{p}</li>
             ))}
           </ul>
+          <a href={coursePath[ids[i]][lang]} class="course-more">
+            {more}<span class="visually-hidden">: {c.title}</span><Icon name="arrow" size={18} stroke={2.2} />
+          </a>
         </li>
       ))}
     </ul>
+    <p class="online-link">
+      <a href={coursePath.online[lang]}><Icon name="globe" size={20} stroke={2} />{courses.online[lang].h1}<Icon name="arrow" size={18} stroke={2.2} /></a>
+    </p>
     <div class="carousel-dots" aria-hidden="true">
       {t.courses.items.map((_, i) => <span class:list={[{ active: i === 0 }]} />)}
     </div>
@@ -117,6 +129,47 @@ const { t } = Astro.props;
     font-size: 15px;
     font-weight: 600;
     line-height: 1.45;
+  }
+  .course-more {
+    margin-top: auto;
+    padding-top: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+    color: var(--c-primary-ink);
+    text-decoration: none;
+  }
+  .course-more:hover {
+    color: var(--c-ink);
+  }
+  .course-more :global(svg) {
+    transition: transform 0.2s;
+  }
+  .course-more:hover :global(svg) {
+    transform: translateX(3px);
+  }
+  .online-link {
+    margin-top: 16px;
+  }
+  .online-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 0 18px;
+    border-radius: 999px;
+    background: var(--c-surface);
+    box-shadow: inset 0 0 0 1px var(--c-lavender-2);
+    font-weight: 700;
+    color: var(--c-ink);
+    text-decoration: none;
+  }
+  .online-link a :global(svg) {
+    color: var(--c-primary);
+  }
+  .online-link a:hover {
+    box-shadow: inset 0 0 0 2px var(--c-primary);
   }
   .course-points :global(svg) {
     color: var(--c-primary);
