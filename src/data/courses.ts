@@ -84,7 +84,7 @@ export const courseUi: Record<
     pricesTitle: 'Стоимость',
     priceOnce: 'разовое',
     pricePass: 'по абонементу',
-    priceNote: 'Цена за одно занятие в белорусских рублях. Первый урок — бесплатно, на первый месяц обучения — скидка 20%.',
+    priceNote: 'Цена за одно занятие в белорусских рублях. Первое пробное занятие — бесплатно.',
     priceAskTitle: '',
     priceAsk: '',
     priceAskCta: '',

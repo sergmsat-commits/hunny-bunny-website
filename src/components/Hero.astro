@@ -152,7 +152,9 @@ const messenger = lang === 'pl' ? { href: business.messengers.whatsapp, icon: 'w
   }
   .hero-stats {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) minmax(0, 1fr);
+    /* сколько показателей — столько равных колонок */
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
     gap: 8px;
     margin: 0;
     order: 3;
