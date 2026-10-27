@@ -15,7 +15,7 @@ const ru = {
   hero: {
     eyebrow: 'Гомель · Варшава · онлайн по всему миру',
     title: 'Английский для детей и взрослых, который нравится',
-    lead: 'Дети от 3 лет, подростки и взрослые. Подготовка к ЦТ и IELTS, разговорный клуб. Группы от 3 до 5 человек и индивидуальные занятия.',
+    lead: 'Дети от 3 лет, подростки и взрослые. Индивидуальные занятия и группы офлайн (Гомель, Варшава) и онлайн. Подготовка к олимпиадам, ЦТ, IELTS, разговорный клуб, киноклуб, каникулы и мастер-классы.',
     stats: [
       { value: '500+', label: 'учеников в 5 странах' },
       { value: 'Бесплатно', label: 'первое пробное занятие' },
@@ -199,7 +199,7 @@ const en: Dict = {
   hero: {
     eyebrow: 'Online worldwide · Gomel · Warsaw',
     title: 'English for kids and adults that they actually enjoy',
-    lead: 'Children from age 3, teenagers and adults. IELTS preparation and a conversation club. Groups of 3 to 5 students and one-to-one lessons.',
+    lead: 'Children from age 3, teenagers and adults. One-to-one lessons and groups in person (Gomel, Warsaw) and online. Olympiad and IELTS preparation, conversation club, film club, holiday courses and workshops.',
     stats: [
       { value: '500+', label: 'students in 5 countries' },
       { value: 'Free', label: 'first trial lesson' },
@@ -381,7 +381,7 @@ const pl: Dict = {
   hero: {
     eyebrow: 'Warszawa · Homel · online z całego świata',
     title: 'Angielski dla dzieci i dorosłych, który daje radość',
-    lead: 'Dzieci od 3 lat, młodzież i dorośli. Przygotowanie do IELTS i klub konwersacyjny. Grupy od 3 do 5 osób oraz zajęcia indywidualne.',
+    lead: 'Dzieci od 3 lat, młodzież i dorośli. Zajęcia indywidualne i grupowe stacjonarnie (Homel, Warszawa) i online. Przygotowanie do olimpiad i IELTS, klub konwersacyjny, klub filmowy, ferie z angielskim i warsztaty.',
     stats: [
       { value: '500+', label: 'uczniów w 5 krajach' },
       { value: 'Gratis', label: 'pierwsza lekcja próbna' },
