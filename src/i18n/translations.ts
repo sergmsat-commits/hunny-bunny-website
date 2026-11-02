@@ -95,6 +95,9 @@ const ru = {
     alt: 'Отзыв родителя о занятиях в Hunny Bunny',
     from: "Сообщение от родителя",
     original: "Оригинал сообщения",
+    leaveTitle: 'Уже занимаетесь у нас?',
+    leaveText: 'Будем рады вашему отзыву в Google — он помогает другим родителям найти нас.',
+    leaveCta: 'Оставить отзыв в Google',
     items: [
       { file: 'otz1', paragraphs: ["Занятие очень понравилось! Я переживала, что Вера не останется одна без меня, а преподаватель её сразу к себе расположила, заинтересовала и она даже не посмотрела на меня, когда закрывалась дверь, так ей было интересно общаться ☺️ и после занятия, попросилась ещё вернуться) и сегодня опять вспоминала и спрашивала, когда ещё пойдем)", "Обязательно придем ещё 😊"] },
       { file: 'otz6', paragraphs: ["Доброе утро!!! Большая благодарность за каждый день душевного общения, творческих занятий, интересных развлечений, отличную практику языка!!! А также огромное спасибо за Вашу внимание, заботу и любовь к детям, к своему делу!!! Это очень ценно❤️❤️❤️ Марьяша очень довольна, много приятных впечатлений, эмоций и сувениров😁"] },
@@ -279,6 +282,9 @@ const en: Dict = {
     alt: 'A parent’s review of lessons at Hunny Bunny',
     from: "Message from a parent",
     original: "See the original (in Russian)",
+    leaveTitle: 'Already studying with us?',
+    leaveText: 'We’d love your review on Google — it helps other families find us.',
+    leaveCta: 'Leave a Google review',
     items: [
       { file: 'otz1', paragraphs: ["I really loved the lesson!", "I was worried that Vera would stay without me, but the teacher immediately made her feel comfortable and interested. She didn't even look back when the door closed 😊", "After the lesson she asked to come again, and today she remembered everything and asked, “When are we going again?”", "We will definitely come back! 😊"] },
       { file: 'otz6', paragraphs: ["Good morning!!!", "A huge thank you for every day filled with warm conversations, creative activities, fun games, and excellent English practice!!!", "Thank you so much for your care, attention, and love for the children. ❤️❤️", "Maryasha is so happy and came home with wonderful memories, emotions, and little souvenirs. 😊"] },
@@ -461,6 +467,9 @@ const pl: Dict = {
     alt: 'Opinia rodzica o zajęciach w Hunny Bunny',
     from: "Wiadomość od rodzica",
     original: "Oryginał (po rosyjsku)",
+    leaveTitle: 'Już się u nas uczysz?',
+    leaveText: 'Będzie nam miło, jeśli zostawisz opinię w Google — to pomaga innym rodzinom nas znaleźć.',
+    leaveCta: 'Zostaw opinię w Google',
     items: [
       { file: 'otz1', paragraphs: ["Zajęcia bardzo nam się podobały!", "Martwiłam się, że Vera zostanie sama beze mnie, ale nauczycielka od razu zdobyła jej sympatię i zainteresowała ją. Kiedy zamykały się drzwi, nawet się za mną nie obejrzała 😊", "Po zajęciach poprosiła, żeby jeszcze wrócić. Dziś znowu wspominała zajęcia i pytała: „Kiedy pójdziemy jeszcze raz?”", "Na pewno wrócimy! 😊"] },
       { file: 'otz6', paragraphs: ["Dzień dobry!!!", "Ogromne podziękowania za każdy dzień pełen ciepłych rozmów, kreatywnych zajęć, ciekawych zabaw i świetnej praktyki języka angielskiego!!!", "Dziękujemy za troskę, uwagę i miłość do dzieci. ❤️❤️", "Marysia wróciła bardzo szczęśliwa i pełna pięknych wspomnień, emocji oraz pamiątek. 😊"] },

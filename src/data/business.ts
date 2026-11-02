@@ -36,6 +36,8 @@ export const business = {
     instagramDirect: 'https://ig.me/m/hunny_bunny_english',
     youtube: 'https://www.youtube.com/@hunnybunnyenglish',
     founderInstagram: 'https://www.instagram.com/julia_satyrova/',
+    // Ссылка Google «Оставить отзыв» из профиля компании
+    googleReview: 'https://g.page/r/CQkGtn0qcqJGEBM/review',
   },
 } as const;
 
