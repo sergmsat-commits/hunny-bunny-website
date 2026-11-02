@@ -2,7 +2,7 @@
 // Отзывы родителей: сообщения «как в мессенджере» плывут бегущей строкой.
 // Текст — дословно из присланных сообщений; по кнопке открывается скриншот оригинала.
 import Icon from './Icon.astro';
-import type { Lang } from '../data/business';
+import { business, type Lang } from '../data/business';
 import type { Translation } from '../i18n/translations';
 
 interface Props {
@@ -80,6 +80,17 @@ const rows = [
     </div>
     </Fragment>
   ))}
+
+  <div class="container">
+    <div class="leave reveal">
+      <span class="leave-icon" aria-hidden="true"><Icon name="star" size={22} filled stroke={1.5} /></span>
+      <div class="leave-text">
+        <p class="leave-title">{r.leaveTitle}</p>
+        <p>{r.leaveText}</p>
+      </div>
+      <a href={business.socials.googleReview} class="btn btn-secondary leave-btn" target="_blank" rel="noopener">{r.leaveCta}</a>
+    </div>
+  </div>
 </section>
 
 <script>
@@ -93,6 +104,51 @@ const rows = [
 <style>
   .reviews {
     overflow: hidden;
+  }
+  /* Блок «Оставить отзыв в Google» под лентами отзывов */
+  .leave {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 18px;
+    padding: 18px 20px;
+    border-radius: var(--r-l);
+    background: var(--c-surface);
+    box-shadow: inset 0 0 0 1px var(--c-lavender);
+  }
+  .leave-icon {
+    flex: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff6dc;
+    color: #e8a400;
+  }
+  .leave-text {
+    flex: 1 1 260px;
+  }
+  .leave-text p {
+    color: var(--c-ink-2);
+    font-size: 15.5px;
+  }
+  .leave-text .leave-title {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--c-ink);
+    margin-bottom: 2px;
+  }
+  .leave-btn {
+    flex: none;
+  }
+  @media (max-width: 599px) {
+    .leave-btn {
+      width: 100%;
+    }
   }
   .marquee {
     --gap: 16px;
