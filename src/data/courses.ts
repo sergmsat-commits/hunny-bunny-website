@@ -174,7 +174,7 @@ const clubPrices: PriceGroup = {
 export const courses: Record<CourseId, Record<Lang, CourseContent>> = {
   kids: {
     ru: {
-      seoTitle: 'Английский для детей 3–10 лет в Гомеле и онлайн | Hunny Bunny',
+      seoTitle: 'Курсы английского для детей 3–10 лет в Гомеле и онлайн | Hunny Bunny',
       description: 'Английский для детей от 3 лет: игры, песни и разговорная речь. Группы 3–5 человек, занятие 45 минут, очно в Гомеле и онлайн. Первый урок бесплатно.',
       short: 'Дети 3–10 лет',
       h1: 'Английский для детей 3–10 лет',
@@ -242,7 +242,7 @@ export const courses: Record<CourseId, Record<Lang, CourseContent>> = {
 
   teens: {
     ru: {
-      seoTitle: 'Английский для школьников и подготовка к ЦТ в Гомеле | Hunny Bunny',
+      seoTitle: 'Курсы английского для школьников и подготовка к ЦТ в Гомеле | Hunny Bunny',
       description: 'Английский для школьников 11–17 лет: школьная программа, подготовка к ЦТ, IELTS и олимпиадам. Группы 3–5 человек или индивидуально, очно в Гомеле и онлайн.',
       short: 'Школьники 11–17 лет',
       h1: 'Английский для школьников и подготовка к ЦТ',
@@ -307,7 +307,7 @@ export const courses: Record<CourseId, Record<Lang, CourseContent>> = {
 
   adults: {
     ru: {
-      seoTitle: 'Английский для взрослых в Гомеле и онлайн | Hunny Bunny',
+      seoTitle: 'Курсы английского для взрослых в Гомеле и онлайн | Hunny Bunny',
       description: 'Английский для взрослых: для работы, путешествий и жизни за границей. Любой уровень от Beginner до Advanced, индивидуально или в группе, разговорный клуб, IELTS.',
       short: 'Взрослые',
       h1: 'Английский для взрослых',
@@ -371,7 +371,7 @@ export const courses: Record<CourseId, Record<Lang, CourseContent>> = {
 
   online: {
     ru: {
-      seoTitle: 'Английский онлайн для детей и взрослых | Hunny Bunny English',
+      seoTitle: 'Курсы английского онлайн для детей и взрослых | Hunny Bunny English',
       description: 'Онлайн-занятия английским для детей от 3 лет, школьников и взрослых из любой страны. Те же преподаватели и программы, что и очно. Группы 3–5 человек или индивидуально.',
       short: 'Онлайн',
       h1: 'Английский онлайн для детей и взрослых',
