@@ -24,7 +24,7 @@ const post = posts[id][lang]!;
 const meta = postMeta[id];
 const path = postPath[id][lang]!;
 const site = business.site;
-const course = courses[meta.course][lang];
+const course = courses[meta.course][lang] ?? courses.teens[lang];
 const others = postIds.filter((x) => x !== id && posts[x][lang]);
 const date = new Date(meta.date).toLocaleDateString({ ru: 'ru-RU', en: 'en-GB', pl: 'pl-PL' }[lang], { day: 'numeric', month: 'long', year: 'numeric' });
 
@@ -98,7 +98,7 @@ const schema = [
             <p>{ui.trialText}</p>
             <div class="post-cta-actions">
               <a href="#contact" class="btn btn-primary">{t.cta.trial}</a>
-              <a href={coursePath[meta.course][lang]} class="btn btn-secondary">{ui.courseCta}: {course.short}</a>
+              <a href={coursePath[meta.course][lang] ?? coursePath.teens[lang]} class="btn btn-secondary">{ui.courseCta}: {course.short}</a>
             </div>
           </div>
           <Bunny height={130} class="post-bunny" delay={1} />

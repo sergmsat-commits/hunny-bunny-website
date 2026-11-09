@@ -81,8 +81,8 @@ const schema = [
             return (
               <li class:list={['profile', 'reveal', { flip: i % 2 === 1 }]}>
                 <div class="profile-photo zoom-frame">
-                  <Zoomable src={photos[id]} alt={p.name} label={t.a11y.openPhoto} group="teachers">
-                    <Picture src={photos[id]} alt={p.name} widths={[360, 540, 720]} sizes="(min-width: 960px) 380px, 92vw" formats={['avif', 'webp']} loading={i === 0 ? 'eager' : 'lazy'} />
+                  <Zoomable src={photos[id]} alt={`${p.name} — ${p.role}, Hunny Bunny English`} label={t.a11y.openPhoto} group="teachers">
+                    <Picture src={photos[id]} alt={`${p.name} — ${p.role}, Hunny Bunny English`} widths={[360, 540, 720]} sizes="(min-width: 960px) 380px, 92vw" formats={['avif', 'webp']} loading={i === 0 ? 'eager' : 'lazy'} />
                   </Zoomable>
                 </div>
                 <div class="profile-body">

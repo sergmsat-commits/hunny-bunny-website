@@ -18,7 +18,7 @@ import laevskaya from '../assets/team/laevskaya.jpg';
 import rud from '../assets/team/rud.jpg';
 import { translations } from '../i18n/translations';
 import { business, homePath, type Lang } from '../data/business';
-import { courses, courseIds, coursePath, coursePhoto, courseReviews, courseUi, type CourseId } from '../data/courses';
+import { courses, courseIds, coursePath, coursePhoto, courseReviews, courseUi, ruOnlyCourseIds, type CourseId } from '../data/courses';
 
 interface Props {
   lang: Lang;
@@ -26,14 +26,15 @@ interface Props {
 }
 const { lang, id } = Astro.props;
 const t = translations[lang];
-const c = courses[id][lang];
+const c = courses[id][lang]!;
 const ui = courseUi[lang];
-const path = coursePath[id][lang];
+const path = coursePath[id][lang]!;
 const site = business.site;
 const photos = { beanbags, desk, group, laevskaya, rud };
 const photo = photos[coursePhoto[id]];
 const reviews = courseReviews[id].map((i) => t.reviews.items[i]).filter(Boolean) as { paragraphs: string[]; tag?: string }[];
-const others = courseIds.filter((x) => x !== id);
+// На русской версии в «Других курсах» показываем и страницы только на русском (например, ЦТ)
+const others = (lang === 'ru' ? [...courseIds, ...ruOnlyCourseIds] : courseIds).filter((x) => x !== id);
 const messenger = lang === 'pl'
   ? { href: business.messengers.whatsapp, icon: 'whatsapp', label: 'WhatsApp' }
   : { href: business.messengers.telegram, icon: 'telegram', label: 'Telegram' };
@@ -97,8 +98,8 @@ const schema = [
           <Deco name="flower" size={60} class="c-fl" />
           <Deco name="sparkle" size={20} class="c-sp" />
           <div class="c-photo zoom-frame">
-            <Zoomable src={photo} alt={c.h1} label={t.a11y.openPhoto}>
-              <Picture src={photo} alt={c.h1} widths={[360, 540, 720]} sizes="(min-width: 960px) 460px, 92vw" formats={['avif', 'webp']} loading="eager" fetchpriority="high" />
+            <Zoomable src={photo} alt={`${c.h1} — Hunny Bunny English`} label={t.a11y.openPhoto}>
+              <Picture src={photo} alt={`${c.h1} — Hunny Bunny English`} widths={[360, 540, 720]} sizes="(min-width: 960px) 460px, 92vw" formats={['avif', 'webp']} loading="eager" fetchpriority="high" />
             </Zoomable>
           </div>
           <Bunny height={120} class="c-bunny" delay={1} />
@@ -207,8 +208,8 @@ const schema = [
         <ul class="others" role="list">
           {others.map((o) => (
             <li>
-              <a href={coursePath[o][lang]} class="other">
-                <span>{courses[o][lang].short}</span>
+              <a href={coursePath[o][lang]!} class="other">
+                <span>{courses[o][lang]!.short}</span>
                 <Icon name="arrow" size={18} stroke={2.2} />
               </a>
             </li>

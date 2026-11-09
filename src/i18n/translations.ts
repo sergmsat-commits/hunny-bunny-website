@@ -23,8 +23,8 @@ const ru = {
     founderName: 'Юлия Сатырова',
     founderRole: 'основательница, TESOL (Arizona State University)',
     freeBadge: 'Первое занятие бесплатно',
-    photoMain: 'Дети смеются на занятии, сидя на фиолетовых креслах-мешках',
-    photoSecond: 'Преподаватель занимается с подростком за столом с карандашами',
+    photoMain: 'Дети смеются на занятии английским в классе Hunny Bunny в Гомеле, сидя на фиолетовых креслах-мешках',
+    photoSecond: 'Преподаватель английского занимается с подростком в классе Hunny Bunny в Гомеле',
   },
   courses: {
     title: 'Курсы',
@@ -80,10 +80,10 @@ const ru = {
   gallery: {
     title: 'Как проходят занятия',
     alts: [
-      'Преподаватель играет с детьми в карточки на занятии',
-      'Группа детей рисует за общим столом',
-      'Дети на креслах-мешках слушают преподавателя',
-      'Урок с подростком за столом',
+      'Преподаватель играет с детьми в карточки на занятии английским в Гомеле',
+      'Группа детей рисует за общим столом на курсах английского в Гомеле',
+      'Дети на креслах-мешках слушают преподавателя английского в классе Hunny Bunny',
+      'Урок английского с подростком в Гомеле',
     ],
   },
   extras: { title: "Подарки и события", gift: { title: "Подарочный сертификат", text: "На любые занятия и услуги пространства Hunny Bunny. Номинал — от 20 BYN, сумму выбираете вы.", cta: "Заказать сертификат" }, rent: { title: "Аренда пространства", text: "Светлая уютная студия в центре Гомеля для творческих мастер-классов, дней рождения и встреч.", cta: "Условия — в директ" } },
@@ -210,8 +210,8 @@ const en: Dict = {
     founderName: 'Yuliya Satyrava',
     founderRole: 'founder, TESOL (Arizona State University)',
     freeBadge: 'First lesson is free',
-    photoMain: 'Children laughing during a lesson on purple bean bags',
-    photoSecond: 'A teacher working with a teenager at a desk with pencils',
+    photoMain: 'Children laughing during an English lesson on purple bean bags at Hunny Bunny in Gomel',
+    photoSecond: 'An English teacher working with a teenager in the Hunny Bunny classroom in Gomel',
   },
   courses: {
     title: 'Courses',
@@ -267,10 +267,10 @@ const en: Dict = {
   gallery: {
     title: 'Inside our lessons',
     alts: [
-      'A teacher playing a card game with children',
-      'A group of children drawing at a shared table',
-      'Children on bean bags listening to the teacher',
-      'A lesson with a teenager at a desk',
+      'A teacher playing a card game with children during an English lesson in Gomel',
+      'A group of children drawing at a shared table at our English school in Gomel',
+      'Children on bean bags listening to the English teacher at Hunny Bunny',
+      'An English lesson with a teenager in Gomel',
     ],
   },
   extras: { title: "Gifts and events", gift: { title: "Gift certificate", text: "For any lessons and services at Hunny Bunny, for the amount you choose. Message us for details.", cta: "Order a certificate" }, rent: { title: "Space for your event", text: "A bright, cosy studio in central Gomel for creative workshops, birthday parties and meet-ups.", cta: "Ask on Instagram" } },
@@ -395,8 +395,8 @@ const pl: Dict = {
     founderName: 'Yuliya Satyrava',
     founderRole: 'założycielka, TESOL (Arizona State University)',
     freeBadge: 'Pierwsza lekcja gratis',
-    photoMain: 'Dzieci śmieją się na zajęciach, siedząc na fioletowych pufach',
-    photoSecond: 'Lektorka pracuje z nastolatkiem przy stole z kredkami',
+    photoMain: 'Dzieci śmieją się na lekcji angielskiego w sali Hunny Bunny w Homlu, siedząc na fioletowych pufach',
+    photoSecond: 'Lektorka angielskiego pracuje z nastolatkiem w sali Hunny Bunny w Homlu',
   },
   courses: {
     title: 'Kursy',
@@ -452,10 +452,10 @@ const pl: Dict = {
   gallery: {
     title: 'Jak wyglądają zajęcia',
     alts: [
-      'Lektorka gra z dziećmi w karty na zajęciach',
-      'Grupa dzieci rysuje przy wspólnym stole',
-      'Dzieci na pufach słuchają lektorki',
-      'Lekcja z nastolatkiem przy stole',
+      'Lektorka gra z dziećmi w karty na lekcji angielskiego w Homlu',
+      'Grupa dzieci rysuje przy wspólnym stole w szkole angielskiego w Homlu',
+      'Dzieci na pufach słuchają lektorki angielskiego w Hunny Bunny',
+      'Lekcja angielskiego z nastolatkiem w Homlu',
     ],
   },
   extras: { title: "Prezenty i wydarzenia", gift: { title: "Bon podarunkowy", text: "Na dowolne zajęcia i usługi Hunny Bunny, na wybraną przez Ciebie kwotę. Napisz do nas po szczegóły.", cta: "Zamów bon" }, rent: { title: "Wynajem sali", text: "Jasne, przytulne studio w centrum Homla na warsztaty twórcze, urodziny i spotkania.", cta: "Zapytaj na Instagramie" } },

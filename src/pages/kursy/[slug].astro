@@ -1,10 +1,10 @@
 ---
 import CoursePage from '../../components/CoursePage.astro';
-import { courseIds, coursePath } from '../../data/courses';
+import { courseIds, coursePath, ruOnlyCourseIds } from '../../data/courses';
 
 export function getStaticPaths() {
-  return courseIds.map((id) => ({
-    params: { slug: coursePath[id].ru.split('/').filter(Boolean).pop() },
+  return [...courseIds, ...ruOnlyCourseIds].map((id) => ({
+    params: { slug: coursePath[id].ru!.split('/').filter(Boolean).pop() },
     props: { id },
   }));
 }

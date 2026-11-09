@@ -45,6 +45,7 @@ const heads: Record<Lang, string> = { ru: 'Школа', en: 'School', pl: 'Szko�
       <p class="footer-h" id="fh-courses">{courseUi[lang].courses}</p>
       <nav aria-labelledby="fh-courses" class="footer-nav">
         {courseIds.map((id) => <a href={coursePath[id][lang]}>{courses[id][lang].short}</a>)}
+        {lang === 'ru' && <a href={coursePath.ct.ru}>{courses.ct.ru!.short}</a>}
       </nav>
     </div>
 
