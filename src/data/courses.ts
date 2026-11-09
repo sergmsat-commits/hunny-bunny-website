@@ -2,16 +2,21 @@
 // Только проверенные факты: прайс и правила из сторис школы, длительность и размер групп — со слов Сергея (20.10.2026).
 import type { Lang } from './business';
 
-export type CourseId = 'kids' | 'teens' | 'adults' | 'online' | 'clubs';
-export const courseIds: CourseId[] = ['kids', 'teens', 'adults', 'online', 'clubs'];
+// Основные курсы — на трёх языках, в карусели на главной и в подвале
+export type MainCourseId = 'kids' | 'teens' | 'adults' | 'online' | 'clubs';
+export const courseIds: MainCourseId[] = ['kids', 'teens', 'adults', 'online', 'clubs'];
+// Страницы только на русском (ЦТ — белорусский экзамен, на EN/PL не нужна)
+export type CourseId = MainCourseId | 'ct';
+export const ruOnlyCourseIds: CourseId[] = ['ct'];
 
 // Адреса страниц. Меняя адрес после публикации, добавьте 301-редирект в public/_redirects.
-export const coursePath: Record<CourseId, Record<Lang, string>> = {
+export const coursePath: Record<MainCourseId, Record<Lang, string>> & Record<'ct', Partial<Record<Lang, string>>> = {
   kids: { ru: '/kursy/dlya-detey/', en: '/en/courses/kids/', pl: '/pl/kursy/dla-dzieci/' },
   teens: { ru: '/kursy/dlya-podrostkov/', en: '/en/courses/teens/', pl: '/pl/kursy/dla-mlodziezy/' },
   adults: { ru: '/kursy/dlya-vzroslyh/', en: '/en/courses/adults/', pl: '/pl/kursy/dla-doroslych/' },
   online: { ru: '/kursy/onlayn/', en: '/en/courses/online/', pl: '/pl/kursy/online/' },
   clubs: { ru: '/kursy/kluby/', en: '/en/courses/clubs/', pl: '/pl/kursy/kluby/' },
+  ct: { ru: '/kursy/podgotovka-k-ct/' },
 };
 
 // Какое фото показывать на странице курса (файлы в src/assets)
@@ -21,6 +26,7 @@ export const coursePhoto: Record<CourseId, 'beanbags' | 'desk' | 'laevskaya' | '
   adults: 'laevskaya',
   online: 'rud',
   clubs: 'group',
+  ct: 'desk',
 };
 
 // Индексы отзывов из translations.reviews.items, подходящих к курсу
@@ -30,6 +36,7 @@ export const courseReviews: Record<CourseId, number[]> = {
   adults: [3, 10, 9],
   online: [3, 0, 2],
   clubs: [5, 4, 6],
+  ct: [3, 10, 8],
 };
 
 type Feature = { icon: string; title: string; text: string };
@@ -171,7 +178,7 @@ const clubPrices: PriceGroup = {
   ],
 };
 
-export const courses: Record<CourseId, Record<Lang, CourseContent>> = {
+export const courses: Record<MainCourseId, Record<Lang, CourseContent>> & Record<'ct', Partial<Record<Lang, CourseContent>>> = {
   kids: {
     ru: {
       seoTitle: 'Курсы английского для детей 3–10 лет в Гомеле и онлайн | Hunny Bunny',
@@ -499,6 +506,31 @@ export const courses: Record<CourseId, Record<Lang, CourseContent>> = {
       ],
       faq: [
         { q: 'Gdzie sprawdzić terminy?', a: 'Ogłaszamy je na Instagramie @hunny_bunny_english. Możesz też napisać do nas — podamy najbliższe daty.' },
+      ],
+    },
+  },
+  ct: {
+    ru: {
+      seoTitle: 'Подготовка к ЦТ по английскому в Гомеле — группы и индивидуально | Hunny Bunny',
+      description: 'Подготовка к ЦТ по английскому в Гомеле и онлайн: диагностика, план на учебный год, грамматика, лексика, тесты с разбором ошибок. Группы 3–5 человек или индивидуально, занятие 45 минут.',
+      short: 'Подготовка к ЦТ',
+      h1: 'Подготовка к ЦТ по английскому в Гомеле',
+      lead: 'Спокойная система на весь учебный год вместо марафона в мае: диагностика, план, регулярная практика и тесты с разбором каждой ошибки. В маленькой группе или индивидуально, очно в Гомеле и онлайн.',
+      facts: ['Группы 3–5 человек', 'Индивидуально', '45 минут', 'Очно и онлайн', 'Набор круглый год'],
+      featuresTitle: 'Как мы готовим к ЦТ',
+      features: [
+        { icon: 'check', title: 'Диагностика', text: 'Начинаем с проверки уровня: что уже уверенно, а где пробелы — времена, артикли, предлоги, словообразование, лексика. Так время уходит на слабые места, а не на то, что и так получается.' },
+        { icon: 'calendar', title: 'План на учебный год', text: 'Осенью закрываем пробелы в грамматике, зимой — лексика и словообразование, весной — тесты на время. Последний месяц — повторение без попыток выучить новое.' },
+        { icon: 'award', title: 'Тесты и разбор ошибок', text: 'Пробные тесты нужны не ради балла, а ради разбора: понимаем, какое правило стоит за каждой ошибкой, и повторяющиеся ошибки становятся планом на ближайшие недели.' },
+        { icon: 'heart', title: 'Без стресса и выгорания', text: 'Сотни правил за месяц не выучить. Высоким баллам помогают регулярные занятия и спокойный темп. Среди наших преподавателей — Юлия Баринова, которая помогает школьникам спокойно и системно готовиться к ЦТ.' },
+      ],
+      prices: [generalPrices[0]],
+      faq: [
+        { q: 'Когда начинать готовиться к ЦТ?', a: 'Чем раньше, тем спокойнее. Лучше заниматься регулярно весь учебный год, чем пытаться выучить всё за месяц до экзамена. Присоединиться можно в любой момент — набор идёт круглый год.' },
+        { q: 'Сколько раз в неделю заниматься?', a: 'Частоту подбираем вместе с вами под уровень и цель. Регулярность важнее количества: два спокойных занятия в неделю весь год обычно дают больше, чем ежедневные марафоны в мае.' },
+        { q: 'В группе или индивидуально?', a: 'В группе 3–5 человек больше практики и это дешевле; индивидуально — программа полностью под ваши пробелы и ваш темп. Можно начать с бесплатного пробного урока и решить после него.' },
+        { q: 'Где узнать даты и структуру ЦТ?', a: 'Сроки регистрации, расписание и демонстрационные варианты каждый год публикует Республиканский институт контроля знаний на сайте rikc.by — требования могут меняться, поэтому ориентируйтесь на актуальные материалы РИКЗ.' },
+        { q: 'Можно заниматься онлайн?', a: 'Да, в группе или индивидуально, из любого города и страны.' },
       ],
     },
   },

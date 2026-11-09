@@ -22,7 +22,7 @@ export const postIds: PostId[] = ['choose', 'adults', 'holidays', 'age', 'group'
 export const postMeta: Record<PostId, { date: string; course: CourseId; emoji: string; tone: 'pink' | 'lilac' | 'peach' }> = {
   age: { date: '2026-10-20', course: 'kids', emoji: '🧸', tone: 'pink' },
   group: { date: '2026-10-20', course: 'adults', emoji: '👥', tone: 'lilac' },
-  ct: { date: '2026-10-20', course: 'teens', emoji: '🎯', tone: 'peach' },
+  ct: { date: '2026-10-20', course: 'ct', emoji: '🎯', tone: 'peach' },
   choose: { date: '2026-10-28', course: 'kids', emoji: '🔍', tone: 'lilac' },
   holidays: { date: '2026-10-28', course: 'clubs', emoji: '☀️', tone: 'peach' },
   adults: { date: '2026-10-28', course: 'adults', emoji: '☕', tone: 'pink' },
@@ -32,9 +32,9 @@ export const postPath: Record<PostId, Partial<Record<Lang, string>>> = {
   age: { ru: '/blog/s-kakogo-vozrasta-uchit-angliyskiy/', en: '/en/blog/best-age-to-start-english/', pl: '/pl/blog/od-jakiego-wieku-angielski/' },
   group: { ru: '/blog/gruppa-ili-individualno/', en: '/en/blog/group-or-one-to-one/', pl: '/pl/blog/grupa-czy-indywidualnie/' },
   ct: { ru: '/blog/kak-podgotovitsya-k-ct-po-angliyskomu/' },
-  choose: { ru: '/blog/kak-vybrat-kursy-angliyskogo-dlya-rebenka-gomel/' },
-  holidays: { ru: '/blog/kanikuly-na-angliyskom-gomel/' },
-  adults: { ru: '/blog/angliyskiy-dlya-vzroslyh-gomel/' },
+  choose: { ru: '/blog/kak-vybrat-kursy-angliyskogo-dlya-rebenka-gomel/', en: '/en/blog/how-to-choose-english-lessons-for-your-child/', pl: '/pl/blog/jak-wybrac-szkole-angielskiego-dla-dziecka/' },
+  holidays: { ru: '/blog/kanikuly-na-angliyskom-gomel/', en: '/en/blog/english-over-the-holidays-summer-club/', pl: '/pl/blog/angielski-w-wakacje-klub-letni/' },
+  adults: { ru: '/blog/angliyskiy-dlya-vzroslyh-gomel/', en: '/en/blog/english-for-adults-after-a-break/', pl: '/pl/blog/angielski-dla-doroslych-po-przerwie/' },
 };
 
 export const blogUi: Record<
@@ -493,6 +493,138 @@ export const posts: Record<PostId, Partial<Record<Lang, Post>>> = {
         },
       ],
     },
+    en: {
+      title: 'How to choose an English school for your child: 7 questions to ask',
+      seoTitle: 'How to Choose English Lessons for Your Child — 7 Questions | Hunny Bunny',
+      description: 'What to look for when choosing English lessons for your child: group size, lesson format, teachers, trial lesson, payment and missed lessons. A checklist for parents, online or in person.',
+      lead: 'Many English schools look alike from the outside. The difference only shows when you ask the right questions. Here are seven worth asking any school — including us.',
+      readTime: '5 min',
+      body: [
+        {
+          h: '1. How many children are in a group?',
+          p: [
+            'This is probably the most important question. The smaller the group, the more often your child speaks and the more attention they get from the teacher. In a big group, a quiet child can sit through the whole lesson without saying a word.',
+            'Also ask whether groups are formed by age and level. Children feel uncomfortable next to classmates who know much more — and bored when everyone is far behind.',
+          ],
+        },
+        {
+          h: '2. What does a lesson look like at this age?',
+          p: [
+            'Little ones can’t sit at a desk listening to explanations for 45 minutes. For them, a lesson should be a series of short activities: a game, a song, movement, a craft, a cartoon. For school children, reading, writing and grammar are added.',
+            'Ask the school to walk you through a typical lesson step by step. If it sounds like a school lesson for a five-year-old, that’s a warning sign.',
+          ],
+        },
+        {
+          h: '3. Who are the teachers?',
+          p: [
+            'Ask about the teachers’ education and whether they hold certificates in English language teaching, such as TESOL or TEFL. A good school will happily tell you and show the documents.',
+            'It also matters what happens if a teacher is ill: is the lesson rescheduled or taught by a colleague?',
+          ],
+        },
+        {
+          h: '4. Can we come for a trial lesson?',
+          p: [
+            'A trial lesson matters more to your child than to the school. They see the classroom and meet the teacher, and you see how comfortable they feel. Ideally, the trial is short and playful — no tests and no pressure.',
+          ],
+        },
+        {
+          h: '5. How will we see progress?',
+          p: [
+            'Find out how the school keeps parents informed: feedback after lessons, what has been covered, ideas for practising at home. For little ones, progress isn’t grades — it’s new words, songs and phrases your child brings home on their own.',
+          ],
+        },
+        {
+          h: '6. How do payment and missed lessons work?',
+          p: [
+            'Children get ill, so ask about the rules in advance: is a missed lesson lost, can it be made up, how much notice do you need to give? Also ask whether a pass costs less per lesson than single lessons.',
+          ],
+        },
+        {
+          h: '7. Is it easy to get there — and is there an online option?',
+          p: [
+            'Even the best school won’t help if getting there takes an hour. Check where the classroom is and the opening hours. And ask whether you can switch to online lessons if your child is unwell or you travel.',
+          ],
+          tip: 'Write down the answers from different schools in one table — it makes comparing much easier. And be sure to ask your child after the trial lesson whether they enjoyed it.',
+        },
+        {
+          h: 'How it works at Hunny Bunny',
+          list: [
+            'groups of 3 to 5 children, formed by age and level; one-to-one lessons are also available;',
+            'lessons last 45 minutes: games, songs, cartoons and crafts;',
+            'our teachers have degrees in languages or international TESOL/TEFL certificates — see the Teachers page;',
+            'a free 20-minute trial lesson;',
+            'lessons on a pass cost less than single lessons; lessons missed due to illness are not lost;',
+            'online from any country, in person in our classroom in central Gomel and in Warsaw.',
+          ],
+        },
+      ],
+    },
+    pl: {
+      title: 'Jak wybrać szkołę angielskiego dla dziecka: 7 pytań do zadania',
+      seoTitle: 'Jak wybrać lekcje angielskiego dla dziecka — 7 pytań | Hunny Bunny',
+      description: 'Na co zwrócić uwagę, wybierając lekcje angielskiego dla dziecka: wielkość grupy, przebieg zajęć, lektorzy, lekcja próbna, płatności i nieobecności. Lista kontrolna dla rodziców.',
+      lead: 'Wiele szkół angielskiego wygląda z zewnątrz podobnie. Różnicę widać dopiero wtedy, gdy zada się właściwe pytania. Oto siedem, które warto zadać każdej szkole — także nam.',
+      readTime: '5 min',
+      body: [
+        {
+          h: '1. Ile dzieci jest w grupie?',
+          p: [
+            'To chyba najważniejsze pytanie. Im mniejsza grupa, tym częściej dziecko mówi samo i tym więcej uwagi dostaje od lektora. W dużej grupie nieśmiałe dziecko może przesiedzieć całą lekcję, nie odzywając się ani razu.',
+            'Zapytaj też, czy grupy są dobierane według wieku i poziomu. Dziecku jest niekomfortowo obok tych, którzy wiedzą dużo więcej — i nudno, gdy wszyscy są daleko w tyle.',
+          ],
+        },
+        {
+          h: '2. Jak wyglądają zajęcia w tym wieku?',
+          p: [
+            'Maluchy nie wysiedzą 45 minut przy stole, słuchając wyjaśnień. Dla nich lekcja powinna być ciągiem krótkich aktywności: zabawa, piosenka, ruch, praca twórcza, bajka. U dzieci w wieku szkolnym dochodzi czytanie, pisanie i gramatyka.',
+            'Poproś, by opisano zwykłą lekcję krok po kroku. Jeśli brzmi to jak szkolna lekcja dla pięciolatka, to powód do ostrożności.',
+          ],
+        },
+        {
+          h: '3. Kim są lektorzy?',
+          p: [
+            'Zapytaj o wykształcenie lektorów i o certyfikaty z metodyki nauczania angielskiego, np. TESOL lub TEFL. Dobra szkoła chętnie o tym opowie i pokaże dokumenty.',
+            'Ważne jest też, co się dzieje, gdy lektor zachoruje: czy lekcja jest przekładana, czy prowadzi ją ktoś inny.',
+          ],
+        },
+        {
+          h: '4. Czy można przyjść na lekcję próbną?',
+          p: [
+            'Lekcja próbna jest potrzebna bardziej dziecku niż szkole. Zobaczy salę i pozna lektora, a Ty zobaczysz, jak się w tym miejscu czuje. Dobrze, gdy lekcja próbna jest krótka i w formie zabawy — bez testów i presji.',
+          ],
+        },
+        {
+          h: '5. Jak zobaczymy postępy?',
+          p: [
+            'Dowiedz się, jak szkoła informuje rodziców: informacja zwrotna po zajęciach, co zostało przerobione, pomysły na ćwiczenia w domu. U maluchów postęp to nie oceny, tylko nowe słowa, piosenki i zwroty, które dziecko samo przynosi do domu.',
+          ],
+        },
+        {
+          h: '6. Jak wyglądają płatności i nieobecności?',
+          p: [
+            'Dzieci chorują, więc zasady nieobecności warto poznać z góry: czy lekcja przepada, czy można ją odrobić, z jakim wyprzedzeniem trzeba uprzedzić. Zapytaj też, czy lekcja w karnecie jest tańsza niż pojedyncza.',
+          ],
+        },
+        {
+          h: '7. Czy łatwo dojechać i czy jest opcja online?',
+          p: [
+            'Nawet najlepsza szkoła nie pomoże, jeśli dojazd zajmuje godzinę. Sprawdź, gdzie odbywają się zajęcia i w jakich godzinach. I zapytaj, czy można przejść na online, gdy dziecko jest chore albo wyjeżdżacie.',
+          ],
+          tip: 'Zapisz odpowiedzi różnych szkół w jednej tabeli — łatwiej będzie porównać. I koniecznie zapytaj dziecko po lekcji próbnej, czy mu się podobało.',
+        },
+        {
+          h: 'Jak to wygląda w Hunny Bunny',
+          list: [
+            'grupy od 3 do 5 dzieci, dobierane według wieku i poziomu; można też uczyć się indywidualnie;',
+            'lekcja trwa 45 minut: zabawy, piosenki, bajki i prace twórcze;',
+            'nasi lektorzy mają wykształcenie filologiczne lub międzynarodowe certyfikaty TESOL/TEFL — zobacz stronę „Lektorzy”;',
+            'bezpłatna 20-minutowa lekcja próbna;',
+            'zajęcia w karnecie są tańsze niż pojedyncze; nieobecność z powodu choroby nie przepada;',
+            'online z dowolnego kraju, stacjonarnie w Warszawie (zajęcia prowadzi założycielka szkoły) i w Homlu.',
+          ],
+        },
+      ],
+    },
   },
   holidays: {
     ru: {
@@ -535,6 +667,94 @@ export const posts: Record<PostId, Partial<Record<Lang, Post>>> = {
           h: 'Как записаться',
           p: [
             'Оставьте заявку на сайте или напишите нам в Telegram, Viber или WhatsApp. Юлия подскажет ближайшие даты клубов и свободные места. Если хотите заниматься и после каникул — набор в группы идёт круглый год.',
+          ],
+        },
+      ],
+    },
+    en: {
+      title: 'Holidays in English: summer club and other clubs',
+      seoTitle: 'English Over the Holidays: Summer Club and Clubs for Kids | Hunny Bunny',
+      description: 'Why it’s worth keeping English going over the holidays, how our summer club in Gomel works (10:00–14:00), plus the movie club and workshops — and online lessons from any country.',
+      lead: 'The holidays are a good time to make sure your child doesn’t forget their English over the summer — while still having a proper rest. The key is that it shouldn’t feel like more school, but like real communication, games and creativity.',
+      readTime: '4 min',
+      body: [
+        {
+          h: 'Why English over the holidays',
+          p: [
+            'Over three summer months without practice, some words and skills fade — and September becomes a catch-up month. Short, regular contact with the language during the holidays helps keep what your child learned over the year.',
+            'But holidays are for rest. So English at this time should feel light: the language comes through games, crafts and conversation, not textbook exercises.',
+          ],
+        },
+        {
+          h: 'How the summer club works',
+          p: [
+            'In summer we run a summer club from 10:00 to 14:00 in our cosy classroom in central Gomel: games, crafts and English.',
+            'We announce dates and the programme of upcoming clubs on Instagram @hunny_bunny_english. The quickest way to find out dates, places and prices is to message us.',
+          ],
+        },
+        {
+          h: 'What else happens during the year',
+          list: [
+            'movie club — we watch and discuss films in English, each session lasts 90 minutes;',
+            'themed parties and workshops in an English-speaking setting — like our New Year party;',
+            'conversation club — relaxed speaking practice for anyone who wants to speak more confidently.',
+          ],
+        },
+        {
+          h: 'Not in Gomel?',
+          p: [
+            'Online lessons run all year round from any country, in a group or one-to-one — including during the holidays. A short regular lesson is enough to keep your child’s English from slipping over the summer.',
+          ],
+          tip: 'If your child is shy, start with a short trial lesson. That way they get to know the teacher first, and next time they’ll join in happily.',
+        },
+        {
+          h: 'How to sign up',
+          p: [
+            'Leave a request on the website or message us on WhatsApp or Telegram. We’ll tell you the next club dates and available places. If you’d like to continue after the holidays, we enrol students all year round.',
+          ],
+        },
+      ],
+    },
+    pl: {
+      title: 'Ferie z angielskim: klub letni i inne kluby',
+      seoTitle: 'Angielski w wakacje i ferie: klub letni i kluby dla dzieci | Hunny Bunny',
+      description: 'Dlaczego warto nie przerywać angielskiego w wakacje, jak działa nasz klub letni w Homlu (10:00–14:00), klub filmowy i warsztaty — oraz lekcje online z dowolnego kraju.',
+      lead: 'Wakacje to dobry moment, by dziecko nie zapomniało angielskiego przez lato — i przy tym odpoczęło. Najważniejsze, żeby nie była to kontynuacja szkoły, tylko żywa rozmowa, zabawy i twórczość.',
+      readTime: '4 min',
+      body: [
+        {
+          h: 'Po co angielski w wakacje',
+          p: [
+            'Przez trzy letnie miesiące bez praktyki część słów i umiejętności się zaciera — i we wrześniu trzeba nadrabiać. Krótki, regularny kontakt z językiem w wakacje pomaga zachować to, czego dziecko nauczyło się w ciągu roku.',
+            'Ale wakacje to odpoczynek. Dlatego angielski w tym czasie powinien być lekki: język pojawia się w zabawach, pracach twórczych i rozmowie, a nie w ćwiczeniach z podręcznika.',
+          ],
+        },
+        {
+          h: 'Jak działa klub letni',
+          p: [
+            'Latem prowadzimy klub letni w godzinach 10:00–14:00 w przytulnej sali w centrum Homla: zabawy, prace twórcze i angielski.',
+            'Terminy i program najbliższych klubów ogłaszamy na Instagramie @hunny_bunny_english. Najszybciej poznasz daty, wolne miejsca i ceny, pisząc do nas.',
+          ],
+        },
+        {
+          h: 'Co jeszcze dzieje się w ciągu roku',
+          list: [
+            'klub filmowy — oglądamy i omawiamy filmy po angielsku, spotkanie trwa 90 minut;',
+            'imprezy tematyczne i warsztaty w anglojęzycznym otoczeniu — np. noworoczna;',
+            'klub konwersacyjny — swobodna praktyka mówienia dla tych, którzy chcą mówić pewniej.',
+          ],
+        },
+        {
+          h: 'Mieszkasz w Polsce?',
+          p: [
+            'Lekcje online odbywają się przez cały rok z dowolnego kraju, w grupie lub indywidualnie — także w wakacje. W Warszawie zajęcia stacjonarne prowadzi założycielka szkoły; miejsce i termin ustalamy przy zapisie.',
+          ],
+          tip: 'Jeśli dziecko jest nieśmiałe, zacznij od krótkiej lekcji próbnej. Najpierw pozna lektora, a następnym razem pójdzie już z przyjemnością.',
+        },
+        {
+          h: 'Jak się zapisać',
+          p: [
+            'Zostaw zgłoszenie na stronie lub napisz do nas na WhatsAppie albo Telegramie. Podamy najbliższe terminy i wolne miejsca. Jeśli chcesz kontynuować po wakacjach — zapisy do grup trwają przez cały rok.',
           ],
         },
       ],
@@ -588,6 +808,108 @@ export const posts: Record<PostId, Partial<Record<Lang, Post>>> = {
           p: [
             'Мы занимаемся со взрослыми любого уровня — от Beginner до Advanced — индивидуально или в группах от 3 до 5 человек, очно в Гомеле на ул. Крестьянской, 33, и онлайн. Есть разговорный клуб и подготовка к IELTS. Время занятий согласуем с вашим графиком.',
             'Начать можно с бесплатного пробного урока: определим уровень, обсудим цель и подберём формат.',
+          ],
+        },
+      ],
+    },
+    en: {
+      title: 'English for adults: where to start if you haven’t studied in years',
+      seoTitle: 'English for Adults: How to Get Back to It After a Long Break | Hunny Bunny',
+      description: 'How to get back to English as an adult after a long break: set a goal, check your level, choose a format and start speaking. Advice from Hunny Bunny teachers — online and in person.',
+      lead: '“I learned it at school but forgot everything” — that’s how many of our adult students begin. The good news: what you’ve forgotten comes back faster than learning something new. You just need to start the right way.',
+      readTime: '4 min',
+      body: [
+        {
+          h: 'Step 1. Define your goal',
+          p: [
+            'English for travel, for work, for moving abroad or for an exam are different tasks. For travel, speaking and listening matter most; for work, emails and business vocabulary; for studying abroad, IELTS preparation.',
+            'Put your goal into one sentence, for example: “In six months I want to talk comfortably at a hotel and in shops.” The whole programme follows from it.',
+          ],
+        },
+        {
+          h: 'Step 2. Find out your level',
+          p: [
+            'After a break, it’s easy to over- or underestimate yourself. A short assessment with a teacher shows what you still remember and what needs revisiting. You rarely have to start from scratch.',
+          ],
+        },
+        {
+          h: 'Step 3. Choose a format',
+          list: [
+            'one-to-one — a programme built entirely around your goal and pace, handy with a busy schedule;',
+            'in a small group — more real practice and conversation, and usually cheaper;',
+            'online — study from any country without spending time on the commute.',
+          ],
+        },
+        {
+          h: 'Step 4. Speak from the first lesson',
+          p: [
+            'The biggest fear adults have is the language barrier: “I understand, but I can’t say it.” It only goes away with practice. So it matters that you actually speak in lessons, not just listen to explanations and do exercises.',
+            'Mistakes are a normal part of the process. Your teacher will help you fix them, and the conversation club gives you practice in a relaxed, informal setting.',
+          ],
+          tip: 'Between lessons, 10–15 minutes a day is enough: a series with English subtitles, a podcast on the way to work, a few new phrases in your phone notes.',
+        },
+        {
+          h: 'Step 5. Be consistent',
+          p: [
+            'Two lessons a week for a few months do more than a two-week intensive course after which everything fades again. Choose a time you can realistically keep in your schedule.',
+          ],
+        },
+        {
+          h: 'English for adults at Hunny Bunny',
+          p: [
+            'We teach adults at any level, from Beginner to Advanced — one-to-one or in groups of 3 to 5, online from any country and in person in Gomel and Warsaw. There’s a conversation club and IELTS preparation. We schedule lessons around your timetable.',
+            'You can start with a free trial lesson: we’ll check your level, talk through your goal and find the right format.',
+          ],
+        },
+      ],
+    },
+    pl: {
+      title: 'Angielski dla dorosłych: od czego zacząć po długiej przerwie',
+      seoTitle: 'Angielski dla dorosłych: jak wrócić do nauki po przerwie | Hunny Bunny',
+      description: 'Jak dorosłemu wrócić do angielskiego po długiej przerwie: cel, poziom, forma zajęć i mówienie od pierwszej lekcji. Rady lektorów Hunny Bunny — online i w Warszawie.',
+      lead: '„Uczyłem się w szkole, ale wszystko zapomniałem” — tak zaczyna wielu naszych dorosłych uczniów. Dobra wiadomość: to, co zapomniane, wraca szybciej, niż uczy się nowego. Trzeba tylko dobrze zacząć.',
+      readTime: '4 min',
+      body: [
+        {
+          h: 'Krok 1. Określ cel',
+          p: [
+            'Angielski do podróży, do pracy, do przeprowadzki i do egzaminu to różne zadania. W podróży najważniejsze jest mówienie i rozumienie ze słuchu, w pracy — korespondencja i słownictwo biznesowe, na studia za granicą — przygotowanie do IELTS.',
+            'Zapisz cel jednym zdaniem, np.: „Za pół roku chcę swobodnie dogadać się w hotelu i w sklepie”. Od niego zależy cały program.',
+          ],
+        },
+        {
+          h: 'Krok 2. Sprawdź swój poziom',
+          p: [
+            'Po przerwie łatwo się przecenić albo nie docenić. Krótka diagnoza z lektorem pokazuje, co zostało w pamięci, a co trzeba powtórzyć od podstaw. Zaczynać „od zera” zwykle nie trzeba.',
+          ],
+        },
+        {
+          h: 'Krok 3. Wybierz formę',
+          list: [
+            'indywidualnie — program w pełni pod Twój cel i tempo, wygodne przy napiętym grafiku;',
+            'w małej grupie — więcej żywej praktyki i rozmowy, zwykle taniej;',
+            'online — nauka z dowolnego kraju bez tracenia czasu na dojazd.',
+          ],
+        },
+        {
+          h: 'Krok 4. Mów od pierwszej lekcji',
+          p: [
+            'Największy strach dorosłych to bariera językowa: „rozumiem, ale nie potrafię powiedzieć”. Mija tylko dzięki praktyce. Dlatego ważne, żeby na zajęciach mówić, a nie tylko słuchać wyjaśnień i robić ćwiczenia.',
+            'Błędy to normalna część nauki. Lektor pomoże je poprawić, a klub konwersacyjny da praktykę w spokojnej, nieformalnej atmosferze.',
+          ],
+          tip: 'Między zajęciami wystarczy 10–15 minut dziennie: serial z angielskimi napisami, podcast w drodze do pracy, kilka nowych zwrotów w notatkach w telefonie.',
+        },
+        {
+          h: 'Krok 5. Ucz się regularnie',
+          p: [
+            'Dwie lekcje w tygodniu przez kilka miesięcy dadzą więcej niż dwutygodniowy intensywny kurs, po którym wszystko znów się zapomina. Wybierz godziny, które realnie utrzymasz w swoim grafiku.',
+          ],
+        },
+        {
+          h: 'Angielski dla dorosłych w Hunny Bunny',
+          p: [
+            'Uczymy dorosłych na każdym poziomie — od Beginner do Advanced — indywidualnie lub w grupach 3–5 osób, online z dowolnego kraju oraz stacjonarnie w Warszawie (zajęcia prowadzi założycielka szkoły) i w Homlu. Jest klub konwersacyjny i przygotowanie do IELTS. Termin zajęć dopasowujemy do Twojego grafiku.',
+            'Możesz zacząć od bezpłatnej lekcji próbnej: sprawdzimy poziom, omówimy cel i dobierzemy formę.',
           ],
         },
       ],
