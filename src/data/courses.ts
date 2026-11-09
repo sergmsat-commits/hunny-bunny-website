@@ -149,7 +149,7 @@ export const courseUi: Record<
 // Прайс (только RU-версия, из сторис «Прайс на занятия в Hunny Bunny»)
 const generalPrices: PriceGroup[] = [
   {
-    title: 'Общий английский (General English) и подготовка к ЦТ',
+    title: 'Общий английский (General English), подготовка к ЦТ и ЦЭ',
     rows: [
       { label: 'В группе, очно', once: '40 BYN', pass: '38 BYN' },
       { label: 'В группе, онлайн', once: '35 BYN', pass: '33 BYN' },
@@ -395,8 +395,8 @@ export const courses: Record<MainCourseId, Record<Lang, CourseContent>> & Record
         {
           title: 'Онлайн-занятия',
           rows: [
-            { label: 'Общий английский и ЦТ, в группе', once: '35 BYN', pass: '33 BYN' },
-            { label: 'Общий английский и ЦТ, индивидуально', once: '50 BYN', pass: '48 BYN' },
+            { label: 'Общий английский, ЦТ и ЦЭ, в группе', once: '35 BYN', pass: '33 BYN' },
+            { label: 'Общий английский, ЦТ и ЦЭ, индивидуально', once: '50 BYN', pass: '48 BYN' },
             { label: 'IELTS, в группе', once: '70 BYN', pass: '65 BYN' },
             { label: 'IELTS, индивидуально', once: '90 BYN', pass: '85 BYN' },
             { label: 'Олимпиады, в группе', once: '25 BYN' },
